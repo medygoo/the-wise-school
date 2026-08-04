@@ -1,0 +1,103 @@
+name: Publier le site
+
+# Le site part vers l'hébergeur À CHAQUE MODIFICATION de `main`.
+#
+# Pourquoi : téléverser par FileZilla depuis Kinshasa demandait plusieurs
+# minutes pour changer une phrase — l'outil renvoie volontiers tout le dossier,
+# 5 Mo, sur une connexion qui n'est pas faite pour ça. Ici le transfert part des
+# serveurs de GitHub vers ceux de LWS, et SEULS LES FICHIERS MODIFIÉS partent.
+#
+# Rien de secret n'est écrit dans ce fichier. L'adresse du serveur, le nom
+# d'utilisateur et le mot de passe sont des « secrets » du dépôt, déposés par
+# la Direction dans les réglages GitHub. Ils ne sont jamais affichés dans le
+# journal : GitHub les remplace par des étoiles.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:        # le bouton « Run workflow », pour republier à la demande
+
+concurrency:
+  group: publication-site
+  cancel-in-progress: true  # deux modifications coup sur coup : seule la dernière part
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # ── 1. Refuser de publier un site cassé ────────────────────────────
+      # Une page vide part aussi vite qu'une page correcte. Mieux vaut ne rien
+      # publier que remplacer la page d'accueil par du vide.
+      - name: Vérifier les pages
+        run: |
+          set -e
+          manque=0
+          for page in index.html ecole.html programmes.html galerie.html inscription.html contact.html; do
+            if [ ! -s "$page" ]; then echo "✗ $page est absente ou vide"; manque=1; fi
+          done
+          for page in *.html; do
+            if ! grep -qi "<title" "$page"; then echo "✗ $page n'a pas de titre"; manque=1; fi
+            if ! grep -qi "</html>" "$page"; then echo "✗ $page semble tronquée"; manque=1; fi
+          done
+          if [ "$manque" = "1" ]; then
+            echo ""
+            echo "Rien n'a été publié. Le site en ligne reste celui d'avant."
+            exit 1
+          fi
+          echo "✓ $(ls *.html | wc -l) pages vérifiées"
+
+      # ── 2. Alléger les photos trop lourdes ─────────────────────────────
+      # La Direction dépose une photo prise au téléphone : 4 Mo, 4000 px de
+      # large, alors que le site l'affiche sur 600 px. On ne la REFUSE pas —
+      # refuser bloquerait au pire moment. On publie une version allégée, et
+      # l'originale reste dans GitHub, intacte.
+      - name: Alléger les photos
+        run: |
+          sudo apt-get -qq update && sudo apt-get -qq install -y imagemagick
+          allegees=0
+          while IFS= read -r img; do
+            poids=$(stat -c%s "$img")
+            if [ "$poids" -gt 500000 ]; then
+              avant=$((poids/1024))
+              mogrify -resize '1600x1600>' -quality 82 -strip "$img"
+              apres=$(( $(stat -c%s "$img") / 1024 ))
+              echo "  · $img  ${avant} Ko → ${apres} Ko"
+              allegees=$((allegees+1))
+            fi
+          done < <(find . -path ./.git -prune -o \( -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' \) -print)
+          echo "✓ $allegees photo(s) allégée(s) pour la publication"
+          echo "  (les originales restent dans GitHub, elles ne sont pas touchées)"
+
+      - name: Peser le site
+        run: |
+          poids=$(du -sm --exclude=.git --exclude=.github . | cut -f1)
+          echo "Le site publié pèse ${poids} Mo."
+          [ "$poids" -gt 25 ] && echo "⚠ Au-delà de 25 Mo, les pages deviennent lentes à ouvrir."
+          exit 0
+
+      # ── 3. Envoyer ────────────────────────────────────────────────────
+      # L'action garde sur le serveur la trace de ce qu'elle a déjà envoyé :
+      # à la modification suivante, elle ne renvoie QUE ce qui a changé.
+      - name: Envoyer chez l'hébergeur
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server:   ${{ secrets.FTP_SERVEUR }}
+          username: ${{ secrets.FTP_UTILISATEUR }}
+          password: ${{ secrets.FTP_MOT_DE_PASSE }}
+          server-dir: ${{ vars.FTP_DOSSIER || '/' }}
+          protocol: ftp
+          timeout: 120000
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/*.md
+            **/node_modules/**
+
+      - name: C'est en ligne
+        run: |
+          echo "✓ Le site est à jour sur https://cslesage.com"
+          echo "  Si la page semble inchangée dans le navigateur : Ctrl+F5,"
+          echo "  ou attendre une minute — c'est le cache du navigateur, pas le site."
