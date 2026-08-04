@@ -1,0 +1,65 @@
+name: Mettre le site en ligne
+
+# LA VOIE SANS MOT DE PASSE.
+#
+# La publication vers l'hébergeur LWS a besoin de trois secrets FTP que seule
+# la Direction peut déposer. Celle-ci n'a besoin de RIEN : GitHub héberge le
+# site lui-même, gratuitement, et le met à jour à chaque modification.
+#
+# Les deux voies peuvent coexister. Celle-ci met le site en ligne aujourd'hui ;
+# le jour où les secrets FTP seront posés, `publier-le-site.yml` le déposera
+# aussi sur cslesage.com — et le nom de domaine pourra pointer ici s'il le faut.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploiement.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # Une page vide part aussi vite qu'une page correcte. Mieux vaut ne rien
+      # publier que remplacer l'accueil par du blanc.
+      - name: Vérifier les pages
+        run: |
+          set -e
+          manque=0
+          for page in index.html ecole.html programmes.html galerie.html inscription.html contact.html; do
+            [ -s "$page" ] || { echo "✗ $page est absente ou vide"; manque=1; }
+          done
+          for page in *.html; do
+            grep -qi "<title" "$page"  || { echo "✗ $page n'a pas de titre";  manque=1; }
+            grep -qi "</html>" "$page" || { echo "✗ $page semble tronquée";   manque=1; }
+          done
+          if [ "$manque" = "1" ]; then
+            echo ""; echo "Rien n'a été publié. Le site en ligne reste celui d'avant."
+            exit 1
+          fi
+          echo "✓ $(ls *.html | wc -l) pages vérifiées · $(du -sm --exclude=.git --exclude=.github . | cut -f1) Mo"
+
+      - uses: actions/configure-pages@v4
+        with:
+          enablement: true
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      - id: deploiement
+        uses: actions/deploy-pages@v4
+
+      - name: L'adresse du site
+        run: echo "✓ En ligne — ${{ steps.deploiement.outputs.page_url }}"
