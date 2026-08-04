@@ -1,54 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <url>
-    <loc>https://cslesage.com/</loc>
-    <lastmod>2026-08-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-    <image:image>
-      <image:loc>https://cslesage.com/photo4.jpg</image:loc>
-      <image:title>Complexe Scolaire Le Sage — The Wise School International</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://cslesage.com/ecole.html</loc>
-    <lastmod>2026-08-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://cslesage.com/photo2.jpg</image:loc>
-      <image:title>Complexe Scolaire Le Sage — The Wise School International</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://cslesage.com/programmes.html</loc>
-    <lastmod>2026-08-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://cslesage.com/photo5.jpg</image:loc>
-      <image:title>Complexe Scolaire Le Sage — The Wise School International</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://cslesage.com/galerie.html</loc>
-    <lastmod>2026-08-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://cslesage.com/photo8.jpg</image:loc>
-      <image:title>Complexe Scolaire Le Sage — The Wise School International</image:title>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://cslesage.com/contact.html</loc>
-    <lastmod>2026-08-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <image:image>
-      <image:loc>https://cslesage.com/photo4.jpg</image:loc>
-      <image:title>Complexe Scolaire Le Sage — The Wise School International</image:title>
-    </image:image>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://cslesage.com/</loc><lastmod>2026-08-04</lastmod></url>
+  <url><loc>https://cslesage.com/ecole.html</loc><lastmod>2026-08-04</lastmod></url>
+  <url><loc>https://cslesage.com/programmes.html</loc><lastmod>2026-08-04</lastmod></url>
+  <url><loc>https://cslesage.com/galerie.html</loc><lastmod>2026-08-04</lastmod></url>
+  <url><loc>https://cslesage.com/inscription.html</loc><lastmod>2026-08-04</lastmod></url>
+  <url><loc>https://cslesage.com/contact.html</loc><lastmod>2026-08-04</lastmod></url>
 </urlset>

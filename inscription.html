@@ -1,446 +1,348 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Inscriptions 2026-2027 — Complexe Scolaire Le Sage</title>
-<meta name="description" content="Inscriptions en cours pour l'année scolaire 2026-2027. Minerval, horaires, billets de vacances et préinscription en ligne. Kinshasa — RDC." />
-<link rel="canonical" href="https://cslesage.com/inscription.html" />
-<meta name="theme-color" content="#556777" />
-<meta property="og:site_name" content="Complexe Scolaire Le Sage" />
-<meta property="og:locale" content="fr_CD" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://cslesage.com/inscription.html" />
-<meta property="og:title" content="Inscriptions 2026-2027 — Complexe Scolaire Le Sage" />
-<meta property="og:description" content="Inscriptions en cours. Minerval, horaires, billets de vacances et préinscription en ligne." />
-<meta property="og:image" content="https://cslesage.com/affiche-inscriptions.jpg" />
-<meta property="og:image:alt" content="Inscriptions en cours — Complexe Scolaire Le Sage" />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Inscriptions 2026-2027 — Complexe Scolaire Le Sage" />
-<meta name="twitter:description" content="Inscriptions en cours. Minerval, horaires, billets de vacances et préinscription en ligne." />
-<meta name="twitter:image" content="https://cslesage.com/affiche-inscriptions.jpg" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Mulish:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="assets/site.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Inscription — Complexe Scolaire Le Sage · Préinscription en ligne</title>
+<meta name="description" content="Préinscrivez votre enfant en ligne au Complexe Scolaire Le Sage, puis venez finaliser le dossier à l'école. Billets de vacances et fiche d'identification.">
+<meta name="theme-color" content="#657786">
+<link rel="icon" href="img/logo.webp" type="image/webp">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  /* La visionneuse des affiches — quelques lignes, propres à cette page. */
+  #lb{position:fixed;inset:0;background:rgba(16,22,28,.9);display:none;
+      align-items:center;justify-content:center;flex-direction:column;gap:14px;
+      z-index:200;padding:24px;cursor:zoom-out}
+  #lb.open{display:flex}
+  #lb img{max-width:min(94vw,900px);max-height:82vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  #lb-cap{color:#fff;font-size:14px;text-align:center;max-width:600px}
+  .billet img,.affiche img{border-radius:10px;border:1px solid var(--line)}
+</style>
 </head>
 <body>
-<div class="topband"><div class="wrap">
-  <span>📍 Kabambare 4367, Quartier Bon Marché — Barumbu, Kinshasa, RDC</span>
-  <span><a href="tel:+243816722901">+243 816 722 901</a><span class="dot">•</span><a href="https://medygoo.github.io/SchoolSafe-/">Espace App SchoolSafe →</a></span>
-</div></div>
-<header><div class="wrap nav">
-  <a class="brand" href="./">
-    <img src="logo.jpg" alt="Le Sage" />
-    <div><div class="bn">Complexe Scolaire Le Sage</div><div class="bs">The Wise School International</div></div>
-  </a>
-  <nav class="menu">
-    <a href="./">Accueil</a>
-    <a href="ecole.html">L'École</a>
-    <a href="programmes.html">Programmes</a>
-    <a href="inscription.html" class="active">Inscription</a>
-    <a href="galerie.html">Galerie</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-  <div class="nav-cta">
-    <a class="btn btn-ghost" href="https://medygoo.github.io/SchoolSafe-/">Espace App</a>
-    <a class="btn btn-solid" href="#preinscription">Préinscrire</a>
-  </div>
-  <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
-</div></header>
-<nav class="mobile-menu">
-  <a href="./">Accueil</a><a href="ecole.html">L'École</a><a href="programmes.html">Programmes</a>
-  <a href="inscription.html">Inscription</a><a href="galerie.html">Galerie</a><a href="contact.html">Contact</a>
-  <a href="https://medygoo.github.io/SchoolSafe-/">Espace App SchoolSafe</a>
-  <a class="btn btn-gold mm-cta" href="#preinscription">Préinscrire</a>
-</nav>
-<div class="scrim"></div>
 
-<section class="page-hero">
-  <div class="ph-bg"><img src="photo4.jpg" alt="Nos élèves en classe" /></div>
-  <div class="ph-inner wrap">
-    <div class="kicker">Année scolaire 2026-2027</div>
-    <h1>Inscriptions <span class="it">en cours</span></h1>
-    <div class="crumb"><a href="./">Accueil</a><span class="sep">/</span>Inscription</div>
+<header>
+  <div class="entete">
+    <a class="marque" href="index.html">
+      <img src="img/logo.webp" width="46" height="46" alt="Emblème du Complexe Scolaire Le Sage">
+      <span style="min-width:0">
+        <b>Complexe Scolaire Le Sage</b>
+        <span>The Wise School International</span>
+      </span>
+    </a>
+    <button class="bouton-menu" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="ecole.html">L'école</a>
+      <a href="programmes.html">Programmes</a>
+      <a href="galerie.html">Galerie</a>
+      <a href="inscription.html">Inscription</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="heros">
+  <img class="fond" src="img/photo5.webp" alt="" width="820" height="820">
+  <div class="large">
+    <p class="sur-titre">Année scolaire de septembre à août</p>
+    <h1>Inscrivez votre enfant</h1>
+    <p>Remplissez la fiche en ligne — cela prend cinq minutes. Vous venez ensuite à
+       l'école avec les pièces, et la Direction finalise le dossier avec vous.</p>
+    <div class="actions"><a class="btn btn-or" href="#fiche">Aller à la fiche</a></div>
   </div>
 </section>
 
-<!-- ═══ l'affiche ═══ -->
-<section class="insc-affiche"><div class="wrap">
-  <div class="affiche-grid">
-    <figure class="affiche reveal r-left">
-      <img src="affiche-inscriptions.jpg" alt="Affiche — Inscriptions en cours, année scolaire 2026-2027" loading="lazy" />
-      <figcaption>Cliquez pour agrandir</figcaption>
-    </figure>
-    <div class="reveal r-right">
-      <div class="kicker">Maternelle en anglais · Primaire bilingue</div>
-      <h2>Une place pour <span class="it">votre enfant</span></h2>
-      <p>L'inscription se fait en deux temps : vous remplissez la fiche de renseignements
-         <strong>ici, en ligne</strong>, puis vous passez à la Direction pour la confirmation
-         et le paiement de la première tranche.</p>
-      <ul class="feature-list">
-        <li>Maternelle enseignée <strong>en anglais</strong></li>
-        <li>Primaire <strong>bilingue français – anglais</strong></li>
-        <li>Encadrement attentionné et personnalisé</li>
-        <li>Infrastructure sûre et adaptée</li>
-      </ul>
-      <div class="contact-actions" style="margin-top:26px">
-        <a class="btn btn-solid" href="#preinscription">Remplir la fiche en ligne</a>
-        <a class="btn btn-ghost" href="https://wa.me/243978444167">WhatsApp Direction</a>
+<section class="section">
+  <div class="large">
+    <div class="centre" style="margin-bottom:30px">
+      <div class="filet"></div>
+      <h2>Comment ça se passe</h2>
+    </div>
+    <div class="grille g4">
+      <div class="carte apparait"><div class="num">1</div><h3>En ligne</h3><p class="petit muted">Vous remplissez la fiche de préinscription et vous l'envoyez.</p></div>
+      <div class="carte apparait"><div class="num">2</div><h3>À l'école</h3><p class="petit muted">Vous venez avec les pièces de l'enfant. La photo est prise sur place.</p></div>
+      <div class="carte apparait"><div class="num">3</div><h3>Validation</h3><p class="petit muted">La Direction examine le dossier et l'accepte.</p></div>
+      <div class="carte apparait"><div class="num">4</div><h3>Paiement</h3><p class="petit muted">Les frais se règlent à la caisse. Le reçu vous est remis à ce moment-là.</p></div>
+    </div>
+    <div class="avis apparait" style="margin-top:24px">
+      <strong>Aucun paiement ne se fait sur ce site</strong>, et aucune photo n'y est
+      demandée. Les photographies de l'enfant et des personnes autorisées sont prises
+      à l'école, au moment de la validation.
+    </div>
+  </div>
+</section>
+
+<section class="section gris">
+  <div class="large">
+    <div class="grille g2" style="gap:30px;align-items:start">
+      <div class="apparait affiche">
+        <img src="img/affiche-inscriptions.webp" alt="Affiche des inscriptions du Complexe Scolaire Le Sage" loading="lazy" width="762" height="1080">
+      </div>
+      <div class="apparait">
+        <div class="filet"></div>
+        <h2>Les pièces à apporter</h2>
+        <ul class="liste">
+          <li>Acte de naissance ou attestation de naissance de l'enfant</li>
+          <li>Bulletin ou attestation de l'école précédente, s'il y en a une</li>
+          <li>Pièce d'identité du tuteur principal</li>
+          <li>Deux photos d'identité de l'enfant — ou la photo se prend à l'école</li>
+          <li>Le carnet de vaccination, pour la maternelle</li>
+        </ul>
+        <div class="repere" style="margin-top:18px">
+          <h3 style="margin-top:0;font-size:18px">Les frais</h3>
+          <p class="petit" style="margin:0">Le montant du minerval, des frais d'inscription et
+             de la cantine est fixé par la Direction et communiqué aux familles lors de la
+             validation du dossier. Le paiement se fait à la caisse de l'école, contre
+             reçu.</p>
+        </div>
       </div>
     </div>
   </div>
-</div></section>
+</section>
 
-<!-- ═══ l'école en anglais — elle est bilingue ═══ -->
-<section class="bilingue"><div class="wrap">
-  <div class="bil-grid">
-    <div>
-      <div class="kicker">English</div>
-      <h2>A bilingual school <span class="it">in Kinshasa</span></h2>
-      <p><strong>The Wise School International — Complexe Scolaire Le Sage</strong> is a
-         bilingual primary and nursery school in Barumbu, Kinshasa. Nursery classes are
-         taught <strong>in English</strong>; primary classes are taught <strong>in French
-         and English</strong>.</p>
-      <ul class="feature-list">
-        <li>Nursery taught <strong>in English</strong> · Primary <strong>bilingual</strong></li>
-        <li>Computer room and practical IT lessons</li>
-        <li>Dance, music, pottery and taekwondo — <strong>included in the school fees</strong></li>
-        <li>School canteen on site · <strong>Enrolment open for 2026-2027</strong></li>
-      </ul>
-    </div>
-    <div class="bil-faits">
-      <div class="bf"><span class="l">School fees</span><span class="v">900 $</span><span class="s">per year · three instalments</span></div>
-      <div class="bf"><span class="l">Nursery hours</span><span class="v">8 am → 2 pm</span><span class="s">Monday to Friday</span></div>
-      <div class="bf"><span class="l">Primary hours</span><span class="v">7 am → 3 pm</span><span class="s">Monday to Friday</span></div>
-      <div class="bf"><span class="l">Enrolment</span><span class="v">Open</span><span class="s">Fill the form below, then come to the school to confirm and pay</span></div>
-    </div>
-  </div>
-</div></section>
-
-<!-- ═══ ce que les frais comprennent ═══ -->
-<section class="prog"><div class="wrap">
-  <div class="sec-head">
-    <div class="kicker">Cette année</div>
-    <h2>Les frais scolaires <span class="it">comprennent</span></h2>
-  </div>
-  <div class="chips" style="justify-content:center;gap:12px">
-    <span class="chip">Salle d'informatique</span>
-    <span class="chip">Cours d'informatique pratique</span>
-    <span class="chip">Danse</span>
-    <span class="chip">Musique</span>
-    <span class="chip">Poterie</span>
-    <span class="chip">Taekwondo</span>
-    <span class="chip">Cantine</span>
-  </div>
-</div></section>
-
-<!-- ═══ minerval et horaires ═══ -->
-<section><div class="wrap">
-  <div class="sec-head">
-    <div class="kicker">Ce qu'il faut savoir</div>
-    <h2>Minerval et <span class="it">horaires</span></h2>
-  </div>
-  <div class="insc-cols">
-
-    <div class="insc-card reveal r-left">
-      <h3>💰 Minerval</h3>
-      <div class="montant"><span class="v">900 $</span><span class="u">pour l'année</span></div>
-      <p class="note">Payable en <strong>trois tranches anticipatives</strong> :</p>
-      <table class="tranches">
-        <tr><td>À l'inscription / confirmation</td><td class="m">400 $</td></tr>
-        <tr><td>Au mois de novembre</td><td class="m">100 $</td></tr>
-        <tr><td>Au mois de février</td><td class="m">400 $</td></tr>
-      </table>
-      <div class="ligne"><span>Cantine scolaire — maternelle</span><strong>25 $ / mois</strong></div>
-      <div class="ligne"><span>Amortissement jouets</span><strong>15 $</strong></div>
-      <div class="ligne"><span>Uniforme complet à l'école</span><strong>20 $</strong></div>
-      <p class="note">Cantine obligatoire au primaire : <strong>voir la Direction pour le montant</strong>.
-         Uniforme confectionné soi-même : cachetage à <strong>5 000 FC</strong>.</p>
+<!-- ═══════════ LA FICHE ═══════════ -->
+<section class="section" id="fiche">
+  <div class="large" style="max-width:900px">
+    <div class="centre" style="margin-bottom:26px">
+      <div class="filet"></div>
+      <h2>Fiche de préinscription</h2>
+      <p class="muted">Les champs marqués d'une étoile sont obligatoires. Vous pouvez aussi
+         imprimer cette fiche et l'apporter remplie.</p>
     </div>
 
-    <div class="insc-card reveal r-right">
-      <h3>🕐 Horaires</h3>
-      <div class="horaire">
-        <div class="cyc">Maternelle</div>
-        <div class="hh">8h00 → 14h00</div>
-        <div class="jj">du lundi au vendredi</div>
-        <div class="rec">Récréations : 9h45–10h15 et 12h00–12h30</div>
+    <form id="fiche-preinscription" autocomplete="on" novalidate>
+
+      <!-- Le piège anti-robot. Invisible pour vous, rempli par un automate :
+           s'il porte quoi que ce soit, le serveur refuse la demande. -->
+      <div class="piege" aria-hidden="true">
+        <label>Site web <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
+        <label>Société <input type="text" name="company" tabindex="-1" autocomplete="off"></label>
+        <label>URL <input type="text" name="url" tabindex="-1" autocomplete="off"></label>
       </div>
-      <div class="horaire">
-        <div class="cyc">Primaire</div>
-        <div class="hh">7h00 → 15h00</div>
-        <div class="jj">du lundi au vendredi</div>
-        <div class="rec">Récréations : 10h15–10h45 et 12h30–13h00</div>
+
+      <fieldset>
+        <legend>L'élève</legend>
+        <div class="form">
+          <div class="champ full"><label for="f_nom">Nom complet de l'élève *</label>
+            <input id="f_nom" name="nom" type="text" required></div>
+          <div class="champ"><label for="f_sexe">Sexe *</label>
+            <select id="f_sexe" name="sexe" required>
+              <option value="">—</option><option>Masculin</option><option>Féminin</option>
+            </select></div>
+          <div class="champ"><label for="f_dob">Date de naissance *</label>
+            <input id="f_dob" name="dob" type="date" required></div>
+          <div class="champ"><label for="f_lieu">Lieu de naissance</label>
+            <input id="f_lieu" name="lieu_naissance" type="text"></div>
+          <div class="champ"><label for="f_classe">Classe demandée *</label>
+            <select id="f_classe" name="classe" required>
+              <option value="">—</option>
+              <optgroup label="Maternelle">
+                <option>1ère Maternelle</option><option>2ème Maternelle</option><option>3ème Maternelle</option>
+              </optgroup>
+              <optgroup label="Primaire">
+                <option>1ère Primaire</option><option>2ème Primaire</option><option>3ème Primaire</option>
+                <option>4ème Primaire</option><option>5ème Primaire</option><option>6ème Primaire</option>
+              </optgroup>
+              <optgroup label="Secondaire">
+                <option>7ème (1ère secondaire)</option><option>8ème (2ème secondaire)</option>
+                <option>1ère Humanités</option><option>2ème Humanités</option>
+                <option>3ème Humanités</option><option>4ème Humanités</option>
+              </optgroup>
+            </select></div>
+          <div class="champ"><label for="f_ecole">École de provenance</label>
+            <input id="f_ecole" name="ecole_provenance" type="text" placeholder="Si l'enfant était déjà scolarisé"></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Les parents</legend>
+        <div class="form">
+          <div class="champ"><label for="f_papa">Nom du père</label>
+            <input id="f_papa" name="nom_papa" type="text"></div>
+          <div class="champ"><label for="f_maman">Nom de la mère</label>
+            <input id="f_maman" name="nom_maman" type="text"></div>
+          <div class="champ"><label for="f_tel">Téléphone *</label>
+            <input id="f_tel" name="telephone" type="tel" required placeholder="+243 …"></div>
+          <div class="champ"><label for="f_tel2">Second téléphone</label>
+            <input id="f_tel2" name="telephone2" type="tel"></div>
+          <div class="champ full"><label for="f_adresse">Adresse du domicile</label>
+            <input id="f_adresse" name="adresse" type="text"></div>
+          <div class="champ full"><label for="f_email">Adresse e-mail</label>
+            <input id="f_email" name="email" type="email">
+            <span class="aide">Elle servira à créer l'accès des parents à l'application de l'école.</span></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Santé</legend>
+        <div class="form">
+          <div class="champ"><label for="f_sang">Groupe sanguin</label>
+            <select id="f_sang" name="blood_group">
+              <option value="">—</option>
+              <option>O+</option><option>O−</option><option>A+</option><option>A−</option>
+              <option>B+</option><option>B−</option><option>AB+</option><option>AB−</option>
+            </select></div>
+          <div class="champ"><label for="f_urgence">À prévenir en cas d'urgence</label>
+            <input id="f_urgence" name="urgence" type="text" placeholder="Nom et téléphone"></div>
+          <div class="champ full"><label for="f_medical">Allergies, traitements, précautions</label>
+            <input id="f_medical" name="medical_notes" type="text" placeholder="Écrivez « aucune » s'il n'y en a pas">
+            <span class="aide">Ce que l'école doit savoir pour protéger votre enfant.</span></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>La tutelle et les personnes autorisées</legend>
+        <p class="petit muted" style="margin-top:0">
+          Désignez le <strong>tuteur principal</strong>, puis jusqu'à
+          <strong>trois personnes</strong> autorisées à venir chercher l'enfant.
+          Elles seront approuvées par la Direction, et leur photographie sera prise à
+          l'école. <strong>Aucune photo n'est demandée ici.</strong>
+        </p>
+        <div class="form">
+          <div class="champ full"><label for="f_tutelle">Tuteur principal *</label>
+            <input id="f_tutelle" name="tutelle" type="text" required placeholder="Nom complet et lien de parenté — ex. Kabongo Daniel, père"></div>
+        </div>
+
+        <div class="form" style="margin-top:14px">
+          <div class="champ"><label for="f_a1n">Personne autorisée 1 — nom</label>
+            <input id="f_a1n" name="a1_nom" type="text"></div>
+          <div class="champ"><label for="f_a1r">Lien de parenté</label>
+            <input id="f_a1r" name="a1_relation" type="text" placeholder="Mère, oncle, tante…"></div>
+          <div class="champ"><label for="f_a1t">Téléphone</label>
+            <input id="f_a1t" name="a1_telephone" type="tel"></div>
+
+          <div class="champ"><label for="f_a2n">Personne autorisée 2 — nom</label>
+            <input id="f_a2n" name="a2_nom" type="text"></div>
+          <div class="champ"><label for="f_a2r">Lien de parenté</label>
+            <input id="f_a2r" name="a2_relation" type="text"></div>
+          <div class="champ"><label for="f_a2t">Téléphone</label>
+            <input id="f_a2t" name="a2_telephone" type="tel"></div>
+
+          <div class="champ"><label for="f_a3n">Personne autorisée 3 — nom</label>
+            <input id="f_a3n" name="a3_nom" type="text"></div>
+          <div class="champ"><label for="f_a3r">Lien de parenté</label>
+            <input id="f_a3r" name="a3_relation" type="text"></div>
+          <div class="champ"><label for="f_a3t">Téléphone</label>
+            <input id="f_a3t" name="a3_telephone" type="tel"></div>
+        </div>
+      </fieldset>
+
+      <div id="f_message" class="full msg" hidden></div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:18px">
+        <button type="button" id="f_envoyer" class="btn btn-or">Envoyer à l'école</button>
+        <button type="button" id="f_whatsapp" class="btn btn-gris">Envoyer par WhatsApp</button>
+        <button type="button" id="f_imprimer" class="btn btn-ligne">Imprimer la fiche</button>
       </div>
-      <p class="note"><strong>Mercredi et vendredi</strong>, les cours sont associés aux ateliers
-         et aux activités parascolaires.</p>
+      <p class="petit muted" style="margin-top:12px">
+        Si l'envoi en ligne échoue — réseau coupé, serveur indisponible — vos réponses
+        restent à l'écran : utilisez WhatsApp ou imprimez la fiche. Rien n'est perdu.
+      </p>
+    </form>
+  </div>
+</section>
+
+<!-- ═══════════ LES BILLETS DE VACANCES ═══════════ -->
+<section class="section gris">
+  <div class="large" style="max-width:900px">
+    <div class="centre" style="margin-bottom:26px">
+      <div class="filet"></div>
+      <h2>Les billets de vacances</h2>
+      <p class="muted">Les travaux à faire pendant les vacances, par niveau. Appuyez sur une
+         affiche pour l'agrandir et la lire.</p>
     </div>
 
+    <details class="billet">
+      <summary>Maternelle</summary>
+      <div class="corps">
+        <p class="petit muted">Éveil, langage et motricité fine : de quoi garder la main
+           pendant les vacances, sans peser sur les journées.</p>
+        <img src="img/billet-maternelle.webp" alt="Billet de vacances — Maternelle" loading="lazy" width="809" height="1080">
+      </div>
+    </details>
+
+    <details class="billet">
+      <summary>1ère et 2ème primaire</summary>
+      <div class="corps">
+        <p class="petit muted">Lecture, écriture et calcul — les fondations des deux
+           premières années.</p>
+        <img src="img/billet-primaire-1-2.webp" alt="Billet de vacances — 1ère et 2ème primaire" loading="lazy" width="860" height="1075">
+      </div>
+    </details>
+
+    <details class="billet">
+      <summary>3ème et 4ème primaire</summary>
+      <div class="corps">
+        <p class="petit muted">Français, mathématiques et sciences, avec les premiers
+           exercices de raisonnement.</p>
+        <img src="img/billet-primaire-3-4.webp" alt="Billet de vacances — 3ème et 4ème primaire" loading="lazy" width="860" height="1075">
+      </div>
+    </details>
+
+    <details class="billet">
+      <summary>5ème et 6ème primaire</summary>
+      <div class="corps">
+        <p class="petit muted">Le programme des deux dernières années du primaire, avec la
+           préparation de l'ENAFEP en vue.</p>
+        <img src="img/billet-primaire-5-6.webp" alt="Billet de vacances — 5ème et 6ème primaire" loading="lazy" width="860" height="1075">
+      </div>
+    </details>
   </div>
-</div></section>
+</section>
 
-
-<!-- ═══ les activités parascolaires ═══ -->
-<section class="activites"><div class="wrap">
-  <div class="sec-head">
-    <div class="kicker">Compris dans les frais scolaires</div>
-    <h2>Les activités <span class="it">parascolaires</span></h2>
-    <p style="color:var(--muted);margin-top:16px">Tous nos élèves portent la tenue de l'école —
-       <strong>gris et blanc</strong> — et son insigne.</p>
+<section class="anglais">
+  <div class="large">
+    <div class="filet"></div>
+    <h2>Enrolment</h2>
+    <p style="max-width:760px">Fill in the pre-registration form above — it takes about five minutes. You then come
+       to the school with the child's documents; photographs are taken on site. The
+       Direction reviews the file and completes the enrolment with you.</p>
+    <p style="max-width:760px"><strong>No payment is ever taken on this website</strong>, and no photograph is
+       requested here. School fees are paid at the school's cash desk, and a receipt is
+       handed to you at the moment of payment.</p>
   </div>
-  <div class="act-grid">
-      <article class="act reveal">
-        <picture>
-          <source srcset="assets/activites/act-bilingue.webp" type="image/webp">
-          <img class="act-photo" src="assets/activites/act-bilingue.jpg" alt="Enseignement bilingue — élèves du Complexe Scolaire Le Sage" loading="lazy" decoding="async" width="1000" height="1000"
-               onerror="this.closest('picture').outerHTML='&lt;svg class=\'act-ic\' viewBox=\'0 0 160 160\'&gt;&lt;use href=\'assets/activites.svg#act-lecture\'/&gt;&lt;/svg&gt;'">
-        </picture>
-        <h3>Enseignement bilingue</h3><div class="act-en">Bilingual teaching</div><p>Le français et l'anglais dès la maternelle — deux langues, deux cahiers, un seul enfant.</p>
-      </article>
-      <article class="act reveal">
-        <picture>
-          <source srcset="assets/activites/act-informatique.webp" type="image/webp">
-          <img class="act-photo" src="assets/activites/act-informatique.jpg" alt="Salle d'informatique — élèves du Complexe Scolaire Le Sage" loading="lazy" decoding="async" width="1000" height="1000"
-               onerror="this.closest('picture').outerHTML='&lt;svg class=\'act-ic\' viewBox=\'0 0 160 160\'&gt;&lt;use href=\'assets/activites.svg#act-informatique\'/&gt;&lt;/svg&gt;'">
-        </picture>
-        <h3>Salle d'informatique</h3><div class="act-en">Computer room</div><p>Une salle équipée et un cours d'informatique pratique, compris dans les frais.</p>
-      </article>
-      <article class="act reveal">
-        <picture>
-          <source srcset="assets/activites/act-danse.webp" type="image/webp">
-          <img class="act-photo" src="assets/activites/act-danse.jpg" alt="Danse — élèves du Complexe Scolaire Le Sage" loading="lazy" decoding="async" width="1000" height="1000"
-               onerror="this.closest('picture').outerHTML='&lt;svg class=\'act-ic\' viewBox=\'0 0 160 160\'&gt;&lt;use href=\'assets/activites.svg#act-danse\'/&gt;&lt;/svg&gt;'">
-        </picture>
-        <h3>Danse</h3><div class="act-en">Dance</div><p>Le corps, le rythme, la confiance devant les autres.</p>
-      </article>
-      <article class="act reveal">
-        <picture>
-          <source srcset="assets/activites/act-musique.webp" type="image/webp">
-          <img class="act-photo" src="assets/activites/act-musique.jpg" alt="Musique — élèves du Complexe Scolaire Le Sage" loading="lazy" decoding="async" width="1000" height="1000"
-               onerror="this.closest('picture').outerHTML='&lt;svg class=\'act-ic\' viewBox=\'0 0 160 160\'&gt;&lt;use href=\'assets/activites.svg#act-musique\'/&gt;&lt;/svg&gt;'">
-        </picture>
-        <h3>Musique</h3><div class="act-en">Music</div><p>Chant, violon et percussions — l'oreille se forme tôt.</p>
-      </article>
-      <article class="act reveal">
-        <picture>
-          <source srcset="assets/activites/act-poterie.webp" type="image/webp">
-          <img class="act-photo" src="assets/activites/act-poterie.jpg" alt="Poterie — élèves du Complexe Scolaire Le Sage" loading="lazy" decoding="async" width="1000" height="1000"
-               onerror="this.closest('picture').outerHTML='&lt;svg class=\'act-ic\' viewBox=\'0 0 160 160\'&gt;&lt;use href=\'assets/activites.svg#act-poterie\'/&gt;&lt;/svg&gt;'">
-        </picture>
-        <h3>Poterie</h3><div class="act-en">Pottery</div><p>Les mains dans la terre : patience, geste et fierté du travail fini.</p>
-      </article>
-      <article class="act reveal">
-        <picture>
-          <source srcset="assets/activites/act-taekwondo.webp" type="image/webp">
-          <img class="act-photo" src="assets/activites/act-taekwondo.jpg" alt="Taekwondo — élèves du Complexe Scolaire Le Sage" loading="lazy" decoding="async" width="1000" height="1000"
-               onerror="this.closest('picture').outerHTML='&lt;svg class=\'act-ic\' viewBox=\'0 0 160 160\'&gt;&lt;use href=\'assets/activites.svg#act-taekwondo\'/&gt;&lt;/svg&gt;'">
-        </picture>
-        <h3>Taekwondo</h3><div class="act-en">Taekwondo</div><p>Discipline, respect de l'adversaire et maîtrise de soi.</p>
-      </article>
-      <article class="act reveal">
-        <picture>
-          <source srcset="assets/activites/act-ateliers.webp" type="image/webp">
-          <img class="act-photo" src="assets/activites/act-ateliers.jpg" alt="Ateliers & arts — élèves du Complexe Scolaire Le Sage" loading="lazy" decoding="async" width="1000" height="1000"
-               onerror="this.closest('picture').outerHTML='&lt;svg class=\'act-ic\' viewBox=\'0 0 160 160\'&gt;&lt;use href=\'assets/activites.svg#act-ateliers\'/&gt;&lt;/svg&gt;'">
-        </picture>
-        <h3>Ateliers & arts</h3><div class="act-en">Workshops & arts</div><p>Mercredi et vendredi, les cours s'associent aux ateliers.</p>
-      </article>
-      <article class="act reveal">
-        <picture>
-          <source srcset="assets/activites/act-cantine.webp" type="image/webp">
-          <img class="act-photo" src="assets/activites/act-cantine.jpg" alt="Cantine — élèves du Complexe Scolaire Le Sage" loading="lazy" decoding="async" width="1000" height="1000"
-               onerror="this.closest('picture').outerHTML='&lt;svg class=\'act-ic\' viewBox=\'0 0 160 160\'&gt;&lt;use href=\'assets/activites.svg#act-cantine\'/&gt;&lt;/svg&gt;'">
-        </picture>
-        <h3>Cantine</h3><div class="act-en">School canteen</div><p>Un repas surveillé sur place. Aucun aliment extérieur n'est toléré.</p>
-      </article>
-  </div>
-</div></section>
+</section>
 
-<!-- ═══ les billets de vacances ═══ -->
-<section class="billets"><div class="wrap">
-  <div class="sec-head">
-    <div class="kicker">Fournitures scolaires</div>
-    <h2>Billets de <span class="it">vacances</span></h2>
-    <p style="color:var(--muted);margin-top:16px">Ouvrez la classe de votre enfant : la liste complète s'affiche,
-       article par article. L'affiche originale reste en dessous.</p>
-  </div>
-  <div class="billets-det">
-      <details class="billet-det" id="billet-maternelle">
-        <summary><span class="bt">Cycle maternel</span><span class="bs">1ère · 2ème · 3ème Maternelle</span><span class="bn">25 articles</span></summary>
-        <div class="billet-corps">
-          <div class="billet-listes"><div class="bl"><h4>Fournitures</h4><ul><li>2 rames de papier duplicateur A4</li><li>1 rame de papier Bristol A4</li><li>3 feuilles de papier Bristol de couleurs différentes, destinées aux fardes</li><li>1 paquet de taille-crayons</li><li>1 paquet de gommes</li><li>2 lattes de 30 cm</li><li>1 ardoise, utilisable une fois par semaine</li><li>1 paire de ciseaux à bouts ronds</li><li>1 paquet de stylos bleus</li><li>1 paquet de crayons noirs HB</li><li>2 paquets de Pampers</li><li>3 savons liquides marque No Bactéri</li><li>1 paquet de slips blancs en coton</li><li>1 paquet de papier hygiénique blanc 3 ou 4 plis — disponible à l'école : 10 $</li><li>2 cahiers quadrillés AUKORA de 200 pages</li><li>2 cahiers lignés AUKORA de 200 pages</li><li>2 cahiers d'écriture grand format AUKORA</li><li>4 Glue Stick AUKORA</li><li>Ciseaux</li><li>2 paquets de crayons de couleur</li><li>Peinture pour enfants, palette de 12 couleurs</li><li>2 paquets de pinceaux</li><li>Gants</li><li>4 paquets de papier glacé</li><li>1 cartable-farde grand format à multiples compartiments</li></ul></div></div>
-          <figure class="billet-img"><img src="billet-maternelle.jpg" alt="Billet de vacances — Cycle maternel" loading="lazy" />
-            <figcaption>L'affiche originale — cliquez pour agrandir</figcaption></figure>
-        </div>
-      </details>
-      <details class="billet-det" id="billet-primaire-1-2">
-        <summary><span class="bt">1ère et 2ème Primaire</span><span class="bs">Français · Anglais</span><span class="bn">29 articles</span></summary>
-        <div class="billet-corps">
-          <div class="billet-listes"><div class="bl"><h4>Français — cahiers</h4><ul><li>2 cahiers quadrillés de 200 pages</li><li>2 cahiers lignés de 200 pages</li><li>2 cahiers quadrillés de 96 pages</li><li>2 cahiers lignés de 96 pages</li><li>1 cahier d'écriture grand format</li><li>1 cahier de dessin grand format</li></ul></div><div class="bl"><h4>Français — livres</h4><ul><li>1 livre de lecture <em>Tom, Zoé et leurs amis</em></li><li>1 livre de français <em>À la fontaine 1</em></li><li>1 livre de pratique de mathématiques adapté à la classe</li><li>1 livre de pratique de français adapté à la classe</li></ul></div><div class="bl"><h4>Anglais — cahiers</h4><ul><li>5 cahiers quadrillés de 100 pages</li><li>2 cahiers quadrillés de 200 pages</li><li>1 cahier de peinture (painting book) grand format</li><li>1 cahier d'écriture grand format</li></ul></div><div class="bl"><h4>Fournitures générales</h4><ul><li>4 lattes de 30 cm</li><li>1 boîte mathématique</li><li>1 paquet de crayons noirs HB</li><li>1 paquet de gommes</li><li>1 paquet de taille-crayons</li><li>2 rames de papier</li><li>4 paquets de feutres marque BIC ou AUKORA : 2 bleus, 1 rouge et 1 vert</li><li>5 fardes en papier de différentes couleurs</li><li>2 pots de colle blanche « White Glue GF »</li><li>1 paquet de crayons de couleur</li><li>1 ensemble de pots de peintures (12 couleurs)</li><li>1 paquet de pinceaux</li><li>2 ciseaux pour enfant</li><li>3 paquets de lingettes Naomi</li><li>1 paquet de papier hygiénique blanc 3 ou 4 plis — disponible à l'école : 10 $</li></ul></div></div>
-          <figure class="billet-img"><img src="billet-primaire-1-2.jpg" alt="Billet de vacances — 1ère et 2ème Primaire" loading="lazy" />
-            <figcaption>L'affiche originale — cliquez pour agrandir</figcaption></figure>
-        </div>
-      </details>
-      <details class="billet-det" id="billet-primaire-3-4">
-        <summary><span class="bt">3ème et 4ème Primaire</span><span class="bs">Français · Anglais</span><span class="bn">37 articles</span></summary>
-        <div class="billet-corps">
-          <div class="billet-listes"><div class="bl"><h4>Français — cahiers</h4><ul><li>3 cahiers quadrillés de 200 pages</li><li>3 cahiers lignés de 200 pages</li><li>3 cahiers quadrillés de 96 pages</li><li>3 cahiers lignés de 96 pages</li><li>2 cahiers d'écriture</li><li>1 cahier de dessin</li></ul></div><div class="bl"><h4>Français — livres</h4><ul><li>1 livre de conjugaison</li><li>1 pratique des mathématiques 3ème ou 4ème</li><li>1 pratique de français 3ème ou 4ème</li><li>1 <em>Champion 3</em> ou <em>4</em></li><li><em>Fables de La Fontaine</em></li><li>1 livre de <em>Blaid Junior Français</em></li><li>1 livre de géographie <em>Le degré moyen</em></li><li>1 livre d'histoire de 3ème et 4ème primaire</li><li>1 livre d'Éducation civique et morale du degré moyen</li></ul></div><div class="bl"><h4>Anglais</h4><ul><li>3 cahiers quadrillés de 200 pages</li><li>4 cahiers quadrillés de 100 pages</li><li>4 cahiers lignés de 100 pages</li><li>1 cahier de peinture (painting book)</li><li>Livre d'anglais : à voir avec l'école</li></ul></div><div class="bl"><h4>Fournitures générales</h4><ul><li>1 paquet de stylos bleus</li><li>1 paquet de stylos noirs</li><li>1 paquet de crayons noirs HB</li><li>1 paquet de gommes</li><li>1 paquet de taille-crayons</li><li>2 lattes de 30 cm</li><li>2 pots de colle blanche White Glue GF</li><li>5 fardes de couleurs différentes</li><li>3 savons liquides No Bacter</li><li>2 rames de papier A4</li><li>3 paquets de lingettes Naomi</li><li>1 carton vide</li><li>1 ensemble de pots de peintures (12 couleurs)</li><li>4 paquets de feutres marque BIC ou AUKORA : 2 bleus, 1 rouge et 1 vert</li><li>1 paquet de papier hygiénique blanc 3 ou 4 plis — disponible à l'école : 10 $</li><li>Journal de classe : à voir avec l'école</li><li>Amortissement jouets : 15 $</li></ul></div></div>
-          <figure class="billet-img"><img src="billet-primaire-3-4.jpg" alt="Billet de vacances — 3ème et 4ème Primaire" loading="lazy" />
-            <figcaption>L'affiche originale — cliquez pour agrandir</figcaption></figure>
-        </div>
-      </details>
-      <details class="billet-det" id="billet-primaire-5-6">
-        <summary><span class="bt">5ème et 6ème Primaire</span><span class="bs">Français · Anglais</span><span class="bn">36 articles</span></summary>
-        <div class="billet-corps">
-          <div class="billet-listes"><div class="bl"><h4>Français — cahiers</h4><ul><li>3 cahiers quadrillés de 200 pages</li><li>3 cahiers lignés de 200 pages</li><li>4 cahiers quadrillés de 96 pages</li><li>3 cahiers lignés de 96 pages</li><li>1 cahier d'écriture</li></ul></div><div class="bl"><h4>Français — livres</h4><ul><li>1 <em>Vivre les sciences</em> 5ème ou 6ème</li><li>1 pratique des mathématiques 5ème ou 6ème</li><li>1 pratique de français 5ème ou 6ème</li><li><em>Géographie 5e</em> ; <em>Image de la Terre 6e</em></li><li><em>Fables de La Fontaine</em></li><li>1 livre d'histoire adapté à la classe</li><li>1 livre d'Éducation civique et morale adapté à la classe</li></ul></div><div class="bl"><h4>Anglais</h4><ul><li>3 cahiers quadrillés de 200 pages</li><li>4 cahiers quadrillés de 100 pages</li><li>4 cahiers lignés de 100 pages</li><li>1 cahier de peinture (painting book)</li><li>Livre d'anglais : à voir avec l'école</li></ul></div><div class="bl"><h4>Fournitures générales</h4><ul><li>1 paquet de crayons noirs HP</li><li>1 paquet de gommes</li><li>1 paquet de taille-crayons</li><li>2 pots de colle blanche White Glue GF</li><li>2 rames de papier</li><li>1 paquet de papier hygiénique blanc, 3 ou 4 plis — disponible à l'école</li><li>3 savons liquides No Bacter</li><li>3 paquets de lingettes Naomi</li><li>4 paquets de feutres marque BIC ou AUKORA : 2 bleus, 1 rouge et 1 vert</li><li>1 carton vide</li><li>1 ensemble de pots de peintures (12 couleurs)</li><li>1 paquet de pinceaux</li><li>2 ciseaux pour enfant</li><li>5 fardes en papier de différentes couleurs</li><li>1 boîte mathématique</li><li>1 paquet de crayons de couleur</li><li>4 lattes de 30 cm</li><li>Gants</li><li>Amortissement jouets : 15 $</li></ul></div></div>
-          <figure class="billet-img"><img src="billet-primaire-5-6.jpg" alt="Billet de vacances — 5ème et 6ème Primaire" loading="lazy" />
-            <figcaption>L'affiche originale — cliquez pour agrandir</figcaption></figure>
-        </div>
-      </details>
-  </div>
+<div id="lb" role="dialog" aria-modal="true" aria-label="Affiche agrandie">
+  <img id="lb-img" alt="">
+  <div id="lb-cap"></div>
+</div>
 
-  <div class="nb-grid">
-    <div class="nb"><span class="n">NB 1</span>Le mercredi et le vendredi, les cours sont associés aux ateliers et aux activités parascolaires.</div>
-    <div class="nb"><span class="n">NB 2</span>L'inscription inclut un mois de cantine (septembre). Après cela, les frais de cantine sont renouvelés chaque mois. <strong>Aucun aliment extérieur n'est toléré.</strong></div>
-    <div class="nb"><span class="n">NB 3</span>Tous les articles du billet sont à rapporter au début de l'année à la Direction.</div>
-    <div class="nb"><span class="n">NB 4</span>Uniformes : soit vous le confectionnez vous-même et payez le cachetage à 5 000 FC, soit vous l'achetez à l'école, complet, à 20 $.</div>
-  </div>
-</div></section>
-
-<!-- ═══ la fiche de renseignements en ligne ═══ -->
-<section class="enroll" id="preinscription"><div class="wrap">
-  <div class="sec-head">
-    <div class="kicker">Fiche de renseignements</div>
-    <h2>Préinscription <span class="it">en ligne</span></h2>
-  </div>
-
-  <div class="etapes">
-    <div class="etape"><span class="num">1</span><strong>Vous remplissez la fiche ici</strong><span>5 minutes, depuis votre téléphone</span></div>
-    <div class="etape"><span class="num">2</span><strong>Vous l'envoyez à l'école</strong><span>la Direction la reçoit aussitôt — WhatsApp et impression restent possibles</span></div>
-    <div class="etape"><span class="num">3</span><strong>Vous passez payer à l'école</strong><span>la fiche est déjà prête, il ne reste qu'à confirmer</span></div>
-  </div>
-
-  <form class="fiche card" id="fiche-preinscription" autocomplete="on">
-    <div class="full"><div class="bloc-titre">L'élève</div></div>
-    <div><label for="f_nom">Nom, post-nom et prénom *</label><input id="f_nom" name="nom" required placeholder="Ex. Kabongo Mbuyi Grâce" /></div>
-    <div><label for="f_sexe">Sexe *</label><select id="f_sexe" name="sexe" required><option value="">—</option><option>Masculin</option><option>Féminin</option></select></div>
-    <div><label for="f_dob">Date de naissance *</label><input id="f_dob" name="dob" type="date" required /></div>
-    <div><label for="f_lieu">Lieu de naissance</label><input id="f_lieu" name="lieu_naissance" placeholder="Ex. Kinshasa" /></div>
-    <div><label for="f_classe">Classe demandée *</label>
-      <select id="f_classe" name="classe" required>
-        <option value="">—</option>
-        <optgroup label="Maternelle">
-          <option>1ère Maternelle</option><option>2ème Maternelle</option><option>3ème Maternelle</option>
-        </optgroup>
-        <optgroup label="Primaire">
-          <option>1ère Primaire</option><option>2ème Primaire</option><option>3ème Primaire</option>
-          <option>4ème Primaire</option><option>5ème Primaire</option><option>6ème Primaire</option>
-        </optgroup>
-      </select></div>
-    <div><label for="f_ecole">École de provenance</label><input id="f_ecole" name="ecole_provenance" placeholder="Si l'enfant vient d'une autre école" /></div>
-
-    <div class="full"><div class="bloc-titre">Les parents</div></div>
-    <div><label for="f_papa">Nom du père</label><input id="f_papa" name="nom_papa" /></div>
-    <div><label for="f_maman">Nom de la mère</label><input id="f_maman" name="nom_maman" /></div>
-    <div><label for="f_tel">Téléphone du parent *</label><input id="f_tel" name="telephone" type="tel" required inputmode="tel" placeholder="+243 8XX XXX XXX" /></div>
-    <div><label for="f_tel2">Second téléphone</label><input id="f_tel2" name="telephone2" type="tel" inputmode="tel" placeholder="Facultatif" /></div>
-    <div class="full"><label for="f_adresse">Adresse du domicile</label><input id="f_adresse" name="adresse" placeholder="Avenue, numéro, quartier, commune" /></div>
-    <div class="full"><label for="f_email">Adresse e-mail</label><input id="f_email" name="email" type="email" placeholder="Facultatif — pour recevoir les communiqués" /></div>
-
-    <div class="full"><div class="bloc-titre">Tutelle et personnes autorisées</div></div>
-    <div class="full note-form" style="margin-top:0">
-      Le <strong>tuteur principal</strong> est la personne qui répond de l'enfant.
-      Il désigne <strong>jusqu'à trois personnes</strong> qui pourront venir le chercher.
-      <strong>Les photographies se prennent à l'école</strong>, le jour de la confirmation —
-      jamais sur ce site. C'est ce qui permet au gardien de reconnaître quelqu'un au portail.
+<footer>
+  <div class="large">
+    <div class="grille g3">
+      <div>
+        <h4>Complexe Scolaire Le Sage</h4>
+        <p class="petit">The Wise School International<br>
+           Kabambare 4367, Quartier Bon Marché<br>
+           Commune de Barumbu — Kinshasa, RDC</p>
+      </div>
+      <div>
+        <h4>Nous joindre</h4>
+        <p class="petit">
+          <a href="tel:+243978444167">+243 978 444 167</a><br>
+          <a href="tel:+243816722901">+243 816 722 901</a><br>
+          <a href="mailto:thewiseschoolinternational@gmail.com">thewiseschoolinternational@gmail.com</a>
+        </p>
+      </div>
+      <div>
+        <h4>Le site</h4>
+        <p class="petit">
+          <a href="ecole.html">L'école</a> · <a href="programmes.html">Programmes</a><br>
+          <a href="galerie.html">Galerie</a> · <a href="inscription.html">Inscription</a><br>
+          <a href="contact.html">Contact</a>
+        </p>
+      </div>
     </div>
-    <div class="full"><label for="f_tutelle">Tuteur principal *</label>
-      <input id="f_tutelle" name="tutelle" required placeholder="Nom et lien de parenté — ex. Kabongo Daniel, père" /></div>
-
-    <div><label for="f_a1n">Personne autorisée 1 — nom</label><input id="f_a1n" name="a1_nom" /></div>
-    <div><label for="f_a1r">Lien de parenté</label><input id="f_a1r" name="a1_relation" placeholder="Mère, oncle, tante…" /></div>
-    <div class="full"><label for="f_a1t">Téléphone</label><input id="f_a1t" name="a1_telephone" type="tel" inputmode="tel" /></div>
-
-    <div><label for="f_a2n">Personne autorisée 2 — nom</label><input id="f_a2n" name="a2_nom" /></div>
-    <div><label for="f_a2r">Lien de parenté</label><input id="f_a2r" name="a2_relation" /></div>
-    <div class="full"><label for="f_a2t">Téléphone</label><input id="f_a2t" name="a2_telephone" type="tel" inputmode="tel" /></div>
-
-    <div><label for="f_a3n">Personne autorisée 3 — nom</label><input id="f_a3n" name="a3_nom" /></div>
-    <div><label for="f_a3r">Lien de parenté</label><input id="f_a3r" name="a3_relation" /></div>
-    <div class="full"><label for="f_a3t">Téléphone</label><input id="f_a3t" name="a3_telephone" type="tel" inputmode="tel" /></div>
-
-    <div class="full"><div class="bloc-titre">Santé — pour la sécurité de l'enfant</div></div>
-    <div><label for="f_sang">Groupe sanguin</label>
-      <select id="f_sang" name="blood_group"><option value="">—</option>
-        <option>A+</option><option>A−</option><option>B+</option><option>B−</option>
-        <option>AB+</option><option>AB−</option><option>O+</option><option>O−</option></select></div>
-    <div><label for="f_urgence">Personne à prévenir en urgence</label><input id="f_urgence" name="urgence" placeholder="Nom et téléphone" /></div>
-    <div class="full"><label for="f_medical">Allergies, maladies, traitement en cours</label><textarea id="f_medical" name="medical_notes" rows="2" placeholder="Écrivez « aucune » s'il n'y en a pas"></textarea></div>
-
-    <div class="full note-form">
-      Les renseignements ci-dessus servent uniquement au dossier scolaire de votre enfant.
-      <strong>Rien n'est publié</strong>, et aucun paiement ne se fait sur ce site :
-      le versement se fait <strong>à l'école, auprès de la Caisse</strong>, contre un reçu.<br>Cette fiche est une <strong>demande</strong> : elle est validée par la Direction, qui prend alors les photographies et ouvre le dossier de l'enfant.
-    </div>
-
-    <div class="piege" aria-hidden="true">
-      <label for="f_website">Ne pas remplir</label>
-      <input id="f_website" name="website" type="text" tabindex="-1" autocomplete="off" />
-      <input name="company" type="text" tabindex="-1" autocomplete="off" />
-      <input name="url" type="text" tabindex="-1" autocomplete="off" />
-    </div>
-
-    <div class="full form-actions">
-      <button type="button" class="btn btn-solid" id="f_envoyer">📨 Envoyer à l'école</button>
-      <button type="button" class="btn btn-ghost" id="f_whatsapp">📲 WhatsApp</button>
-      <button type="button" class="btn btn-gold" id="f_imprimer">🖨️ Imprimer la fiche</button>
-      <button type="reset" class="btn btn-ghost">Effacer</button>
-    </div>
-    <div class="full" id="f_message" hidden></div>
-  </form>
-</div></section>
-
-<!-- ═══ venir à l'école ═══ -->
-<section class="mission-band"><div class="wrap">
-  <div class="kicker">Nous rencontrer</div>
-  <p>Kabambare 4367, Quartier Bon Marché, Commune de Barumbu — Kinshasa</p>
-  <div class="contact-actions" style="justify-content:center;margin-top:26px">
-    <a class="btn btn-gold" href="tel:+243978444167">+243 978 444 167</a>
-    <a class="btn btn-gold" href="tel:+243816722901">+243 816 722 901</a>
-    <a class="btn btn-ghost" style="border-color:#fff;color:#fff" href="mailto:thewiseschoolinternational@gmail.com">Nous écrire</a>
-  </div>
-</div></section>
-
-<footer><div class="wrap">
-  <div class="foot-grid">
-    <div>
-      <div class="foot-brand"><img src="logo.jpg" alt="Le Sage" /><div class="bn">Complexe Scolaire Le Sage</div></div>
-      <p style="margin:0 0 14px;max-width:340px;">The Wise School International · École bilingue d'excellence. Former · Réformer · Exceller depuis 2017.</p>
-      <p style="margin:0;">📍 Kabambare 4367, Quartier Bon Marché<br />Commune de Barumbu, Kinshasa — RDC</p>
-    </div>
-    <div>
-      <h4>Navigation</h4>
-      <a href="ecole.html">L'École</a><a href="programmes.html">Programmes</a><a href="inscription.html">Inscription</a><a href="galerie.html">Galerie</a><a href="contact.html">Contact</a>
-    </div>
-    <div>
-      <h4>Contact</h4>
-      <a href="tel:+243978444167">+243 978 444 167</a>
-      <a href="tel:+243816722901">+243 816 722 901</a>
-      <a href="mailto:thewiseschoolinternational@gmail.com">thewiseschoolinternational@gmail.com</a>
-      <a href="https://medygoo.github.io/SchoolSafe-/">Espace App SchoolSafe →</a>
+    <div class="bas">
+      <span>© <span data-annee>2026</span> Complexe Scolaire Le Sage — The Wise School International</span>
+      <span>Année scolaire de septembre à août</span>
     </div>
   </div>
-  <div class="foot-bottom">
-    <span>© 2025 Complexe Scolaire Le Sage / The Wise School International. Tous droits réservés.</span>
-    <span class="foot-tag">Former · Réformer · Exceller · Kinshasa, RDC</span>
-  </div>
-</div></footer>
+</footer>
 
-<div class="lightbox" id="lb"><button class="lb-close" aria-label="Fermer">×</button><img id="lb-img" alt="" /><div class="lb-cap" id="lb-cap"></div></div>
-
-<script src="assets/site.js"></script>
-<script src="assets/preinscription.js"></script>
-<script src="assets/site-data.js"></script>
+<script src="assets/site.js" defer></script>
+<script src="assets/preinscription.js" defer></script>
 </body>
 </html>
