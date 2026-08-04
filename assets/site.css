@@ -74,9 +74,26 @@ header.scrolled .nav{height:66px;}
 .brand{display:flex;align-items:center;gap:13px;}
 .brand img{width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);transition:.35s;}
 header.scrolled .brand img{width:40px;height:40px;}
-.brand .bn{font-family:var(--serif);font-size:19px;font-weight:700;line-height:1.05;}
-.brand .bs{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);}
-.menu{display:flex;gap:30px;align-items:center;font-size:14px;font-weight:600;letter-spacing:.02em;}
+/* L'école est BILINGUE : son nom anglais n'est pas une mention légale, c'est
+   la moitié de son identité. Il était en 10,5 px, abrégé « Int'l » et serré à
+   .18em — illisible. Il s'écrit maintenant en entier, et il se lit.
+   Mesuré : --gold-deep sur blanc, 6,37:1. */
+.brand .bn{font-family:var(--serif);font-size:16.5px;font-weight:700;line-height:1.12;
+  white-space:nowrap;}
+.brand .bs{font-size:12px;letter-spacing:.06em;color:var(--gold-deep);font-weight:700;
+  line-height:1.2;white-space:nowrap;}
+@media(max-width:1080px){
+  .brand .bn{font-size:15px;} .brand .bs{font-size:11px;}
+}
+@media(max-width:520px){
+  .brand .bn{font-size:13.5px;white-space:normal;} .brand .bs{font-size:10px;white-space:normal;}
+}
+.brand{min-width:0;flex:0 1 auto;}
+.menu{display:flex;gap:22px;align-items:center;font-size:14px;font-weight:600;
+  letter-spacing:.02em;flex:1 1 auto;justify-content:center;}
+.nav-cta .btn{white-space:nowrap;}
+@media(max-width:1240px){ .menu{gap:16px;font-size:13.5px;} .nav-cta .btn{padding:11px 16px;font-size:13px;} }
+@media(max-width:1080px){ .nav-cta .btn-ghost{display:none;} }
 .menu a{padding:6px 0;position:relative;color:var(--ink);opacity:.82;transition:.2s;}
 .menu a:hover{opacity:1;}
 .menu a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1.5px;
@@ -691,9 +708,12 @@ form.fiche > div:first-child .bloc-titre{padding-top:0;border-top:0;margin-top:0
 .act-ic{width:100%;height:auto;display:block;background:var(--surface);}
 .act h3{font-family:var(--serif);font-size:19px;color:var(--ground);margin:16px 18px 6px;}
 .act p{font-size:13.5px;color:var(--muted);margin:0 18px;line-height:1.55;}
-/* quand les photographies arriveront, elles prennent la place du dessin
-   sans changer une ligne de mise en page : même cadre, même rapport 1:1 */
-.act-photo{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;}
+/* La photographie occupe le même cadre que le dessin : carré strict.
+   `height:auto` est indispensable — la règle globale `img{max-width:100%}`
+   n'annule pas la hauteur intrinsèque, et l'image sortait haute de 1000 px
+   dans une carte large de 260. */
+.act picture{display:block;}
+.act-photo{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;display:block;}
 
 /* ---- billets détaillés ---- */
 .billets-det{display:flex;flex-direction:column;gap:14px;}
@@ -735,3 +755,21 @@ form.fiche > div:first-child .bloc-titre{padding-top:0;border-top:0;margin-top:0
   .billet-det .bt{font-size:18px;}
   .billet-corps{padding:6px 18px 20px;}
 }
+
+/* le nom anglais sous chaque activité — l'école est bilingue, le site le dit */
+.act-en{font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold-deep);font-weight:700;margin:0 18px 8px;}
+
+/* ---- le bandeau anglais — l'école est bilingue, le site aussi ---- */
+.bilingue{background:var(--surface);}
+.bil-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:52px;align-items:start;}
+.bil-grid h2{font-size:clamp(28px,4vw,42px);margin:14px 0 18px;}
+.bil-grid p{color:var(--muted);margin:0 0 8px;}
+.bil-faits{display:grid;gap:12px;}
+.bf{background:var(--white);border:1px solid var(--line);border-left:3px solid var(--gold);
+  border-radius:4px;padding:14px 18px;}
+.bf .l{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold-deep);font-weight:800;}
+.bf .v{display:block;font-family:var(--serif);font-size:25px;color:var(--ground);line-height:1.2;margin-top:2px;}
+.bf .s{display:block;font-size:13px;color:var(--muted);line-height:1.45;}
+@media(max-width:900px){ .bil-grid{grid-template-columns:1fr;gap:30px;} }
