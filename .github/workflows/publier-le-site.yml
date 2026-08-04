@@ -12,10 +12,19 @@ name: Publier le site
 # la Direction dans les réglages GitHub. Ils ne sont jamais affichés dans le
 # journal : GitHub les remplace par des étoiles.
 
+# ── EN VEILLE DEPUIS LE 4 AOÛT 2026 ──
+# GitHub héberge le site lui-même : cette voie FTP n'est plus nécessaire, et
+# elle échouait à chaque modification faute des trois secrets, en laissant une
+# croix rouge inquiétante sur des publications qui, elles, réussissaient.
+#
+# Elle n'est pas supprimée : le jour où la Direction déposera FTP_SERVEUR,
+# FTP_UTILISATEUR et FTP_MOT_DE_PASSE, un clic sur « Run workflow » déposera
+# le site sur LWS. Pour la remettre automatique, rendre les deux lignes
+# `push:` ci-dessous à leur place.
 on:
-  push:
-    branches: [main]
-  workflow_dispatch:        # le bouton « Run workflow », pour republier à la demande
+  # push:
+  #   branches: [main]
+  workflow_dispatch:        # à la demande seulement, par le bouton « Run workflow »
 
 concurrency:
   group: publication-site
