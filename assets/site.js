@@ -29,6 +29,32 @@
     el.textContent = new Date().getFullYear();
   });
 
+  // ── la visionneuse : une photo s'ouvre en grand ──
+  // Elle vit ici, dans le script commun, pour que TOUTE page qui porte le
+  // bloc #lb en profite. Elle était enfermée dans le script du formulaire :
+  // la galerie, qui est la page des photos, n'y avait pas droit.
+  var lb = document.getElementById('lb');
+  if (lb) {
+    var img = document.getElementById('lb-img'), cap = document.getElementById('lb-cap');
+    var ouvrir = function (source, texte) {
+      // La grande version, pas la vignette : `currentSrc` donne celle que le
+      // navigateur a réellement choisie, qui peut être la petite.
+      img.src = source; cap.textContent = texte || '';
+      lb.classList.add('open'); document.body.style.overflow = 'hidden';
+    };
+    var fermer = function () { lb.classList.remove('open'); document.body.style.overflow = ''; };
+    Array.prototype.forEach.call(document.querySelectorAll('.zoomable'), function (el) {
+      el.addEventListener('click', function () {
+        var im = el.tagName === 'IMG' ? el : el.querySelector('img');
+        if (!im) return;
+        var leg = el.querySelector('.legende b');
+        ouvrir(im.getAttribute('src'), leg ? leg.textContent : im.alt);
+      });
+    });
+    lb.addEventListener('click', function (e) { if (e.target !== img) fermer(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fermer(); });
+  }
+
   // ── l'apparition au défilement, si l'appareil ne s'y oppose pas ──
   var doux = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var cibles = document.querySelectorAll('.apparait');

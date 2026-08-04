@@ -8,16 +8,6 @@
 <meta name="theme-color" content="#657786">
 <link rel="icon" href="img/logo.webp" type="image/webp">
 <link rel="stylesheet" href="assets/site.css">
-<style>
-  /* La visionneuse des affiches — quelques lignes, propres à cette page. */
-  #lb{position:fixed;inset:0;background:rgba(16,22,28,.9);display:none;
-      align-items:center;justify-content:center;flex-direction:column;gap:14px;
-      z-index:200;padding:24px;cursor:zoom-out}
-  #lb.open{display:flex}
-  #lb img{max-width:min(94vw,900px);max-height:82vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
-  #lb-cap{color:#fff;font-size:14px;text-align:center;max-width:600px}
-  .billet img,.affiche img{border-radius:10px;border:1px solid var(--line)}
-</style>
 </head>
 <body>
 
@@ -43,7 +33,7 @@
 </header>
 
 <section class="heros">
-  <img class="fond" src="img/photo5.webp" alt="" width="820" height="820">
+  <img class="fond" src="img/photo5.webp" alt="" width="820" height="820" srcset="img/photo5@560.webp 560w, img/photo5.webp 1080w" sizes="100vw">
   <div class="large">
     <p class="sur-titre">Année scolaire de septembre à août</p>
     <h1>Inscrivez votre enfant</h1>
@@ -77,7 +67,7 @@
   <div class="large">
     <div class="grille g2" style="gap:30px;align-items:start">
       <div class="apparait affiche">
-        <img src="img/affiche-inscriptions.webp" alt="Affiche des inscriptions du Complexe Scolaire Le Sage" loading="lazy" width="762" height="1080">
+        <img src="img/affiche-inscriptions.webp" alt="Affiche des inscriptions du Complexe Scolaire Le Sage" loading="lazy" width="762" height="1080" srcset="img/affiche-inscriptions@700.webp 700w, img/affiche-inscriptions.webp 762w" sizes="(max-width:900px) 92vw, 520px">
       </div>
       <div class="apparait">
         <div class="filet"></div>
@@ -258,7 +248,7 @@
       <div class="corps">
         <p class="petit muted">Éveil, langage et motricité fine : de quoi garder la main
            pendant les vacances, sans peser sur les journées.</p>
-        <img src="img/billet-maternelle.webp" alt="Billet de vacances — Maternelle" loading="lazy" width="809" height="1080">
+        <img src="img/billet-maternelle.webp" alt="Billet de vacances — Maternelle" loading="lazy" width="809" height="1080" srcset="img/billet-maternelle@700.webp 700w, img/billet-maternelle.webp 809w" sizes="(max-width:900px) 92vw, 860px">
       </div>
     </details>
 
@@ -267,7 +257,7 @@
       <div class="corps">
         <p class="petit muted">Lecture, écriture et calcul — les fondations des deux
            premières années.</p>
-        <img src="img/billet-primaire-1-2.webp" alt="Billet de vacances — 1ère et 2ème primaire" loading="lazy" width="860" height="1075">
+        <img src="img/billet-primaire-1-2.webp" alt="Billet de vacances — 1ère et 2ème primaire" loading="lazy" width="860" height="1075" srcset="img/billet-primaire-1-2@700.webp 700w, img/billet-primaire-1-2.webp 1024w" sizes="(max-width:900px) 92vw, 860px">
       </div>
     </details>
 
@@ -276,7 +266,7 @@
       <div class="corps">
         <p class="petit muted">Français, mathématiques et sciences, avec les premiers
            exercices de raisonnement.</p>
-        <img src="img/billet-primaire-3-4.webp" alt="Billet de vacances — 3ème et 4ème primaire" loading="lazy" width="860" height="1075">
+        <img src="img/billet-primaire-3-4.webp" alt="Billet de vacances — 3ème et 4ème primaire" loading="lazy" width="860" height="1075" srcset="img/billet-primaire-3-4@700.webp 700w, img/billet-primaire-3-4.webp 1024w" sizes="(max-width:900px) 92vw, 860px">
       </div>
     </details>
 
@@ -285,7 +275,7 @@
       <div class="corps">
         <p class="petit muted">Le programme des deux dernières années du primaire, avec la
            préparation de l'ENAFEP en vue.</p>
-        <img src="img/billet-primaire-5-6.webp" alt="Billet de vacances — 5ème et 6ème primaire" loading="lazy" width="860" height="1075">
+        <img src="img/billet-primaire-5-6.webp" alt="Billet de vacances — 5ème et 6ème primaire" loading="lazy" width="860" height="1075" srcset="img/billet-primaire-5-6@700.webp 700w, img/billet-primaire-5-6.webp 1024w" sizes="(max-width:900px) 92vw, 860px">
       </div>
     </details>
   </div>
@@ -305,6 +295,7 @@
 </section>
 
 <div id="lb" role="dialog" aria-modal="true" aria-label="Affiche agrandie">
+  <button id="lb-fermer" aria-label="Fermer">✕</button>
   <img id="lb-img" alt="">
   <div id="lb-cap"></div>
 </div>

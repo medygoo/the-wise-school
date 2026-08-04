@@ -42,19 +42,19 @@
         ont été prises au Complexe Scolaire Le Sage.</p>
     </div>
 
-    <div class="grille g3">
-      <div class="vignette apparait"><img src="img/photo1.webp" alt="Élèves en classe" loading="lazy" width="820" height="473"></div>
-      <div class="vignette apparait"><img src="img/photo2.webp" alt="Cour de récréation" loading="lazy" width="820" height="820"></div>
-      <div class="vignette apparait"><img src="img/photo3.webp" alt="Élèves en uniforme" loading="lazy" width="820" height="820"></div>
-      <div class="vignette apparait"><img src="img/photo4.webp" alt="Activité en classe" loading="lazy" width="820" height="820"></div>
-      <div class="vignette apparait"><img src="img/photo5.webp" alt="Travail de groupe" loading="lazy" width="820" height="820"></div>
-      <div class="vignette apparait"><img src="img/photo6.webp" alt="Élèves de l'école" loading="lazy" width="820" height="820"></div>
-      <div class="vignette apparait"><img src="img/photo7.webp" alt="Rassemblement des élèves" loading="lazy" width="820" height="615"></div>
-      <div class="vignette apparait"><img src="img/photo8.webp" alt="Vie scolaire" loading="lazy" width="820" height="820"></div>
-      <div class="vignette apparait"><img src="img/photo9.webp" alt="Activité de l'école" loading="lazy" width="820" height="615"></div>
-      <div class="vignette apparait"><img src="img/photo10.webp" alt="Élèves de l'école" loading="lazy" width="820" height="820"></div>
-      <div class="vignette apparait"><img src="img/photo11.jpg" alt="Bâtiment de l'école" loading="lazy" width="512" height="384"></div>
-      <div class="vignette apparait"><img src="img/activites/act-cantine.webp" alt="La cantine scolaire" loading="lazy" width="600" height="600"></div>
+    <div class="mosaique">
+      <figure class="scene apparait zoomable large2" style="margin:0"><img src="img/photo3.webp" srcset="img/photo3@560.webp 560w, img/photo3.webp 1080w" sizes="(max-width:820px) 48vw, 26vw" alt="Élèves en uniforme gris et blanc" loading="lazy"></figure>
+      <figure class="scene apparait zoomable " style="margin:0"><img src="img/photo1.webp" srcset="img/photo1@560.webp 560w, img/photo1.webp 1080w" sizes="(max-width:820px) 48vw, 26vw" alt="Élèves en classe" loading="lazy"></figure>
+      <figure class="scene apparait zoomable " style="margin:0"><img src="img/photo2.webp" srcset="img/photo2@560.webp 560w, img/photo2.webp 1080w" sizes="(max-width:820px) 48vw, 26vw" alt="Cour de récréation" loading="lazy"></figure>
+      <figure class="scene apparait zoomable " style="margin:0"><img src="img/photo4.webp" srcset="img/photo4@560.webp 560w, img/photo4.webp 1080w" sizes="(max-width:820px) 48vw, 26vw" alt="Activité en classe" loading="lazy"></figure>
+      <figure class="scene apparait zoomable " style="margin:0"><img src="img/photo5.webp" srcset="img/photo5@560.webp 560w, img/photo5.webp 1080w" sizes="(max-width:820px) 48vw, 26vw" alt="Travail de groupe" loading="lazy"></figure>
+      <figure class="scene apparait zoomable large2" style="margin:0"><img src="img/photo7.webp" srcset="img/photo7@560.webp 560w, img/photo7.webp 1280w" sizes="(max-width:820px) 48vw, 26vw" alt="Rassemblement des élèves" loading="lazy"></figure>
+      <figure class="scene apparait zoomable large2" style="margin:0"><img src="img/photo6.webp" srcset="img/photo6@560.webp 560w, img/photo6.webp 1080w" sizes="(max-width:820px) 48vw, 26vw" alt="Élèves de l’école" loading="lazy"></figure>
+      <figure class="scene apparait zoomable " style="margin:0"><img src="img/photo8.webp" srcset="img/photo8@560.webp 560w, img/photo8.webp 1080w" sizes="(max-width:820px) 48vw, 26vw" alt="Vie scolaire" loading="lazy"></figure>
+      <figure class="scene apparait zoomable " style="margin:0"><img src="img/photo9.webp" srcset="img/photo9@560.webp 560w, img/photo9.webp 1040w" sizes="(max-width:820px) 48vw, 26vw" alt="Activité de l’école" loading="lazy"></figure>
+      <figure class="scene apparait zoomable large2" style="margin:0"><img src="img/photo10.webp" srcset="img/photo10@560.webp 560w, img/photo10.webp 1080w" sizes="(max-width:820px) 48vw, 26vw" alt="Élèves de l’école" loading="lazy"></figure>
+      <figure class="scene apparait zoomable " style="margin:0"><img src="img/photo11.webp" srcset="img/photo11@560.webp 560w, img/photo11.webp 512w" sizes="(max-width:820px) 48vw, 26vw" alt="Bâtiment de l’école" loading="lazy"></figure>
+      <figure class="scene apparait zoomable " style="margin:0"><img src="img/activites/act-cantine.webp" srcset="img/activites/act-cantine@520.webp 520w, img/activites/act-cantine.webp 900w" sizes="(max-width:820px) 48vw, 26vw" alt="La cantine scolaire" loading="lazy"></figure>
     </div>
   </div>
 </section>
@@ -100,6 +100,12 @@
     </div>
   </div>
 </footer>
+
+<div id="lb" role="dialog" aria-modal="true" aria-label="Photographie agrandie">
+  <button id="lb-fermer" aria-label="Fermer">✕</button>
+  <img id="lb-img" alt="">
+  <div id="lb-cap"></div>
+</div>
 
 <script src="assets/site.js" defer></script>
 </body>
