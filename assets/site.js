@@ -55,12 +55,12 @@
     var equipe=document.createElement('section');
     equipe.className='section equipe-accueil';
     equipe.innerHTML='<div class="large">'+
-      '<div class="apparait"><p class="eyebrow">Notre équipe</p><h2>Le corps administratif et les enseignants au service des enfants</h2><p class="equipe-intro">La Direction, la coordination pédagogique, les enseignants et le service de perception accompagnent les familles pendant toute l’année scolaire.</p></div>'+
+      '<div class="apparait"><p class="eyebrow">Notre équipe</p><h2>Le corps administratif et les enseignants au service des enfants</h2><p class="equipe-intro">La Direction, la coordination générale, les enseignants et le service de perception accompagnent les familles pendant toute l’année scolaire.</p></div>'+
       '<div class="equipe-grille">'+
         '<figure class="equipe-card apparait zoomable"><img src="img/promoteur.webp" alt="Promotion et Direction générale du Complexe Scolaire Le Sage" loading="lazy"><figcaption><b>Promotion</b><span>Direction générale</span></figcaption></figure>'+
         '<figure class="equipe-card apparait zoomable"><img src="img/directeur_primaire.webp" alt="Direction du cycle primaire" loading="lazy"><figcaption><b>Direction du primaire</b><span>Cycle primaire</span></figcaption></figure>'+
         '<figure class="equipe-card apparait zoomable"><img src="img/dir_maternelle.webp" alt="Direction du cycle maternel" loading="lazy"><figcaption><b>Direction de la maternelle</b><span>Cycle maternel</span></figcaption></figure>'+
-        '<figure class="equipe-card apparait zoomable"><img src="img/coordinatrice.webp" alt="Coordination pédagogique de l’école" loading="lazy"><figcaption><b>Coordination pédagogique</b><span>Suivi des enseignements</span></figcaption></figure>'+
+        '<figure class="equipe-card apparait zoomable"><img src="img/coordinatrice.webp" alt="Coordination générale de l’école" loading="lazy"><figcaption><b>Coordination générale</b><span>Supervision de l’établissement</span></figcaption></figure>'+
         '<figure class="equipe-card apparait zoomable"><img src="img/teacher_luyeye.webp" alt="Enseignante du Complexe Scolaire Le Sage" loading="lazy"><figcaption><b>Enseignement</b><span>Équipe pédagogique</span></figcaption></figure>'+
         '<figure class="equipe-card apparait zoomable"><img src="img/teacher_manzambi.webp" alt="Enseignante du Complexe Scolaire Le Sage" loading="lazy"><figcaption><b>Enseignement</b><span>Équipe pédagogique</span></figcaption></figure>'+
         '<figure class="equipe-card apparait zoomable"><img src="img/teacher_tshimi.webp" alt="Enseignante du Complexe Scolaire Le Sage" loading="lazy"><figcaption><b>Enseignement</b><span>Équipe pédagogique</span></figcaption></figure>'+
@@ -70,6 +70,17 @@
     '</div>';
     pointEquipe.parentNode.insertBefore(equipe,pointEquipe);
   }
+
+  /* Correction de l’intitulé sur la page L’école sans modifier la photographie. */
+  Array.prototype.forEach.call(document.querySelectorAll('img[src*="coordinatrice.webp"]'),function(photo){
+    photo.alt='Coordination générale de l’école';
+    var fiche=photo.closest('figure');
+    if(!fiche)return;
+    var titre=fiche.querySelector('b');
+    var fonction=fiche.querySelector(':scope > span:last-child, figcaption span');
+    if(titre)titre.textContent='Coordination générale';
+    if(fonction)fonction.textContent='Supervision de l’établissement';
+  });
 
   var header=document.querySelector('header');
   function headerAuDefilement(){if(header)header.classList.toggle('scrolled',window.scrollY>18)}
