@@ -3,7 +3,7 @@
 
   var APP_URL='https://medygoo.github.io/SchoolSafe-/';
 
-  ['assets/premium.css','assets/premium-layout.css','assets/app-link.css'].forEach(function(href){
+  ['assets/premium.css','assets/premium-layout.css','assets/app-link.css','assets/equipe.css'].forEach(function(href){
     if(!document.querySelector('link[href="'+href+'"]')){
       var style=document.createElement('link');
       style.rel='stylesheet';style.href=href;
@@ -57,6 +57,29 @@
     fab.setAttribute('aria-label','Ouvrir l’application SchoolSafe');
     fab.innerHTML='<span class="app-fab-etoile" aria-hidden="true">★</span><span><small>Espace numérique</small><b>Ouvrir SchoolSafe</b></span><span class="app-fab-fleche" aria-hidden="true">↗</span>';
     document.body.appendChild(fab);
+  }
+
+  /* L’équipe existait encore sur la page L’école, mais elle doit aussi être
+     visible dès l’accueil. Les photos originales sont conservées telles quelles. */
+  var pointEquipe=document.querySelector('.avantages-section');
+  if(pointEquipe&&!document.querySelector('.equipe-accueil')){
+    var equipe=document.createElement('section');
+    equipe.className='section equipe-accueil';
+    equipe.innerHTML='<div class="large">'+
+      '<div class="apparait"><p class="eyebrow">Notre équipe</p><h2>Le corps administratif et les enseignants au service des enfants</h2><p class="equipe-intro">La Direction, la coordination pédagogique, les enseignants et le service de perception accompagnent les familles pendant toute l’année scolaire.</p></div>'+
+      '<div class="equipe-grille">'+
+        '<figure class="equipe-card apparait zoomable"><img src="img/promoteur.webp" alt="Promotion et Direction générale du Complexe Scolaire Le Sage" loading="lazy"><figcaption><b>Promotion</b><span>Direction générale</span></figcaption></figure>'+
+        '<figure class="equipe-card apparait zoomable"><img src="img/directeur_primaire.webp" alt="Direction du cycle primaire" loading="lazy"><figcaption><b>Direction du primaire</b><span>Cycle primaire</span></figcaption></figure>'+
+        '<figure class="equipe-card apparait zoomable"><img src="img/dir_maternelle.webp" alt="Direction du cycle maternel" loading="lazy"><figcaption><b>Direction de la maternelle</b><span>Cycle maternel</span></figcaption></figure>'+
+        '<figure class="equipe-card apparait zoomable"><img src="img/coordinatrice.webp" alt="Coordination pédagogique de l’école" loading="lazy"><figcaption><b>Coordination pédagogique</b><span>Suivi des enseignements</span></figcaption></figure>'+
+        '<figure class="equipe-card apparait zoomable"><img src="img/teacher_luyeye.webp" alt="Enseignante du Complexe Scolaire Le Sage" loading="lazy"><figcaption><b>Enseignement</b><span>Équipe pédagogique</span></figcaption></figure>'+
+        '<figure class="equipe-card apparait zoomable"><img src="img/teacher_manzambi.webp" alt="Enseignante du Complexe Scolaire Le Sage" loading="lazy"><figcaption><b>Enseignement</b><span>Équipe pédagogique</span></figcaption></figure>'+
+        '<figure class="equipe-card apparait zoomable"><img src="img/teacher_tshimi.webp" alt="Enseignante du Complexe Scolaire Le Sage" loading="lazy"><figcaption><b>Enseignement</b><span>Équipe pédagogique</span></figcaption></figure>'+
+        '<figure class="equipe-card apparait zoomable"><img src="img/perceptrice.webp" alt="Service de perception de l’école" loading="lazy"><figcaption><b>Perception</b><span>Frais scolaires et reçus</span></figcaption></figure>'+
+      '</div>'+
+      '<div class="equipe-suite apparait"><p>Les familles peuvent retrouver la présentation complète de l’établissement, son organisation et son dispositif d’encadrement.</p><a class="btn btn-or" href="ecole.html">Découvrir toute l’équipe →</a></div>'+
+    '</div>';
+    pointEquipe.parentNode.insertBefore(equipe,pointEquipe);
   }
 
   var header=document.querySelector('header');
