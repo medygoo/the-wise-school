@@ -1,0 +1,16 @@
+.nav-application{background:#c69422;color:#111416!important;margin-left:4px;padding-inline:16px!important;font-weight:850!important;box-shadow:0 8px 22px rgba(198,148,34,.22)}
+.nav-application:hover{background:#e4bb52!important;color:#111416!important;transform:translateY(-1px)}
+.footer-application{display:inline-block;margin-top:7px;color:#e4bb52!important;font-weight:800}
+.btn-application{white-space:nowrap}
+.app-fab{position:fixed;right:18px;bottom:18px;z-index:120;display:flex;align-items:center;gap:11px;min-width:230px;padding:12px 14px;border:1px solid rgba(255,255,255,.22);border-radius:18px;background:linear-gradient(135deg,#111416,#465560);color:#fff;text-decoration:none;box-shadow:0 18px 48px rgba(17,20,22,.28);transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;isolation:isolate;overflow:hidden}
+.app-fab:before{content:"";position:absolute;inset:-70% 52% -70% -18%;z-index:-1;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transform:rotate(18deg);animation:appBrillance 5s ease-in-out infinite}
+.app-fab:hover{color:#fff;transform:translateY(-5px);border-color:#e4bb52;box-shadow:0 24px 62px rgba(17,20,22,.34)}
+.app-fab-etoile{display:grid;place-items:center;flex:0 0 42px;width:42px;height:42px;border-radius:50%;background:#c69422;color:#111416;font-size:20px;box-shadow:0 0 0 6px rgba(198,148,34,.13)}
+.app-fab span:nth-child(2){display:flex;flex-direction:column;line-height:1.15}
+.app-fab small{font-size:10px;text-transform:uppercase;letter-spacing:.13em;color:rgba(255,255,255,.7);font-weight:800;margin-bottom:4px}
+.app-fab b{font-size:13.5px;color:#fff}
+.app-fab-fleche{margin-left:auto;color:#e4bb52;font-size:19px}
+@keyframes appBrillance{0%,65%,100%{transform:translateX(-170%) rotate(18deg)}80%{transform:translateX(360%) rotate(18deg)}}
+@media(max-width:900px){.nav-application{margin:7px 0 0!important;border-radius:10px!important;text-align:center}.app-fab{right:12px;left:12px;bottom:74px;min-width:0;justify-content:center}.app-fab-fleche{margin-left:6px}.cta-mobile~.app-fab{bottom:76px}}
+@media(max-width:560px){.app-fab{padding:10px 12px;border-radius:15px}.app-fab-etoile{width:36px;height:36px;flex-basis:36px;font-size:17px}.app-fab small{font-size:9px}.app-fab b{font-size:12.5px}}
+@media(prefers-reduced-motion:reduce){.app-fab:before{animation:none}.app-fab,.nav-application{transition:none}}
