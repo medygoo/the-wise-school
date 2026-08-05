@@ -1,13 +1,63 @@
 (function(){
   'use strict';
 
-  ['assets/premium.css','assets/premium-layout.css'].forEach(function(href){
+  var APP_URL='https://medygoo.github.io/SchoolSafe-/';
+
+  ['assets/premium.css','assets/premium-layout.css','assets/app-link.css'].forEach(function(href){
     if(!document.querySelector('link[href="'+href+'"]')){
       var style=document.createElement('link');
       style.rel='stylesheet';style.href=href;
       document.head.appendChild(style);
     }
   });
+
+  /* Accès officiel à SchoolSafe sur toutes les pages. */
+  var nav=document.querySelector('nav');
+  if(nav&&!nav.querySelector('.nav-application')){
+    var lienApp=document.createElement('a');
+    lienApp.className='nav-application';
+    lienApp.href=APP_URL;
+    lienApp.target='_blank';
+    lienApp.rel='noopener';
+    lienApp.textContent='Application';
+    lienApp.setAttribute('aria-label','Ouvrir l’application SchoolSafe dans un nouvel onglet');
+    nav.appendChild(lienApp);
+  }
+
+  var heroActions=document.querySelector('.hero-premium .actions');
+  if(heroActions&&!heroActions.querySelector('.btn-application')){
+    var boutonHero=document.createElement('a');
+    boutonHero.className='btn btn-verre btn-application';
+    boutonHero.href=APP_URL;
+    boutonHero.target='_blank';
+    boutonHero.rel='noopener';
+    boutonHero.innerHTML='Ouvrir SchoolSafe <span aria-hidden="true">↗</span>';
+    heroActions.appendChild(boutonHero);
+  }
+
+  var liensFooter=document.querySelector('.footer-grille>div:last-child .petit');
+  if(liensFooter&&!liensFooter.querySelector('.footer-application')){
+    var saut=document.createElement('br');
+    var appFooter=document.createElement('a');
+    appFooter.className='footer-application';
+    appFooter.href=APP_URL;
+    appFooter.target='_blank';
+    appFooter.rel='noopener';
+    appFooter.textContent='Ouvrir l’application SchoolSafe ↗';
+    liensFooter.appendChild(saut);
+    liensFooter.appendChild(appFooter);
+  }
+
+  if(!document.querySelector('.app-fab')){
+    var fab=document.createElement('a');
+    fab.className='app-fab';
+    fab.href=APP_URL;
+    fab.target='_blank';
+    fab.rel='noopener';
+    fab.setAttribute('aria-label','Ouvrir l’application SchoolSafe');
+    fab.innerHTML='<span class="app-fab-etoile" aria-hidden="true">★</span><span><small>Espace numérique</small><b>Ouvrir SchoolSafe</b></span><span class="app-fab-fleche" aria-hidden="true">↗</span>';
+    document.body.appendChild(fab);
+  }
 
   var header=document.querySelector('header');
   function headerAuDefilement(){if(header)header.classList.toggle('scrolled',window.scrollY>18)}
