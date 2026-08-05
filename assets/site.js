@@ -1,13 +1,13 @@
 (function(){
   'use strict';
 
-  /* La couche visuelle premium est chargée par le script commun afin que les
-     nouvelles pages et les anciennes gardent la même charte gris-or-blanc-noir. */
-  if(!document.querySelector('link[href="assets/premium.css"]')){
-    var style=document.createElement('link');
-    style.rel='stylesheet';style.href='assets/premium.css';
-    document.head.appendChild(style);
-  }
+  ['assets/premium.css','assets/premium-layout.css'].forEach(function(href){
+    if(!document.querySelector('link[href="'+href+'"]')){
+      var style=document.createElement('link');
+      style.rel='stylesheet';style.href=href;
+      document.head.appendChild(style);
+    }
+  });
 
   var header=document.querySelector('header');
   function headerAuDefilement(){if(header)header.classList.toggle('scrolled',window.scrollY>18)}
