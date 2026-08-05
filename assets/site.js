@@ -290,6 +290,7 @@
         '<figure class="equipe-card apparait zoomable"><img src="img/teacher_luyeye.webp" alt="Enseignante du Complexe Scolaire Le Sage" loading="lazy"><figcaption><b>Enseignement</b><span>Équipe pédagogique</span></figcaption></figure>'+
         '<figure class="equipe-card apparait zoomable"><img src="img/teacher_manzambi.webp" alt="Enseignante du Complexe Scolaire Le Sage" loading="lazy"><figcaption><b>Enseignement</b><span>Équipe pédagogique</span></figcaption></figure>'+
         '<figure class="equipe-card apparait zoomable"><img src="img/teacher_tshimi.webp" alt="Enseignante du Complexe Scolaire Le Sage" loading="lazy"><figcaption><b>Enseignement</b><span>Équipe pédagogique</span></figcaption></figure>'+
+        '<figure class="equipe-card apparait zoomable"><img src="img/teacher_sakalulu.webp" alt="Monsieur Osée Sakalulu, enseignant au Complexe Scolaire Le Sage" loading="lazy"><figcaption><b>Osée Sakalulu</b><span>Enseignant</span></figcaption></figure>'+
         '<figure class="equipe-card apparait zoomable"><img src="img/perceptrice.webp" alt="Service de perception de l’école" loading="lazy"><figcaption><b>Perception</b><span>Frais scolaires et reçus</span></figcaption></figure>'+
       '</div>'+
       '<div class="equipe-suite apparait"><p>Les familles peuvent retrouver la présentation complète de l’établissement, son organisation et son dispositif d’encadrement.</p><a class="btn btn-or" href="ecole.html">Découvrir toute l’équipe →</a></div>'+

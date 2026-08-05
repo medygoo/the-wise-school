@@ -52,9 +52,48 @@ jobs:
           fi
           echo "✓ $(ls *.html | wc -l) pages vérifiées · $(du -sm --exclude=.git --exclude=.github . | cut -f1) Mo"
 
+      # UN LIEN MORT FAIT ÉCHOUER TOUTE LA PUBLICATION.
+      #
+      # Le 5 août, un `node_modules` — un lien symbolique vers un dossier de
+      # la machine de travail, absent du serveur — a été commité par erreur.
+      # `tar` s'est arrêté sur « File removed before we read it », la mise en
+      # ligne a échoué, et le site est resté celui d'avant. Le message était
+      # noyé au milieu de 200 lignes de noms de fichiers.
+      #
+      # On le cherche AVANT, et on le nomme.
+      - name: Aucun lien mort, rien qui ne doive être publié
+        run: |
+          set -e
+          probleme=0
+          morts=$(find . -path ./.git -prune -o -type l -print 2>/dev/null | while read -r l; do
+                    [ -e "$l" ] || echo "$l"; done)
+          if [ -n "$morts" ]; then
+            echo "✗ Lien(s) pointant vers rien — tar échouera dessus :"
+            echo "$morts" | sed 's/^/    /'
+            probleme=1
+          fi
+          # Ce qui appartient à la machine de travail, jamais au site.
+          for indesirable in node_modules .DS_Store; do
+            trouve=$(find . -path ./.git -prune -o -name "$indesirable" -print 2>/dev/null)
+            if [ -n "$trouve" ]; then
+              echo "✗ $indesirable ne doit pas être publié :"
+              echo "$trouve" | sed 's/^/    /'
+              probleme=1
+            fi
+          done
+          if [ "$probleme" = "1" ]; then
+            echo ""; echo "Rien n'a été publié. Le site en ligne reste celui d'avant."
+            exit 1
+          fi
+          echo "✓ Aucun lien mort, rien d'indésirable."
+
       - uses: actions/configure-pages@v4
         with:
           enablement: true
+      # `outils/`, `package.json` et le dépôt git ne servent qu'ici : ils
+      # n'ont rien à faire sur le site que les familles consultent.
+      - name: Écarter ce qui ne se publie pas
+        run: rm -rf outils package.json package-lock.json node_modules
       - uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
