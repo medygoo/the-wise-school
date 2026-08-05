@@ -124,9 +124,77 @@ nav a[aria-current="page"]{color:var(--gold-deep);background:var(--gold-pale)}
      À .66 : blanc 5,03:1, texte à 92 % 4,55:1. L'or, lui, plafonne à 2,68 —
      aucun voile raisonnable ne le sauve à 13 px. Il ne porte donc plus de
      texte ici : il reste le filet, et le sur-titre passe en blanc. */
-  background:linear-gradient(180deg,rgba(28,38,48,.66),rgba(28,38,48,.84));
+  /* CE VOILE ÉTAIT TROP FORT, et c'est la même faute que sur l'écran de
+     connexion de l'application : on assombrit l'ÉCRAN ENTIER pour un texte
+     qui n'occupe qu'un bloc. À .66/.84, les enfants disparaissaient derrière
+     leur propre photographie.
+     Il descend à .30/.44 — la photo se voit — et c'est le BLOC DE TEXTE qui
+     pose son propre fond juste en dessous. Deux couches qui se composent :
+       1 − (1 − .30) × (.55) = .69 cumulé, soit blanc à 92 % → 4,91:1.
+     Un bloc qui ne pose pas son fond dépend d'une image que personne ne
+     contrôle. */
+  background:linear-gradient(180deg,rgba(28,38,48,.30),rgba(28,38,48,.44));
 }
-.heros img.fond{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* Un halo de profondeur, et RIEN DE PLUS : aucune garantie de lisibilité ne
+   repose sur lui. Un dégradé n'a pas UNE valeur — il en a autant que de
+   points — donc on ne peut pas dire ce qu'il garantit. La garantie vient du
+   bloc ci-dessous, qui porte une seule valeur. */
+.heros::before{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(130% 95% at 34% 50%,
+             rgba(24,33,42,.20) 0%, rgba(24,33,42,.14) 55%, rgba(24,33,42,0) 100%);
+}
+.heros::after{z-index:1}
+
+/* LE FOND DU TEXTE — une seule valeur, donc une garantie qui se mesure.
+   Composé au voile : 1 − (1 − .30) × (1 − .55) = .685.
+   Sur une photographie ENTIÈREMENT BLANCHE, blanc à 92 % → 4,86:1.
+   Le masque n'éteint que les BORDS : là où le texte se trouve, l'opacité
+   vaut exactement .55. C'est ce qui permet à `outils/contraste-heros.mjs`
+   de dire oui ou non — un dégradé, lui, ne se vérifie pas. */
+.heros .large::before{
+  content:"";position:absolute;z-index:-1;pointer-events:none;
+  /* Large et bas débordement : c'est ce qui donne au masque la place de
+     s'éteindre. Serré, sa bordure se lisait comme une arête verticale au
+     milieu de la photographie — on la voyait sur la capture. */
+  left:-32%;right:-32%;top:-30%;bottom:-30%;
+  background:rgba(24,33,42,.55);
+  -webkit-mask-image:radial-gradient(78% 62% at 40% 50%,#000 0%,#000 42%,transparent 100%);
+          mask-image:radial-gradient(78% 62% at 40% 50%,#000 0%,#000 42%,transparent 100%);
+}
+/* ── LE DIAPORAMA DE L'ACCUEIL ─────────────────────────────────────────
+   Les photographies se relaient toutes les 5 secondes — demande de Loms,
+   5 août 2026. Elles sont toutes empilées au même endroit ; seule celle qui
+   porte `.on` est visible, et un lent zoom la fait respirer pendant qu'elle
+   est là. C'est une transition d'OPACITÉ et de TRANSFORM : ni l'une ni
+   l'autre ne redessine la page, donc le texte par-dessus ne bouge jamais.
+   Le voile, lui, ne change pas — le contraste mesuré tient donc pour
+   TOUTES les photos, y compris la plus claire. */
+.heros img.fond{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity 1.4s ease;will-change:opacity,transform;
+}
+.heros img.fond.on{opacity:1;animation:heroRespire 12s ease-out forwards}
+@keyframes heroRespire{from{transform:scale(1.06)}to{transform:scale(1)}}
+
+/* Les pastilles : où l'on en est, et de quoi changer soi-même. */
+.heros-points{
+  position:absolute;left:0;right:0;bottom:18px;z-index:3;
+  display:flex;justify-content:center;gap:9px;
+}
+.heros-points button{
+  width:9px;height:9px;padding:0;border-radius:50%;cursor:pointer;
+  border:1px solid rgba(255,255,255,.75);background:transparent;
+  transition:background .3s ease,transform .3s ease;
+}
+.heros-points button[aria-current="true"]{background:#fff;transform:scale(1.35)}
+
+@media(prefers-reduced-motion:reduce){
+  /* Un défilement automatique est refusé net quand l'appareil demande le
+     calme : le script ne démarre pas, et rien ne respire. */
+  .heros img.fond{transition:none}
+  .heros img.fond.on{animation:none}
+}
 .heros .large{position:relative;z-index:2;padding-top:72px;padding-bottom:72px;max-width:820px}
 .heros h1{color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.35)}
 /* En BLANC, pas en or — voir la mesure ci-dessus. À 13 px sur une
@@ -230,8 +298,30 @@ footer a:hover{color:#fff;text-decoration:underline}
 /* ── APPARITION AU DÉFILEMENT ────────────────────────────────────────── */
 .apparait{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
 .apparait.vu{opacity:1;transform:none}
+
+/* Quand plusieurs blocs apparaissent ensemble, ils arrivent l'un après
+   l'autre plutôt qu'en bloc — c'est ce décalage qui donne l'impression de
+   vie. Le retard est posé par le script, pas par une règle par enfant. */
+.apparait[style*="--retard"]{transition-delay:var(--retard)}
+
+/* Une photographie qui s'approche doucement quand on la survole. Seule la
+   transform bouge : la page ne se recalcule pas. */
+.scene img{transition:transform .55s cubic-bezier(.2,.7,.3,1)}
+.scene:hover img{transform:scale(1.045)}
+
+/* Les cartes se soulèvent d'un cheveu. */
+.carte{transition:transform .35s ease,box-shadow .35s ease}
+.carte:hover{transform:translateY(-4px)}
+
+/* Le filet or se dessine quand la section entre à l'écran. */
+.apparait .filet{transform-origin:left center;transform:scaleX(0);transition:transform .7s .15s cubic-bezier(.2,.7,.3,1)}
+.apparait.vu .filet{transform:scaleX(1)}
+
 @media(prefers-reduced-motion:reduce){
   .apparait{opacity:1;transform:none;transition:none}
+  .apparait .filet{transform:none;transition:none}
+  .scene img,.carte{transition:none}
+  .scene:hover img,.carte:hover{transform:none}
   html{scroll-behavior:auto}
 }
 
