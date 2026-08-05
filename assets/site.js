@@ -4,7 +4,7 @@
   var APP_URL='https://medygoo.github.io/SchoolSafe-/';
   var LANG_KEY='cslesage_langue';
 
-  ['assets/premium.css','assets/premium-layout.css','assets/app-link.css','assets/equipe.css','assets/experience-2026.css'].forEach(function(href){
+  ['assets/premium.css','assets/premium-layout.css','assets/app-link.css','assets/equipe.css','assets/experience-2026.css','assets/vivant.css'].forEach(function(href){
     if(!document.querySelector('link[href="'+href+'"]')){
       var style=document.createElement('link');
       style.rel='stylesheet';
@@ -50,17 +50,121 @@
     liensFooter.appendChild(appFooter);
   }
 
+
+  /* ══════════════════════════════════════════════════════════════════════
+     LE MOUVEMENT — ce que le CSS ne sait pas faire seul
+     ══════════════════════════════════════════════════════════════════════
+     Tout ce qui suit est du DÉCOR : si ce bloc ne s'exécute pas, la page
+     reste entière et lisible. Aucune information n'y est portée.
+     Et tout se tait quand l'appareil demande le calme — on le demande UNE
+     fois ici, plutôt que dans chaque fonction.                            */
+  var calme = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* Le retard entre voisins d'une même rangée. Plafonné : au-delà de
+     quatre, on attendrait pour rien. */
+  Array.prototype.forEach.call(
+    document.querySelectorAll('.grille,.galerie-accueil,.gallery-grid,.avantages-list,.piliers,.bande-promesse-grille,.cartes-cycles'),
+    function(rangee){
+      Array.prototype.forEach.call(rangee.children, function(el,i){
+        if(i>0 && el.classList.contains('apparait')) el.style.setProperty('--retard', Math.min(i,4)*85+'ms');
+      });
+    });
+
+  /* L'onde du bouton part du point survolé. */
+  document.addEventListener('pointerenter', function(e){
+    var b = e.target.closest && e.target.closest('.btn');
+    if(!b || calme.matches) return;
+    var r = b.getBoundingClientRect();
+    b.style.setProperty('--x', (e.clientX - r.left) + 'px');
+    b.style.setProperty('--y', (e.clientY - r.top) + 'px');
+  }, true);
+
+  /* Le filet de progression de la lecture. `scaleX` seul — aucune
+     recomposition de page à chaque pixel défilé. */
+  if(!calme.matches && !document.querySelector('.progression-page')){
+    var barre = document.createElement('div');
+    barre.className = 'progression-page';
+    barre.setAttribute('aria-hidden','true');
+    document.body.appendChild(barre);
+    var enAttente = false;
+    var majBarre = function(){
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      barre.style.setProperty('--lu', h > 0 ? Math.min(1, window.scrollY / h) : 0);
+      enAttente = false;
+    };
+    // Une lecture de position par IMAGE, pas par événement : sans ce frein,
+    // un défilement rapide déclenche des centaines de calculs par seconde.
+    window.addEventListener('scroll', function(){
+      if(enAttente) return; enAttente = true; requestAnimationFrame(majBarre);
+    }, {passive:true});
+    majBarre();
+  }
+
+  /* Les nombres montent quand ils entrent à l'écran. On ne touche qu'au
+     texte d'un élément dont la largeur est déjà fixée par
+     `tabular-nums` : la ligne ne tremble pas. */
+  if(!calme.matches && 'IntersectionObserver' in window){
+    var chiffres = document.querySelectorAll('.bande-promesse-grille b');
+    var vuChiffre = new IntersectionObserver(function(entrees){
+      entrees.forEach(function(e){
+        if(!e.isIntersecting) return;
+        vuChiffre.unobserve(e.target);
+        var cible = parseInt(e.target.textContent, 10);
+        if(!isFinite(cible) || cible <= 0 || cible > 999) return;   // « 2 cycles » oui, un texte non
+        var debut = null, duree = 900;
+        var pas = function(t){
+          if(debut === null) debut = t;
+          var k = Math.min(1, (t - debut) / duree);
+          e.target.textContent = Math.round(cible * (1 - Math.pow(1 - k, 3)));
+          if(k < 1) requestAnimationFrame(pas);
+        };
+        e.target.textContent = '0';
+        requestAnimationFrame(pas);
+      });
+    }, {threshold:.6});
+    Array.prototype.forEach.call(chiffres, function(c){ vuChiffre.observe(c); });
+  }
+
+  /* La bande défilante des promesses de l'école. Le contenu est DOUBLÉ :
+     avec une seule copie, on voit un saut à chaque tour de boucle. */
+  var ancre = document.querySelector('.bande-promesse');
+  if(ancre && !document.querySelector('.bande-defilante')){
+    var PROMESSES = ['Former, réformer, exceller',
+                     'Français et anglais dès la maternelle',
+                     'Chaque enfant connu par son nom',
+                     'Entrées et sorties contrôlées',
+                     'Huit activités dans la semaine',
+                     'De la maternelle à la 6ᵉ primaire'];
+    var bande = document.createElement('div');
+    bande.className = 'bande-defilante';
+    bande.setAttribute('aria-hidden','true');   // le texte existe déjà ailleurs : ne pas le relire
+    var piste = document.createElement('div');
+    piste.className = 'bande-defilante-piste';
+    PROMESSES.concat(PROMESSES).forEach(function(t){
+      var s = document.createElement('span'); s.textContent = t; piste.appendChild(s);
+    });
+    bande.appendChild(piste);
+    ancre.parentNode.insertBefore(bande, ancre.nextSibling);
+  }
+
   /* Carrousel de la page d’accueil : une photographie différente toutes les 5 secondes. */
   var hero=document.querySelector('.hero-premium:not(.admission-hero)');
   if(hero&&!hero.dataset.sliderReady){
     var photoInitiale=hero.querySelector(':scope > .hero-photo');
     if(photoInitiale){
+      /* Les photographies envoyées par l'école, en pleine résolution.
+         Les trois `img/nouvelles/*` qui se trouvaient ici mesuraient 900,
+         760 et 1100 pixels de large pour 15 Ko : très compressées, et
+         floues dès qu'on les étire sur toute la largeur d'un écran.
+         Celles-ci font 1448 à 1600 px et pèsent 91 à 148 Ko, avec une
+         version @800 pour les téléphones. */
       var donneesSlides=[
-        {src:'img/nouvelles/groupe-eleves.webp',alt:'Groupe d’élèves souriants du Complexe Scolaire Le Sage',focus:'center'},
-        {src:'img/nouvelles/salle-informatique.webp',alt:'Élèves pendant un cours pratique d’informatique',focus:'center'},
-        {src:'img/nouvelles/taekwondo.webp',alt:'Élèves du Complexe Scolaire Le Sage pendant une séance de taekwondo',focus:'center'},
-        {src:'img/photo3.webp',alt:'Moment de joie et de mouvement pendant une activité scolaire',focus:'center'},
-        {src:'img/photo7.webp',alt:'Vie collective des élèves dans la cour de l’école',focus:'center'}
+        {src:'img/heros/h1.webp',petite:'img/heros/h1@800.webp',w:800,alt:'Les élèves du Complexe Scolaire Le Sage devant l’entrée, avec leurs enseignantes',focus:'center 40%'},
+        {src:'img/heros/h3.webp',petite:'img/heros/h3@800.webp',w:724,alt:'Des élèves lisent à la bibliothèque de l’école',focus:'center'},
+        {src:'img/heros/h2.webp',petite:'img/heros/h2@800.webp',w:724,alt:'Le cours de taekwondo du Complexe Scolaire Le Sage',focus:'center'},
+        {src:'img/heros/h4.webp',petite:'img/heros/h4@800.webp',w:724,alt:'La remise des diplômes de fin de maternelle',focus:'center 35%'},
+        {src:'img/heros/h5.webp',petite:'img/heros/h5@800.webp',w:800,alt:'Un enseignant accompagne une élève sur son cahier',focus:'center 35%'},
+        {src:'img/heros/h6.webp',petite:'img/heros/h6@800.webp',w:800,alt:'L’équipe du Complexe Scolaire Le Sage devant l’école',focus:'center 40%'}
       ];
       var slides=document.createElement('div');
       slides.className='hero-slides';
@@ -69,7 +173,13 @@
         var image=document.createElement('img');
         image.className='hero-slide'+(index===0?' active':'');
         image.src=item.src;
+        /* Un téléphone ne doit pas tirer 1600 px : `srcset` lui laisse le
+           choix, et les largeurs annoncées sont les VRAIES — un `w` faux
+           fait choisir une image floue ou trop lourde. */
+        if(item.petite)image.srcset=item.petite+' '+item.w+'w, '+item.src+' 1600w';
+        image.sizes='100vw';
         image.alt='';
+        image.style.objectPosition=item.focus;
         image.dataset.focus=item.focus;
         image.loading=index===0?'eager':'lazy';
         if(index===0)image.setAttribute('fetchpriority','high');
@@ -119,6 +229,11 @@
       function afficher(index,relancer){
         actif=(index+images.length)%images.length;
         images.forEach(function(img,i){img.classList.toggle('active',i===actif);});
+        /* La suivante est demandée MAINTENANT : sur une connexion lente, un
+           fondu vers une image absente donne un écran nu pendant deux
+           secondes — pire que pas de carrousel du tout. */
+        var apres=images[(actif+1)%images.length];
+        if(apres&&apres.loading==='lazy')apres.loading='eager';
         boutons.forEach(function(btn,i){
           btn.classList.toggle('active',i===actif);
           btn.setAttribute('aria-current',i===actif?'true':'false');
