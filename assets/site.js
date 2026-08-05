@@ -48,17 +48,6 @@
     liensFooter.appendChild(appFooter);
   }
 
-  if(!document.querySelector('.app-fab')){
-    var fab=document.createElement('a');
-    fab.className='app-fab';
-    fab.href=APP_URL;
-    fab.target='_blank';
-    fab.rel='noopener';
-    fab.setAttribute('aria-label','Ouvrir l’application SchoolSafe');
-    fab.innerHTML='<span class="app-fab-etoile" aria-hidden="true">★</span><span><small>Espace numérique</small><b>Ouvrir SchoolSafe</b></span><span class="app-fab-fleche" aria-hidden="true">↗</span>';
-    document.body.appendChild(fab);
-  }
-
   /* L’équipe existait encore sur la page L’école, mais elle doit aussi être
      visible dès l’accueil. Les photos originales sont conservées telles quelles. */
   var pointEquipe=document.querySelector('.avantages-section');
