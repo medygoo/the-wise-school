@@ -2,11 +2,13 @@
   'use strict';
 
   var APP_URL='https://medygoo.github.io/SchoolSafe-/';
+  var LANG_KEY='cslesage_langue';
 
-  ['assets/premium.css','assets/premium-layout.css','assets/app-link.css','assets/equipe.css'].forEach(function(href){
+  ['assets/premium.css','assets/premium-layout.css','assets/app-link.css','assets/equipe.css','assets/experience-2026.css'].forEach(function(href){
     if(!document.querySelector('link[href="'+href+'"]')){
       var style=document.createElement('link');
-      style.rel='stylesheet';style.href=href;
+      style.rel='stylesheet';
+      style.href=href;
       document.head.appendChild(style);
     }
   });
@@ -48,8 +50,115 @@
     liensFooter.appendChild(appFooter);
   }
 
-  /* L’équipe existait encore sur la page L’école, mais elle doit aussi être
-     visible dès l’accueil. Les photos originales sont conservées telles quelles. */
+  /* Carrousel de la page d’accueil : une photographie différente toutes les 5 secondes. */
+  var hero=document.querySelector('.hero-premium:not(.admission-hero)');
+  if(hero&&!hero.dataset.sliderReady){
+    var photoInitiale=hero.querySelector(':scope > .hero-photo');
+    if(photoInitiale){
+      var donneesSlides=[
+        {src:'img/nouvelles/groupe-eleves.webp',alt:'Groupe d’élèves souriants du Complexe Scolaire Le Sage',focus:'center'},
+        {src:'img/nouvelles/salle-informatique.webp',alt:'Élèves pendant un cours pratique d’informatique',focus:'center'},
+        {src:'img/nouvelles/taekwondo.webp',alt:'Élèves du Complexe Scolaire Le Sage pendant une séance de taekwondo',focus:'center'},
+        {src:'img/photo3.webp',alt:'Moment de joie et de mouvement pendant une activité scolaire',focus:'center'},
+        {src:'img/photo7.webp',alt:'Vie collective des élèves dans la cour de l’école',focus:'center'}
+      ];
+      var slides=document.createElement('div');
+      slides.className='hero-slides';
+      slides.setAttribute('aria-hidden','true');
+      donneesSlides.forEach(function(item,index){
+        var image=document.createElement('img');
+        image.className='hero-slide'+(index===0?' active':'');
+        image.src=item.src;
+        image.alt='';
+        image.dataset.focus=item.focus;
+        image.loading=index===0?'eager':'lazy';
+        if(index===0)image.setAttribute('fetchpriority','high');
+        slides.appendChild(image);
+      });
+      photoInitiale.replaceWith(slides);
+
+      var controles=document.createElement('div');
+      controles.className='hero-slider-controls';
+      controles.setAttribute('aria-label','Choisir une photographie de l’école');
+      var precedent=document.createElement('button');
+      precedent.type='button';
+      precedent.className='hero-slider-arrow';
+      precedent.setAttribute('aria-label','Photographie précédente');
+      precedent.textContent='‹';
+      var points=document.createElement('div');
+      points.className='hero-slider-dots';
+      var suivant=document.createElement('button');
+      suivant.type='button';
+      suivant.className='hero-slider-arrow';
+      suivant.setAttribute('aria-label','Photographie suivante');
+      suivant.textContent='›';
+      controles.appendChild(precedent);
+      controles.appendChild(points);
+      controles.appendChild(suivant);
+      hero.appendChild(controles);
+
+      var statut=document.createElement('div');
+      statut.className='hero-slider-status';
+      statut.setAttribute('aria-live','polite');
+      statut.textContent='Vie scolaire · 1 / '+donneesSlides.length;
+      hero.appendChild(statut);
+
+      var images=Array.prototype.slice.call(slides.querySelectorAll('.hero-slide'));
+      var boutons=[];
+      var actif=0;
+      var minuterie=null;
+      donneesSlides.forEach(function(item,index){
+        var point=document.createElement('button');
+        point.type='button';
+        point.className='hero-slider-dot'+(index===0?' active':'');
+        point.setAttribute('aria-label','Afficher la photographie '+(index+1));
+        point.addEventListener('click',function(){afficher(index,true);});
+        points.appendChild(point);
+        boutons.push(point);
+      });
+      function afficher(index,relancer){
+        actif=(index+images.length)%images.length;
+        images.forEach(function(img,i){img.classList.toggle('active',i===actif);});
+        boutons.forEach(function(btn,i){
+          btn.classList.toggle('active',i===actif);
+          btn.setAttribute('aria-current',i===actif?'true':'false');
+        });
+        statut.textContent='Vie scolaire · '+(actif+1)+' / '+images.length;
+        if(relancer)demarrer();
+      }
+      function arreter(){if(minuterie){window.clearInterval(minuterie);minuterie=null;}}
+      function demarrer(){
+        arreter();
+        minuterie=window.setInterval(function(){afficher(actif+1,false);},5000);
+      }
+      precedent.addEventListener('click',function(){afficher(actif-1,true);});
+      suivant.addEventListener('click',function(){afficher(actif+1,true);});
+      hero.addEventListener('mouseenter',arreter);
+      hero.addEventListener('mouseleave',demarrer);
+      hero.addEventListener('focusin',arreter);
+      hero.addEventListener('focusout',demarrer);
+      document.addEventListener('visibilitychange',function(){document.hidden?arreter():demarrer();});
+      demarrer();
+      hero.dataset.sliderReady='true';
+    }
+  }
+
+  /* Ajout des nouvelles photographies dans la galerie, sans modifier les visages. */
+  var galerie=document.querySelector('.gallery-grid');
+  if(galerie&&!galerie.querySelector('.nouvelle-photo')){
+    [
+      {src:'img/nouvelles/groupe-eleves.webp',alt:'Groupe d’élèves du Complexe Scolaire Le Sage',legende:'Notre grande famille scolaire',classe:'wide'},
+      {src:'img/nouvelles/salle-informatique.webp',alt:'Cours pratique d’informatique au Complexe Scolaire Le Sage',legende:'Informatique pratique',classe:''},
+      {src:'img/nouvelles/taekwondo.webp',alt:'Séance de taekwondo avec les élèves',legende:'Discipline et confiance',classe:''}
+    ].reverse().forEach(function(item){
+      var figure=document.createElement('figure');
+      figure.className='gallery-item nouvelle-photo apparait zoomable '+item.classe;
+      figure.innerHTML='<img src="'+item.src+'" alt="'+item.alt+'" loading="lazy"><figcaption>'+item.legende+'</figcaption>';
+      galerie.insertBefore(figure,galerie.firstChild);
+    });
+  }
+
+  /* L’équipe reste visible sur l’accueil et sur la page L’école. */
   var pointEquipe=document.querySelector('.avantages-section');
   if(pointEquipe&&!document.querySelector('.equipe-accueil')){
     var equipe=document.createElement('section');
@@ -71,7 +180,6 @@
     pointEquipe.parentNode.insertBefore(equipe,pointEquipe);
   }
 
-  /* Correction de l’intitulé sur la page L’école sans modifier la photographie. */
   Array.prototype.forEach.call(document.querySelectorAll('img[src*="coordinatrice.webp"]'),function(photo){
     photo.alt='Coordination générale de l’école';
     var fiche=photo.closest('figure');
@@ -83,7 +191,7 @@
   });
 
   var header=document.querySelector('header');
-  function headerAuDefilement(){if(header)header.classList.toggle('scrolled',window.scrollY>18)}
+  function headerAuDefilement(){if(header)header.classList.toggle('scrolled',window.scrollY>18);}
   headerAuDefilement();
   window.addEventListener('scroll',headerAuDefilement,{passive:true});
 
@@ -111,31 +219,283 @@
     el.textContent=new Date().getFullYear();
   });
 
+  /* Version française / anglaise disponible sur toutes les pages. */
+  var traductions={
+    "Aller au contenu":"Skip to content",
+    "Accueil":"Home",
+    "L'école":"The school",
+    "Programmes":"Programmes",
+    "Galerie":"Gallery",
+    "Inscription":"Enrolment",
+    "Contact":"Contact",
+    "Application":"App",
+    "Ouvrir SchoolSafe":"Open SchoolSafe",
+    "Ouvrir l’application SchoolSafe ↗":"Open the SchoolSafe app ↗",
+    "Inscriptions 2026-2027 ouvertes":"Enrolment for 2026-2027 is open",
+    "Kinshasa · Barumbu · Quartier Bon Marché":"Kinshasa · Barumbu · Bon Marché district",
+    "Former, réformer,":"Educate, transform,",
+    "exceller.":"excel.",
+    "Une école bilingue français–anglais, de la maternelle à la 6e primaire, où l'enfant apprend, s'exprime, grandit et évolue dans un cadre suivi.":"A French-English bilingual school, from nursery to sixth grade, where every child learns, expresses themselves and grows in a caring environment.",
+    "Préinscrire mon enfant":"Pre-enrol my child",
+    "Appeler l'école":"Call the school",
+    "Maternelle en anglais":"English-medium nursery",
+    "Primaire bilingue":"Bilingual primary",
+    "Aucun paiement en ligne":"No online payment",
+    "Année scolaire":"School year",
+    "Places ouvertes":"Places available",
+    "cycles":"cycles",
+    "Maternelle · Primaire":"Nursery · Primary",
+    "langues":"languages",
+    "Français · Anglais":"French · English",
+    "activités":"activities",
+    "incluses dans la semaine":"included in the week",
+    "école attentive":"caring school",
+    "à chaque enfant":"for every child",
+    "Bienvenue chez nous":"Welcome to our school",
+    "Une école qui associe apprentissage, créativité et protection":"A school combining learning, creativity and protection",
+    "Le Complexe Scolaire Le Sage — The Wise School International — accueille les enfants de la maternelle et du primaire. Le programme national congolais est conduit en français et en anglais, avec un encadrement adapté à l'âge et au niveau de chaque élève.":"Complexe Scolaire Le Sage — The Wise School International — welcomes nursery and primary pupils. The Congolese national curriculum is taught in French and English, with guidance suited to each pupil's age and level.",
+    "Les cours sont complétés par l'informatique, la danse, la musique, la poterie, le taekwondo, les ateliers créatifs et la cantine scolaire.":"Lessons are complemented by computing, dance, music, pottery, taekwondo, creative workshops and the school canteen.",
+    "Apprendre":"Learn",
+    "Des bases solides et un suivi régulier.":"Strong foundations and regular follow-up.",
+    "S'exprimer":"Express",
+    "Deux langues et plusieurs formes de créativité.":"Two languages and many forms of creativity.",
+    "Grandir":"Grow",
+    "Discipline, confiance et vie en communauté.":"Discipline, confidence and community life.",
+    "Une école vivante":"A vibrant school",
+    "Apprendre ensemble, bouger et partager.":"Learning, moving and sharing together.",
+    "Admissions 2026-2027":"Admissions 2026-2027",
+    "Les inscriptions sont en cours":"Enrolment is now open",
+    "La préinscription se fait en quelques minutes. La famille vient ensuite à l'école avec les pièces demandées pour la validation du dossier.":"Pre-enrolment takes only a few minutes. The family then visits the school with the required documents so the application can be validated.",
+    "Préinscription":"Pre-enrolment",
+    "Remplissez la fiche en ligne ou contactez la Direction.":"Complete the online form or contact the School Management.",
+    "Dossier à l'école":"Documents at school",
+    "Apportez les documents de l'enfant et du tuteur.":"Bring the child's and guardian's documents.",
+    "Validation":"Validation",
+    "La Direction confirme la classe et finalise l'inscription.":"The School Management confirms the class and completes enrolment.",
+    "Important :":"Important:",
+    "aucun paiement ne se fait sur ce site. Les frais sont réglés uniquement à la caisse de l'école, contre reçu.":"no payment is made on this website. Fees are paid only at the school cashier's office against an official receipt.",
+    "Commencer la préinscription":"Start pre-enrolment",
+    "Nos cycles":"Our cycles",
+    "Un parcours continu de la maternelle à la 6e primaire":"A continuous pathway from nursery to sixth grade",
+    "Deux cycles, une même ambition : donner à chaque enfant des fondations solides.":"Two cycles, one ambition: giving every child strong foundations.",
+    "Maternelle":"Nursery",
+    "Éveil, langage, motricité, premières notions et apprentissage de la vie en groupe, avec une forte présence de l'anglais.":"Early learning, language, motor skills, first concepts and learning to live together, with strong exposure to English.",
+    "1re, 2e et 3e maternelle":"1st, 2nd and 3rd nursery classes",
+    "Activités manuelles et expression":"Hands-on activities and expression",
+    "Horaires : 8 h à 14 h":"Hours: 8 a.m. to 2 p.m.",
+    "Découvrir la maternelle →":"Discover nursery →",
+    "Six années d'apprentissage en français et en anglais, avec préparation progressive à l'ENAFEP.":"Six years of learning in French and English, with progressive preparation for the ENAFEP examination.",
+    "1re à 6e primaire":"1st to 6th primary",
+    "Français, anglais, mathématiques et sciences":"French, English, mathematics and science",
+    "Horaires : 7 h à 15 h":"Hours: 7 a.m. to 3 p.m.",
+    "Découvrir le primaire →":"Discover primary →",
+    "La vie à l'école":"Life at school",
+    "Des journées qui donnent envie d'apprendre":"School days that inspire learning",
+    "Les photos sont affichées dans leur version la plus nette disponible et mises en valeur sans modifier les visages.":"Photos are shown in the clearest available quality and enhanced for display without altering faces.",
+    "Activité physique":"Physical activity",
+    "Atelier artistique":"Art workshop",
+    "Vie collective":"Community life",
+    "Joie et mouvement":"Joy and movement",
+    "Voir toute la galerie":"View the full gallery",
+    "Pourquoi choisir Le Sage ?":"Why choose Le Sage?",
+    "Une éducation complète, dans un cadre proche des familles":"A complete education in a family-centred environment",
+    "Notre projet éducatif associe enseignement, activités pratiques, discipline, suivi des résultats et sécurité des entrées et sorties.":"Our educational approach combines teaching, practical activities, discipline, academic monitoring and controlled entry and exit.",
+    "Connaître notre école":"Discover our school",
+    "Enseignement bilingue":"Bilingual education",
+    "Français et anglais dès la maternelle.":"French and English from nursery.",
+    "Encadrement attentif":"Attentive guidance",
+    "Un suivi adapté au niveau de l'enfant.":"Support adapted to each child's level.",
+    "Activités variées":"Varied activities",
+    "Informatique, arts, musique et sport.":"Computing, arts, music and sport.",
+    "Sorties contrôlées":"Controlled departures",
+    "L'enfant repart avec une personne autorisée.":"The child leaves with an authorised person.",
+    "Notre équipe":"Our team",
+    "Le corps administratif et les enseignants au service des enfants":"School management and teachers serving every child",
+    "La Direction, la coordination générale, les enseignants et le service de perception accompagnent les familles pendant toute l’année scolaire.":"School Management, General Coordination, teachers and the cashier's office support families throughout the school year.",
+    "Promotion":"School Founder",
+    "Direction générale":"General Management",
+    "Direction du primaire":"Primary Management",
+    "Cycle primaire":"Primary cycle",
+    "Direction de la maternelle":"Nursery Management",
+    "Cycle maternel":"Nursery cycle",
+    "Coordination générale":"General Coordination",
+    "Supervision de l’établissement":"School supervision",
+    "Enseignement":"Teaching",
+    "Équipe pédagogique":"Teaching team",
+    "Perception":"Cashier's office",
+    "Frais scolaires et reçus":"School fees and receipts",
+    "Les familles peuvent retrouver la présentation complète de l’établissement, son organisation et son dispositif d’encadrement.":"Families can view the full presentation of the school, its organisation and support structure.",
+    "Découvrir toute l’équipe →":"Meet the full team →",
+    "Une place pour votre enfant":"A place for your child",
+    "Préparez maintenant la rentrée 2026-2027":"Prepare for the 2026-2027 school year now",
+    "Contactez la Direction ou envoyez la fiche de préinscription en ligne.":"Contact School Management or send the online pre-enrolment form.",
+    "Adresse":"Address",
+    "Nous joindre":"Contact us",
+    "Liens utiles":"Useful links",
+    "École bilingue":"Bilingual school",
+    "Notre école en images":"Our school in pictures",
+    "Des moments vrais,":"Real moments,",
+    "une école vivante":"a vibrant school",
+    "Notre grande famille scolaire":"Our school family",
+    "Informatique pratique":"Practical computing",
+    "Discipline et confiance":"Discipline and confidence",
+    "L'établissement":"The school",
+    "Deux cycles, deux langues, une même exigence":"Two cycles, two languages, one standard of excellence",
+    "Notre identité":"Our identity",
+    "En bref":"At a glance",
+    "La direction et l'encadrement":"Management and guidance",
+    "La sécurité des enfants":"Children's safety",
+    "Le suivi des résultats":"Academic monitoring",
+    "Nos programmes":"Our programmes",
+    "Les activités parascolaires":"Extracurricular activities",
+    "Musique":"Music",
+    "Danse":"Dance",
+    "Poterie":"Pottery",
+    "Informatique":"Computing",
+    "Taekwondo":"Taekwondo",
+    "Club bilingue":"Bilingual club",
+    "Ateliers créatifs":"Creative workshops",
+    "Cantine scolaire":"School canteen",
+    "La cantine":"The canteen",
+    "Le soutien scolaire":"Academic support",
+    "Nous joindre":"Contact us",
+    "Téléphone":"Telephone",
+    "Courriel":"Email",
+    "Horaires du secrétariat":"Office hours",
+    "Pour une inscription":"For enrolment",
+    "Inscrivez votre enfant":"Enrol your child",
+    "Remplir la fiche →":"Complete the form →",
+    "Quatre étapes simples":"Four simple steps",
+    "Fiche en ligne":"Online form",
+    "Documents":"Documents",
+    "Paiement":"Payment",
+    "Les pièces du dossier":"Required documents",
+    "Fiche de renseignements":"Information form",
+    "L'élève":"The pupil",
+    "Les parents":"Parents",
+    "Santé":"Health",
+    "Tutelle et personnes autorisées":"Guardianship and authorised persons",
+    "Envoyer à l'école":"Send to the school",
+    "Envoyer par WhatsApp":"Send via WhatsApp",
+    "Imprimer la fiche":"Print the form",
+    "Documents scolaires":"School documents",
+    "Billets de vacances":"Holiday supply lists",
+    "Fermer":"Close",
+    "Photographie précédente":"Previous photograph",
+    "Photographie suivante":"Next photograph"
+  };
+
+  var textesOriginaux=new WeakMap();
+  var titresPages={
+    'index.html':'Complexe Scolaire Le Sage — Enrolment 2026-2027',
+    'ecole.html':'The school — Complexe Scolaire Le Sage',
+    'programmes.html':'Programmes and activities — Complexe Scolaire Le Sage',
+    'galerie.html':'Gallery — Complexe Scolaire Le Sage',
+    'inscription.html':'Enrolment 2026-2027 — Complexe Scolaire Le Sage',
+    'contact.html':'Contact — Complexe Scolaire Le Sage'
+  };
+  var titreFrancais=document.title;
+
+  function parcourirTextes(callback){
+    var walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT,{acceptNode:function(node){
+      var parent=node.parentElement;
+      if(!parent||/^(SCRIPT|STYLE|NOSCRIPT|TEXTAREA)$/i.test(parent.tagName))return NodeFilter.FILTER_REJECT;
+      if(!node.nodeValue.trim())return NodeFilter.FILTER_REJECT;
+      return NodeFilter.FILTER_ACCEPT;
+    }});
+    var node;
+    while((node=walker.nextNode()))callback(node);
+  }
+
+  function appliquerLangue(langue){
+    parcourirTextes(function(node){
+      if(!textesOriginaux.has(node))textesOriginaux.set(node,node.nodeValue);
+      var original=textesOriginaux.get(node);
+      if(langue==='fr'){
+        node.nodeValue=original;
+        return;
+      }
+      var propre=original.trim();
+      var traduit=traductions[propre];
+      if(traduit){
+        var debut=original.match(/^\s*/)[0];
+        var fin=original.match(/\s*$/)[0];
+        node.nodeValue=debut+traduit+fin;
+      }
+    });
+    document.documentElement.lang=langue;
+    document.title=langue==='en'?(titresPages[ici]||'The Wise School International'):titreFrancais;
+    var boutonsLangue=document.querySelectorAll('.lang-switch button');
+    boutonsLangue.forEach(function(btn){
+      var selectionne=btn.dataset.lang===langue;
+      btn.classList.toggle('active',selectionne);
+      btn.setAttribute('aria-pressed',selectionne?'true':'false');
+    });
+    try{localStorage.setItem(LANG_KEY,langue);}catch(e){}
+  }
+
+  var entete=document.querySelector('.entete');
+  if(entete&&!entete.querySelector('.lang-switch')){
+    var choixLangue=document.createElement('div');
+    choixLangue.className='lang-switch';
+    choixLangue.setAttribute('role','group');
+    choixLangue.setAttribute('aria-label','Choisir la langue / Choose language');
+    choixLangue.innerHTML='<button type="button" data-lang="fr" aria-label="Afficher le site en français">FR</button><button type="button" data-lang="en" aria-label="Display the website in English">EN</button>';
+    entete.insertBefore(choixLangue,nav||null);
+    choixLangue.addEventListener('click',function(e){
+      var bouton=e.target.closest('button[data-lang]');
+      if(bouton)appliquerLangue(bouton.dataset.lang);
+    });
+  }
+
+  var langueInitiale='fr';
+  try{langueInitiale=localStorage.getItem(LANG_KEY)||'fr';}catch(e){}
+  appliquerLangue(langueInitiale==='en'?'en':'fr');
+
   var lb=document.getElementById('lb');
   if(lb){
     var img=document.getElementById('lb-img');
     var cap=document.getElementById('lb-cap');
-    function ouvrir(source,texte){img.src=source;img.alt=texte||'';cap.textContent=texte||'';lb.classList.add('open');document.body.style.overflow='hidden'}
-    function fermer(){lb.classList.remove('open');document.body.style.overflow='';img.removeAttribute('src')}
+    function ouvrir(source,texte){
+      img.src=source;
+      img.alt=texte||'';
+      cap.textContent=texte||'';
+      lb.classList.add('open');
+      document.body.style.overflow='hidden';
+    }
+    function fermer(){
+      lb.classList.remove('open');
+      document.body.style.overflow='';
+      img.removeAttribute('src');
+    }
     Array.prototype.forEach.call(document.querySelectorAll('.zoomable'),function(el){
       el.setAttribute('tabindex','0');
       el.setAttribute('role','button');
-      function action(){var im=el.tagName==='IMG'?el:el.querySelector('img');if(!im)return;var leg=el.querySelector('figcaption');ouvrir(im.getAttribute('src'),leg?leg.textContent.trim():im.alt)}
+      function action(){
+        var im=el.tagName==='IMG'?el:el.querySelector('img');
+        if(!im)return;
+        var leg=el.querySelector('figcaption');
+        ouvrir(im.getAttribute('src'),leg?leg.textContent.trim():im.alt);
+      }
       el.addEventListener('click',action);
-      el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();action()}});
+      el.addEventListener('keydown',function(e){
+        if(e.key==='Enter'||e.key===' '){e.preventDefault();action();}
+      });
     });
-    lb.addEventListener('click',function(e){if(e.target!==img)fermer()});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape')fermer()});
+    lb.addEventListener('click',function(e){if(e.target!==img)fermer();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')fermer();});
   }
 
   var doux=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var cibles=document.querySelectorAll('.apparait');
   if(doux||!('IntersectionObserver' in window)){
-    Array.prototype.forEach.call(cibles,function(el){el.classList.add('vu')});
+    Array.prototype.forEach.call(cibles,function(el){el.classList.add('vu');});
   }else{
     var obs=new IntersectionObserver(function(entrees){
-      entrees.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vu');obs.unobserve(e.target)}});
+      entrees.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('vu');obs.unobserve(e.target);}
+      });
     },{rootMargin:'0px 0px -55px 0px',threshold:.06});
-    Array.prototype.forEach.call(cibles,function(el){obs.observe(el)});
+    Array.prototype.forEach.call(cibles,function(el){obs.observe(el);});
   }
 })();
