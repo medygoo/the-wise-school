@@ -1,0 +1,31 @@
+/* Équipe pédagogique et administrative — charte gris, or, blanc, noir */
+.equipe-accueil{position:relative;overflow:hidden;background:linear-gradient(135deg,#111416 0%,#29343c 58%,#465560 100%);color:#fff}
+.equipe-accueil:before{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(198,148,34,.23);border-radius:50%;right:-170px;top:-210px;box-shadow:0 0 0 70px rgba(198,148,34,.025),0 0 0 140px rgba(198,148,34,.018)}
+.equipe-accueil .large{position:relative;z-index:2}
+.equipe-accueil h2{color:#fff;max-width:720px}
+.equipe-accueil .equipe-intro{max-width:720px;color:rgba(255,255,255,.78)}
+.equipe-accueil .eyebrow{color:#e4bb52}
+.equipe-grille{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:34px}
+.equipe-card{position:relative;margin:0;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 20px 55px rgba(0,0,0,.24);min-height:360px;isolation:isolate;transition:transform .38s cubic-bezier(.2,.75,.25,1),box-shadow .38s ease}
+.equipe-card:hover{transform:translateY(-10px) rotate(.25deg);box-shadow:0 30px 80px rgba(0,0,0,.34)}
+.equipe-card img{width:100%;height:100%;min-height:360px;object-fit:cover;display:block;filter:brightness(1.02) contrast(1.05);transition:transform .75s cubic-bezier(.2,.75,.25,1),filter .4s ease}
+.equipe-card:hover img{transform:scale(1.065);filter:brightness(1.06) contrast(1.06)}
+.equipe-card:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(17,20,22,.92));z-index:1}
+.equipe-card figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:24px 20px 20px;color:#fff}
+.equipe-card figcaption:before{content:"";display:block;width:42px;height:3px;border-radius:3px;background:#c69422;margin-bottom:12px;transition:width .35s ease}
+.equipe-card:hover figcaption:before{width:76px}
+.equipe-card b{display:block;font-family:Georgia,serif;font-size:20px;line-height:1.18;color:#fff}
+.equipe-card span{display:block;margin-top:5px;font-size:12px;font-weight:750;letter-spacing:.08em;text-transform:uppercase;color:#e4bb52}
+.equipe-suite{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.14)}
+.equipe-suite p{margin:0;color:rgba(255,255,255,.76);max-width:650px}
+/* Modernise aussi la section complète déjà présente sur la page L’école. */
+.personne{padding:10px 10px 16px;border-radius:18px;background:#fff;border:1px solid rgba(60,73,83,.11);box-shadow:0 12px 35px rgba(17,20,22,.08);transition:transform .32s ease,box-shadow .32s ease,border-color .32s ease}
+.personne:hover{transform:translateY(-7px);box-shadow:0 24px 55px rgba(17,20,22,.14);border-color:rgba(198,148,34,.48)}
+.personne .scene{border-radius:14px;overflow:hidden}
+.personne .scene img{transition:transform .65s cubic-bezier(.2,.75,.25,1),filter .35s ease;filter:brightness(1.02) contrast(1.04)}
+.personne:hover .scene img{transform:scale(1.055);filter:brightness(1.06) contrast(1.05)}
+.personne>b{margin-top:12px;color:#111416}
+.personne>span{color:#657786}
+@media(max-width:980px){.equipe-grille{grid-template-columns:repeat(2,minmax(0,1fr))}.equipe-card,.equipe-card img{min-height:390px}}
+@media(max-width:620px){.equipe-grille{grid-template-columns:1fr 1fr;gap:10px}.equipe-card,.equipe-card img{min-height:270px}.equipe-card{border-radius:15px}.equipe-card figcaption{padding:17px 13px 13px}.equipe-card b{font-size:15px}.equipe-card span{font-size:9px}.equipe-suite{align-items:flex-start;flex-direction:column}.equipe-suite .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){.equipe-card,.equipe-card img,.equipe-card figcaption:before,.personne,.personne .scene img{transition:none}}
