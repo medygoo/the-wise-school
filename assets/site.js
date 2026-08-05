@@ -258,20 +258,22 @@
     }
   }
 
-  /* Ajout des nouvelles photographies dans la galerie, sans modifier les visages. */
-  var galerie=document.querySelector('.gallery-grid');
-  if(galerie&&!galerie.querySelector('.nouvelle-photo')){
-    [
-      {src:'img/nouvelles/groupe-eleves.webp',alt:'Groupe d’élèves du Complexe Scolaire Le Sage',legende:'Notre grande famille scolaire',classe:'wide'},
-      {src:'img/nouvelles/salle-informatique.webp',alt:'Cours pratique d’informatique au Complexe Scolaire Le Sage',legende:'Informatique pratique',classe:''},
-      {src:'img/nouvelles/taekwondo.webp',alt:'Séance de taekwondo avec les élèves',legende:'Discipline et confiance',classe:''}
-    ].reverse().forEach(function(item){
-      var figure=document.createElement('figure');
-      figure.className='gallery-item nouvelle-photo apparait zoomable '+item.classe;
-      figure.innerHTML='<img src="'+item.src+'" alt="'+item.alt+'" loading="lazy"><figcaption>'+item.legende+'</figcaption>';
-      galerie.insertBefore(figure,galerie.firstChild);
-    });
-  }
+  /* TROIS TUILES ÉTAIENT VIDES, et elles l'étaient EN LIGNE.
+     `img/nouvelles/groupe-eleves.webp`, `salle-informatique.webp` et
+     `taekwondo.webp` étaient injectées ici, en tête de galerie, avec une
+     pastille « NOUVEAU ». Elles se décodaient sans erreur — 900×506,
+     760×570, 1100×825 — et ne peignaient RIEN : mesuré au canevas, gris
+     moyen 0, écart entre le pixel le plus clair et le plus sombre 0. Des
+     fichiers de gabarit, jamais remplacés.
+
+     C'est le défaut le plus difficile à voir : aucune erreur, aucune
+     requête en échec, `naturalWidth` non nul — un audit qui vérifie que
+     les images « se chargent » les déclarait bonnes. Seule la mesure des
+     pixels le dit.
+
+     Les photographies de l'école couvrent maintenant les trois mêmes
+     sujets — le groupe, la lecture, le taekwondo — et elles sont écrites
+     dans `galerie.html`, donc visibles même sans script.               */
 
   /* L’équipe reste visible sur l’accueil et sur la page L’école. */
   var pointEquipe=document.querySelector('.avantages-section');
