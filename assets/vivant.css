@@ -323,6 +323,36 @@ nav a:hover::after,nav a[aria-current="page"]::after{transform:scaleX(1);transfo
 /* ── LE CALME DEMANDÉ ─────────────────────────────────────────────────────
    Un seul bloc, en fin de fichier, pour qu'on ne puisse pas en oublier un
    morceau. Tout ce qui bouge s'arrête ; rien ne disparaît.                 */
+
+/* ── LE DÉFILÉ DES PHOTOS ──────────────────────────────────────────────────
+   Une bande d'images qui glisse sans fin. Trois choses la rendent supportable :
+
+   1. Elle ne SAUTE jamais. La piste porte deux fois la même série et se
+      translate d'exactement -50 % : à la fin du cycle, l'image sous les yeux
+      est celle du début. Une boucle qui saute se remarque plus qu'une boucle
+      absente.
+   2. Elle s'ARRÊTE — au survol, au clavier, et par un bouton. Un mouvement
+      qu'on ne peut pas arrêter est un mouvement qui gêne, et il gêne d'abord
+      ceux qui lisent lentement.
+   3. Elle DISPARAÎT pour qui a demandé moins d'animation (règle plus bas).
+
+   Les images sont servies en 520/560 px : la bande n'en montre jamais plus de
+   240, charger le 1040 serait payer une définition que personne ne voit. */
+.defile{position:relative;overflow:hidden;margin:26px 0 0;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.defile-piste{display:flex;gap:14px;width:max-content;animation:defile 64s linear infinite}
+.defile:hover .defile-piste,.defile:focus-within .defile-piste,
+.defile.pause .defile-piste{animation-play-state:paused}
+.defile img{width:240px;height:160px;object-fit:cover;border-radius:14px;flex:none;
+  box-shadow:0 6px 18px rgba(26,34,40,.16)}
+@keyframes defile{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+.defile-pause{position:absolute;right:10px;bottom:10px;width:38px;height:38px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.55);background:rgba(26,34,40,.78);color:#fff;
+  font-size:14px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.defile-pause:hover{background:rgba(26,34,40,.94)}
+@media(max-width:520px){.defile img{width:170px;height:118px}.defile-piste{animation-duration:48s}}
+
 @media(prefers-reduced-motion:reduce){
   .hero-premium::after,
   .hero-premium h1 em,
@@ -341,4 +371,10 @@ nav a:hover::after,nav a[aria-current="page"]::after{transform:scaleX(1);transfo
   .zoomable:hover img,.ga:hover img,.gallery-item:hover img{transform:none}
   .ga figcaption,.gallery-item figcaption{transform:none;opacity:1}
   .progression-page{display:none}
+  /* Le défilé s'arrête net. Il ne disparaît pas : les photos restent
+     visibles et se font défiler au doigt — on retire le mouvement,
+     pas le contenu. */
+  .defile-piste{animation:none}
+  .defile{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .defile-pause{display:none}
 }
