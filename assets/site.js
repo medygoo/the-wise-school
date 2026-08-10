@@ -666,3 +666,24 @@ document.querySelectorAll('.defile-pause').forEach(function (b) {
   });
   appliquer('tout');
 })();
+
+
+/* Les onglets des fournitures. Même principe que les filtres de la galerie :
+   `hidden` plutôt qu'une classe, et sans JavaScript les quatre listes
+   s'affichent l'une sous l'autre — une famille sans script trouve quand même
+   la sienne. */
+(function () {
+  var barre = document.querySelector('.fourn-onglets');
+  if (!barre) return;
+  var sections = [].slice.call(document.querySelectorAll('.fourn-cycle'));
+  barre.addEventListener('click', function (e) {
+    var b = e.target.closest('.fc-btn');
+    if (!b) return;
+    sections.forEach(function (s) { s.hidden = s.dataset.cycle !== b.dataset.cycle; });
+    barre.querySelectorAll('.fc-btn').forEach(function (x) {
+      var actif = x === b;
+      x.classList.toggle('on', actif);
+      x.setAttribute('aria-pressed', actif ? 'true' : 'false');
+    });
+  });
+})();

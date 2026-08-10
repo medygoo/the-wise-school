@@ -324,6 +324,59 @@ nav a:hover::after,nav a[aria-current="page"]::after{transform:scaleX(1);transfo
    Un seul bloc, en fin de fichier, pour qu'on ne puisse pas en oublier un
    morceau. Tout ce qui bouge s'arrête ; rien ne disparaît.                 */
 
+/* ── LES ACTUALITÉS ET LES FOURNITURES ─────────────────────────────────────
+   Un site scolaire où rien ne change depuis six mois donne l'impression
+   d'une école endormie. Une actualité en tête, deux à côté : de quoi montrer
+   que l'école vit, sans transformer l'accueil en journal.
+
+   Les listes de fournitures viennent des billets de vacances. Elles sont
+   longues — quatre classes, jusqu'à quarante articles — d'où les onglets :
+   une famille de 2ᵉ primaire n'a pas à lire la liste de la maternelle pour
+   trouver la sienne.
+
+   AUCUN MONTANT n'y figure, et ce n'est pas une omission : les billets en
+   portent (minerval, tranches, cantine, uniforme, papier hygiénique), et
+   Loms a tranché que les frais restent à la Direction. `outils/aucun-montant.mjs`
+   le vérifie sur tout le site et refuse si un chiffre suivi de $ ou de FC
+   réapparaît. Un site public qui affiche un prix ne le retire jamais des
+   copies d'écran déjà prises. */
+.actus{align-items:start;gap:20px}
+.actu{background:var(--white);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+  display:flex;flex-direction:column;margin:0}
+.actu img{width:100%;height:190px;object-fit:cover;display:block}
+.actu-une img{height:300px}
+.actu-corps{padding:18px 20px 22px}
+.actu-corps h3{margin:9px 0 8px;font-size:20px}
+.actu-une .actu-corps h3{font-size:25px}
+.actu-corps p{font-size:14.5px;color:var(--muted);margin:0 0 14px}
+.actu-etiq{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.06em;
+  text-transform:uppercase;padding:4px 10px;border-radius:999px;
+  background:var(--ground);color:#fff}
+.actu-etiq.etiq-or{background:var(--gold-pale);color:var(--gold-deep)}
+.actus-cote{display:grid;gap:20px}
+.actus-cote .actu img{height:150px}
+
+.fourn-onglets{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-bottom:26px}
+.fc-btn{padding:10px 17px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);
+  color:var(--ink);font-family:inherit;font-size:14.5px;font-weight:600;cursor:pointer;
+  transition:background .18s,border-color .18s,color .18s}
+.fc-btn:hover{border-color:var(--ground)}
+.fc-btn.on{background:var(--ground);border-color:var(--ground);color:#fff}
+.fourn-cycle h2{margin:0 0 20px}
+.fourn-grille{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:22px}
+.fourn-langue{background:var(--surface);border-radius:var(--r);padding:20px 22px}
+.fourn-langue h3{margin:0 0 12px;font-size:19px}
+.fourn-langue h4,.fourn-sep{font-size:14px;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--gold-deep);margin:16px 0 8px}
+.fourn-sep{margin-top:26px}
+.fourn{list-style:none;padding:0;margin:0;display:grid;gap:7px}
+.fourn li{position:relative;padding-left:22px;font-size:14.5px;line-height:1.5}
+.fourn li:before{content:"";position:absolute;left:4px;top:8px;width:7px;height:7px;
+  border-radius:50%;background:var(--gold)}
+@media(max-width:720px){.actu-une img{height:215px}.fourn-grille{grid-template-columns:1fr}
+  .fourn-onglets{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .fourn-onglets::-webkit-scrollbar{display:none}.fc-btn{flex:none}}
+
 /* ── COMMENT VENIR ─────────────────────────────────────────────────────────
    Pas de carte externe. Une carte chargée chez un tiers, c'est trois choses
    qu'on ne veut pas : des tuiles à télécharger sur un réseau lent, un
