@@ -4,14 +4,14 @@
   var APP_URL='https://medygoo.github.io/SchoolSafe-/';
   var LANG_KEY='cslesage_langue';
 
-  ['assets/premium.css','assets/premium-layout.css','assets/app-link.css','assets/equipe.css','assets/experience-2026.css','assets/vivant.css'].forEach(function(href){
-    if(!document.querySelector('link[href="'+href+'"]')){
-      var style=document.createElement('link');
-      style.rel='stylesheet';
-      style.href=href;
-      document.head.appendChild(style);
-    }
-  });
+  /* Les feuilles de style ne sont plus injectées ici.
+     Elles l'étaient — six fichiers créés par ce script, en `defer`. Mesuré
+     sur une connexion lente : elles ne commençaient à se charger qu'à
+     5061 ms, juste après la fin de site.js, alors que site.css partait à
+     811 ms. Quatre secondes à ne rien faire, parce que le navigateur ne
+     pouvait pas les découvrir avant d'avoir exécuté ce fichier.
+     Elles sont maintenant assemblées dans `assets/tout.css`, déclarée dans
+     le HTML : un seul aller-retour, découvert immédiatement. */
 
   /* Accès officiel à SchoolSafe sur toutes les pages. */
   var nav=document.querySelector('nav');
