@@ -324,6 +324,33 @@ nav a:hover::after,nav a[aria-current="page"]::after{transform:scaleX(1);transfo
    Un seul bloc, en fin de fichier, pour qu'on ne puisse pas en oublier un
    morceau. Tout ce qui bouge s'arrête ; rien ne disparaît.                 */
 
+/* ── LE CALENDRIER ─────────────────────────────────────────────────────────
+   Une frise, pas un tableau : une famille cherche « c'est quand la rentrée »,
+   pas une grille à déchiffrer. La date est à gauche, en gros, et l'œil la
+   trouve sans lire.
+
+   Deux dates sont mises en avant — la rentrée et l'ENAFEP — parce que ce
+   sont les deux qui décident de quelque chose pour un parent.
+
+   Ce qui n'est PAS ici compte autant : les congés et les trimestres. Je n'ai
+   pas pu les vérifier, et une date fausse sur un calendrier scolaire fait
+   manquer un jour de classe à une famille. Un encadré le dit en toutes
+   lettres plutôt que de laisser un blanc qu'on prendrait pour un oubli. */
+.cal{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:12px;counter-reset:none}
+.cal li{display:flex;gap:18px;align-items:flex-start;background:var(--white);
+  border:1px solid var(--line);border-left:4px solid var(--surface-2);
+  border-radius:var(--r);padding:16px 20px}
+.cal li.cal-fort{border-left-color:var(--gold)}
+.cal-date{flex:none;width:96px;text-align:center;line-height:1.15}
+.cal-date b{display:block;font-family:var(--serif,Georgia,serif);font-size:26px;color:var(--ground)}
+.cal-fort .cal-date b{color:var(--gold-deep)}
+.cal-date i{display:block;font-style:normal;font-size:12.5px;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+.cal li h3{margin:0 0 4px;font-size:19px}
+.cal li p{margin:0}
+@media(max-width:520px){.cal li{gap:13px;padding:14px 15px}.cal-date{width:74px}
+  .cal-date b{font-size:21px}.cal li h3{font-size:17px}}
+
 /* ── LES ACTUALITÉS ET LES FOURNITURES ─────────────────────────────────────
    Un site scolaire où rien ne change depuis six mois donne l'impression
    d'une école endormie. Une actualité en tête, deux à côté : de quoi montrer
