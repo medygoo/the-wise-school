@@ -324,6 +324,39 @@ nav a:hover::after,nav a[aria-current="page"]::after{transform:scaleX(1);transfo
    Un seul bloc, en fin de fichier, pour qu'on ne puisse pas en oublier un
    morceau. Tout ce qui bouge s'arrête ; rien ne disparaît.                 */
 
+/* ── LES FILTRES DE LA GALERIE ─────────────────────────────────────────────
+   Vingt-huit photos d'un coup, c'est un mur : on regarde la première rangée
+   et on s'en va. Sept thèmes, et l'école se raconte au lieu de s'étaler.
+
+   Trois choix qui ne se voient pas mais qui comptent :
+
+   · Le compte est SUR le bouton. « Ateliers 10 » dit avant le clic ce qu'on
+     va trouver ; un filtre qui ouvre sur deux photos déçoit, et on n'en
+     essaie pas un second.
+   · Le bouton choisi est PLEIN, les autres sont nus. Une nuance de gris ne
+     survit pas à un écran de téléphone en plein soleil de Kinshasa.
+   · Rien n'est retiré du DOM. On masque, on ne supprime pas : revenir à
+     « Toutes » ne recharge aucune image, et les photos déjà téléchargées le
+     restent. Sur un forfait mobile, c'est la différence qui se remarque.
+
+   Sans JavaScript, aucun bouton n'est actif et les 28 photos s'affichent —
+   la galerie ne dépend pas du script pour montrer les enfants. */
+.galerie-filtres{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 8px;justify-content:center}
+.gf-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border-radius:999px;
+  border:1.5px solid var(--line);background:var(--white);color:var(--ink);
+  font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;
+  transition:background .18s,border-color .18s,color .18s}
+.gf-btn:hover{border-color:var(--ground)}
+.gf-btn.on{background:var(--ground);border-color:var(--ground);color:#fff}
+.gf-n{font-size:12px;font-weight:700;padding:1px 7px;border-radius:999px;
+  background:var(--surface-2);color:var(--muted)}
+.gf-btn.on .gf-n{background:rgba(255,255,255,.24);color:#fff}
+.gf-compte{text-align:center;font-size:13px;color:var(--muted);margin:0 0 18px;min-height:19px}
+.gallery-item[hidden]{display:none}
+@media(max-width:520px){.galerie-filtres{justify-content:flex-start;flex-wrap:nowrap;
+  overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+  .galerie-filtres::-webkit-scrollbar{display:none}.gf-btn{flex:none}}
+
 /* ── LE DÉFILÉ DES PHOTOS ──────────────────────────────────────────────────
    Une bande d'images qui glisse sans fin. Trois choses la rendent supportable :
 
