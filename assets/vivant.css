@@ -324,6 +324,52 @@ nav a:hover::after,nav a[aria-current="page"]::after{transform:scaleX(1);transfo
    Un seul bloc, en fin de fichier, pour qu'on ne puisse pas en oublier un
    morceau. Tout ce qui bouge s'arrête ; rien ne disparaît.                 */
 
+/* ── COMMENT VENIR ─────────────────────────────────────────────────────────
+   Pas de carte externe. Une carte chargée chez un tiers, c'est trois choses
+   qu'on ne veut pas : des tuiles à télécharger sur un réseau lent, un
+   traceur posé sur des familles qui n'ont rien demandé, et une dépendance
+   qui tombe le jour où le service change ses conditions.
+
+   Ce qui aide vraiment à Barumbu : l'adresse écrite en grand, un lien qui
+   ouvre l'application de cartes DU TÉLÉPHONE, et un numéro pour se faire
+   guider depuis le carrefour. Le petit plan dessiné situe l'école entre
+   l'avenue et le quartier — il ne prétend pas être une carte, et il ne
+   coûte pas une requête. */
+.venir{display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:center;
+  margin-top:30px;background:var(--white);border:1px solid var(--line);
+  border-radius:var(--r);padding:26px 28px}
+.venir h2{font-size:clamp(24px,3vw,32px)}
+.venir-adresse{font-size:16px;line-height:1.7}
+.venir-actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:18px}
+.venir-plan svg{width:100%;height:auto;border-radius:14px;display:block}
+@media(max-width:720px){.venir{grid-template-columns:1fr;padding:22px 20px}
+  .venir-plan{order:-1}.venir-actions .btn{flex:1;text-align:center}}
+
+/* ── LE BOUTON WHATSAPP ────────────────────────────────────────────────────
+   À Kinshasa, WhatsApp EST le téléphone. Il était sur la seule page Contact :
+   deux clics pour joindre l'école depuis la galerie ou les programmes.
+
+   Trois précautions :
+
+   · Il ne recouvre PAS la barre « Inscriptions » du bas. Sur téléphone,
+     `.cta-mobile` occupe le bas de l'écran ; le bouton monte au-dessus.
+   · Il porte un LIBELLÉ, pas seulement une icône. Une pastille verte se
+     confond avec une publicité — un mot dit ce qu'elle fait.
+   · Le message est PRÉ-ÉCRIT. Quelqu'un qui ouvre WhatsApp sur une fenêtre
+     vide referme souvent sans écrire. */
+.wa-flot{position:fixed;right:14px;bottom:16px;z-index:200;display:inline-flex;
+  align-items:center;gap:8px;padding:12px 17px;border-radius:999px;
+  /* #128C4A — le vert de WhatsApp — donne 4,31:1 avec du blanc : SOUS le
+     seuil. Mesuré, pas estimé. #107B41 monte à 5,34:1 et reste le même
+     vert à l'œil. Un bouton qu'on ne lit pas n'est pas un bouton. */
+  background:#107B41;color:#fff;text-decoration:none;font-family:inherit;
+  font-size:14.5px;font-weight:700;box-shadow:0 10px 26px rgba(16,123,65,.34);
+  transition:transform .18s,box-shadow .18s}
+.wa-flot:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(16,123,65,.44);color:#fff}
+.wa-flot svg{width:21px;height:21px;fill:currentColor;flex:none}
+@media(max-width:720px){.wa-flot{bottom:76px;right:11px;padding:11px 15px;font-size:13.5px}}
+@media print{.wa-flot{display:none}}
+
 /* ── LES FILTRES DE LA GALERIE ─────────────────────────────────────────────
    Vingt-huit photos d'un coup, c'est un mur : on regarde la première rangée
    et on s'en va. Sept thèmes, et l'école se raconte au lieu de s'étaler.
