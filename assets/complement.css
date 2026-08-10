@@ -1,0 +1,651 @@
+/* ASSEMBLÉ — ne pas modifier ce fichier.
+   Il est produit par outils/assembler-css.mjs à partir de :
+     premium.css
+     premium-layout.css
+     app-link.css
+     equipe.css
+     experience-2026.css
+     vivant.css
+   Modifiez la source, puis : npm run css
+   Une seule feuille = un seul aller-retour. Sur un lien à 400 ms de
+   latence, ce sont les allers-retours qui coûtent, pas le poids. */
+
+/* ═══ premium.css ═══════════════════════════════════════════ */
+:root{--gris-ecole:#657786;--gris-fonce:#465560;--gris-profond:#29343c;--gris-clair:#e8ecef;--or-premium:#c69422;--or-clair-premium:#e4bb52;--or-pale-premium:#f8edcf;--noir-premium:#111416;--ombre-premium:0 24px 70px rgba(17,20,22,.18)}
+body{color:#22292e}.skip{position:fixed;top:-80px;left:12px;z-index:500;background:#111416;color:#fff;padding:10px 14px;border-radius:8px;text-decoration:none}.skip:focus{top:12px}header{transition:box-shadow .25s,background .25s}header.scrolled{box-shadow:0 10px 32px rgba(17,20,22,.12);background:rgba(255,255,255,.98)}.marque img{width:54px;height:54px;box-shadow:0 0 0 4px rgba(198,148,34,.13)}nav .nav-inscription{background:#111416;color:#fff;margin-left:4px;padding-inline:16px}nav .nav-inscription:hover{background:#465560;color:#fff}
+.btn{border-radius:999px;position:relative;overflow:hidden}.btn:hover{transform:translateY(-2px)}.btn-grand{padding:16px 27px;font-size:15.5px}.btn-noir{background:#111416;color:#fff;box-shadow:0 10px 30px rgba(17,20,22,.2)}.btn-noir:hover{background:#29343c;color:#fff}.btn-verre{border:1px solid rgba(255,255,255,.5);color:#fff;background:rgba(255,255,255,.09);backdrop-filter:blur(10px)}.btn-verre:hover{background:#fff;color:#111416}.actions-centre{justify-content:center}
+.hero-premium{min-height:min(790px,88vh);position:relative;display:flex;align-items:center;overflow:hidden;background:#29343c;color:#fff}.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;filter:brightness(1.03) contrast(1.06) saturate(1.03);animation:premiumZoom 16s ease-out both}@keyframes premiumZoom{to{transform:scale(1.09)}}.hero-voile{position:absolute;inset:0;background:linear-gradient(90deg,rgba(17,20,22,.92),rgba(17,20,22,.72) 44%,rgba(17,20,22,.28) 80%)}.hero-forme{position:absolute;border:1px solid rgba(198,148,34,.35);border-radius:50%;pointer-events:none}.hero-forme-1{width:340px;height:340px;right:-100px;top:-80px;box-shadow:0 0 0 55px rgba(198,148,34,.035),0 0 0 110px rgba(198,148,34,.025)}.hero-forme-2{width:90px;height:90px;right:25%;bottom:12%;background:rgba(198,148,34,.1)}.hero-contenu{position:relative;z-index:3;width:100%;display:grid;grid-template-columns:minmax(0,1fr) 210px;gap:50px;align-items:center;padding-top:76px;padding-bottom:84px}.hero-texte{max-width:730px}.hero-premium h1{font-size:clamp(42px,7vw,84px);color:#fff;text-shadow:0 4px 25px rgba(0,0,0,.35);margin-bottom:20px}.hero-premium h1 em{color:#e4bb52;font-weight:400}.hero-intro{font-size:clamp(17px,2vw,21px);line-height:1.62;color:rgba(255,255,255,.91);max-width:660px}.hero-premium .sur-titre{color:#fff;opacity:.92}.badge-ouvert{display:inline-flex;align-items:center;gap:9px;background:rgba(198,148,34,.18);border:1px solid rgba(228,187,82,.45);padding:7px 13px;border-radius:999px;font-size:12px;font-weight:850;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin-bottom:20px}.badge-ouvert span{width:8px;height:8px;border-radius:50%;background:#e4bb52;box-shadow:0 0 0 5px rgba(228,187,82,.16)}.hero-infos{display:flex;gap:14px 24px;flex-wrap:wrap;margin-top:24px;font-size:13px;font-weight:750;color:rgba(255,255,255,.84)}.hero-carte{justify-self:end;width:190px;aspect-ratio:3/4;border:1px solid rgba(255,255,255,.34);border-radius:90px 90px 22px 22px;background:rgba(255,255,255,.1);backdrop-filter:blur(13px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;text-decoration:none;color:#fff;box-shadow:var(--ombre-premium);transition:.3s}.hero-carte:hover{transform:translateY(-8px);color:#fff;border-color:#e4bb52}.hero-carte-label{font-size:11px;text-transform:uppercase;letter-spacing:.18em;color:#e4bb52;font-weight:850}.hero-carte strong{font-family:Georgia,serif;font-size:31px;line-height:.9;margin:20px 0}.hero-carte>span:last-child{font-size:12px;font-weight:800}.scroll-indice{position:absolute;bottom:22px;left:50%;z-index:4;width:28px;height:44px;border:1px solid rgba(255,255,255,.45);border-radius:20px;transform:translateX(-50%)}.scroll-indice span{position:absolute;top:8px;left:50%;width:4px;height:8px;border-radius:3px;background:#e4bb52;transform:translateX(-50%)}
+.bande-promesse{background:#111416;color:#fff}.bande-promesse-grille{display:grid;grid-template-columns:repeat(4,1fr)}.bande-promesse-grille>div{padding:25px 22px;border-right:1px solid rgba(255,255,255,.12);display:flex;align-items:center;gap:13px}.bande-promesse b{font-family:Georgia,serif;font-size:36px;color:#e4bb52;line-height:1}.bande-promesse span{font-size:12px;line-height:1.35;color:rgba(255,255,255,.76);font-weight:700;text-transform:uppercase}.section-intro{background:linear-gradient(180deg,#fff,#f5f6f7)}.intro-grille,.inscription-grille,.avantages-grille,.documents-grid{align-items:center;gap:65px}.eyebrow{font-size:12px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:#c69422;margin-bottom:16px}.piliers{margin-top:30px;border-top:1px solid rgba(17,20,22,.12)}.piliers>div{display:grid;grid-template-columns:46px 110px 1fr;align-items:center;padding:14px 0;border-bottom:1px solid rgba(17,20,22,.12)}.piliers span{font-family:Georgia,serif;font-size:19px;color:#c69422;font-weight:700}.piliers small{color:#66727a}.composition-photos{position:relative;min-height:570px}.photo-principale{position:absolute;inset:0 0 80px 60px;border-radius:150px 24px 24px 24px;overflow:hidden;box-shadow:var(--ombre-premium);margin:0}.photo-principale img,.photo-secondaire img{width:100%;height:100%;object-fit:cover;filter:brightness(1.03) contrast(1.06) saturate(1.03)}.photo-principale:after{content:"";position:absolute;inset:auto 0 0;height:42%;background:linear-gradient(transparent,rgba(17,20,22,.8))}.photo-principale figcaption{position:absolute;left:26px;bottom:24px;z-index:2;color:#fff}.photo-principale figcaption b{display:block;font-family:Georgia,serif;font-size:24px}.photo-secondaire{position:absolute;left:0;bottom:0;width:190px;height:265px;border:9px solid #fff;border-radius:20px;overflow:hidden;box-shadow:0 20px 55px rgba(17,20,22,.15);margin:0;z-index:3}.sceau{position:absolute;right:-20px;bottom:30px;z-index:4;width:122px;height:122px;border-radius:50%;background:#c69422;display:flex;flex-direction:column;align-items:center;justify-content:center;border:6px solid #fff}.sceau strong{font-family:Georgia,serif;font-size:23px;line-height:1}.sceau span{font-size:13px;font-weight:800;text-transform:uppercase}
+.affiche-premium{position:relative;max-width:510px;margin:auto;padding:14px;background:#fff;border-radius:28px;box-shadow:var(--ombre-premium)}.affiche-premium img{border-radius:17px;width:100%;filter:contrast(1.04) brightness(1.02)}.coin{position:absolute;width:78px;height:78px;border-color:#c69422;border-style:solid}.coin-haut{top:-12px;left:-12px;border-width:4px 0 0 4px}.coin-bas{bottom:-12px;right:-12px;border-width:0 4px 4px 0}.lead{font-size:19px;color:#66727a}.admission-liste{margin-top:28px;border-top:1px solid rgba(17,20,22,.12)}.admission-liste>div{display:grid;grid-template-columns:48px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid rgba(17,20,22,.12)}.admission-liste span{width:39px;height:39px;border-radius:50%;display:grid;place-items:center;background:#111416;color:#e4bb52;font-family:Georgia,serif}.admission-liste p{margin:0;color:#66727a;font-size:14.5px}.admission-liste b{color:#111416}.note-securite{margin-top:23px;background:#fff;border-left:4px solid #c69422;border-radius:0 12px 12px 0;padding:15px 18px;font-size:14px}.titre-section{max-width:760px;margin-bottom:42px}.titre-section.centre{margin-inline:auto}.titre-section>p:last-child{color:#66727a}
+.cycle-card{position:relative;padding:42px;border-radius:28px;background:#fff;border:1px solid rgba(17,20,22,.12);box-shadow:0 20px 55px rgba(17,20,22,.12);overflow:hidden;transition:.3s}.cycle-card:hover{transform:translateY(-6px)}.cycle-num{position:absolute;right:30px;top:24px;font-family:Georgia,serif;font-size:78px;color:rgba(101,119,134,.1);font-weight:700;line-height:1}.cycle-icone{width:50px;height:50px;border-radius:15px;background:#c69422;display:grid;place-items:center;font-size:22px;margin-bottom:24px}.cycle-card p{color:#66727a}.cycle-card a{display:inline-flex;margin-top:16px;font-weight:850;text-decoration:none}.cycle-card-sombre{background:#29343c;color:#fff}.cycle-card-sombre h3,.cycle-card-sombre a{color:#fff}.cycle-card-sombre p{color:rgba(255,255,255,.76)}.liste-check{list-style:none;margin:24px 0 0;padding:0}.liste-check li{padding:9px 0 9px 27px;position:relative;border-bottom:1px solid rgba(17,20,22,.12);font-size:14px}.liste-check li:before{content:"✓";position:absolute;left:0;color:#c69422}.cycle-card-sombre .liste-check li{border-color:rgba(255,255,255,.12)}
+.galerie-accueil{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:250px;gap:14px}.ga{position:relative;margin:0;border-radius:18px;overflow:hidden;background:#e8ecef}.ga-large{grid-column:span 2}.ga img{width:100%;height:100%;object-fit:cover;filter:brightness(1.03) contrast(1.06) saturate(1.03);transition:.55s}.ga:hover img{transform:scale(1.05)}.ga:after{content:"";position:absolute;inset:auto 0 0;height:44%;background:linear-gradient(transparent,rgba(17,20,22,.78))}.ga figcaption{position:absolute;left:17px;bottom:14px;z-index:2;color:#fff;font-family:Georgia,serif;font-size:18px}.avantages-section{background:#29343c;color:#fff}.avantages-section h2{color:#fff}.avantages-section p{color:rgba(255,255,255,.75)}.eyebrow-clair{color:#e4bb52}.avantages-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.avantages-list>div{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:20px;display:flex;gap:13px}.avantages-list span{color:#e4bb52}.avantages-list p{font-size:13px;margin:0}.avantages-list b{color:#fff}.contact-final{background:linear-gradient(135deg,#f8edcf,#fff 58%,#e8ecef)}.contact-final .large{max-width:780px}.contact-final p:not(.eyebrow){color:#66727a;font-size:18px}
+.gallery-hero{padding:82px 0 50px;background:linear-gradient(#f5f6f7,#fff)}.gallery-hero h1{font-size:clamp(43px,7vw,76px)}.gallery-hero .lead{max-width:720px;margin-inline:auto}.gallery-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:115px;gap:13px}.gallery-item{position:relative;margin:0;border-radius:18px;overflow:hidden;background:#e8ecef;grid-column:span 4;grid-row:span 3}.gallery-item.wide{grid-column:span 8}.gallery-item.tall{grid-row:span 5}.gallery-item.large{grid-column:span 8;grid-row:span 4}.gallery-item img{width:100%;height:100%;object-fit:cover;filter:brightness(1.03) contrast(1.06);transition:.55s}.gallery-item:hover img{transform:scale(1.05)}.gallery-item:after{content:"";position:absolute;inset:auto 0 0;height:45%;background:linear-gradient(transparent,rgba(17,20,22,.78))}.gallery-item figcaption{position:absolute;left:17px;bottom:13px;z-index:2;color:#fff;font-family:Georgia,serif;font-size:18px}.gallery-note{margin-top:28px;padding:16px 20px;background:#f5f6f7;border-left:4px solid #c69422;font-size:13px;color:#66727a}
+.admission-hero{min-height:590px}.admission-hero .hero-contenu{grid-template-columns:1fr 390px}.admission-mini-affiche{background:#fff;padding:10px;border-radius:22px;box-shadow:var(--ombre-premium);max-width:360px;justify-self:end}.admission-mini-affiche img{border-radius:14px;filter:contrast(1.04)}.etapes{counter-reset:etape}.etapes .carte{position:relative;padding-top:72px}.etapes .carte:before{counter-increment:etape;content:"0" counter(etape);position:absolute;left:25px;top:19px;font-family:Georgia,serif;font-size:40px;color:#c69422;font-weight:700}.form-wrapper{max-width:940px}.form-header{margin-bottom:32px}.form-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}.documents-affiche{position:sticky;top:100px}.billets-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.billet-card{margin:0;background:#fff;border-radius:20px;padding:10px;box-shadow:0 20px 55px rgba(17,20,22,.12)}.billet-card img{border-radius:13px;width:100%;filter:contrast(1.04) brightness(1.01)}.billet-card figcaption{padding:14px 10px 8px;font-family:Georgia,serif;font-size:18px;color:#111416}.cta-mobile{display:none}
+@media(max-width:980px){.hero-contenu{grid-template-columns:1fr}.hero-carte{display:none}.intro-grille,.inscription-grille,.avantages-grille,.documents-grid{grid-template-columns:1fr}.composition-photos{max-width:650px;margin:20px auto}.gallery-item{grid-column:span 6}.gallery-item.wide,.gallery-item.large{grid-column:span 12}.admission-hero .hero-contenu{grid-template-columns:1fr}.admission-mini-affiche{display:none}.documents-affiche{position:static;max-width:520px;margin:auto}}
+@media(max-width:720px){body{padding-bottom:66px}.hero-premium{min-height:720px;align-items:flex-end}.hero-contenu{padding-top:95px;padding-bottom:96px}.hero-voile{background:linear-gradient(0deg,rgba(17,20,22,.94),rgba(17,20,22,.46))}.hero-photo{object-position:58% center}.hero-premium h1{font-size:clamp(46px,14vw,68px)}.hero-infos{display:grid;gap:7px}.scroll-indice{display:none}.bande-promesse-grille{grid-template-columns:repeat(2,1fr)}.bande-promesse-grille>div{padding:19px 14px}.composition-photos{min-height:470px}.photo-principale{left:22px}.photo-secondaire{width:145px;height:205px}.sceau{width:98px;height:98px;right:-4px}.cycle-card{padding:32px 25px}.galerie-accueil{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px;gap:9px}.ga-large{grid-column:span 2}.avantages-list{grid-template-columns:1fr}.gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:175px;gap:9px}.gallery-item,.gallery-item.wide,.gallery-item.large{grid-column:span 1;grid-row:span 1}.gallery-item.tall{grid-row:span 2}.gallery-item.wide:first-child{grid-column:span 2}.billets-grid{grid-template-columns:1fr}.cta-mobile{position:fixed;display:flex;left:10px;right:10px;bottom:9px;z-index:190;background:#111416;color:#fff;border:1px solid rgba(228,187,82,.45);border-radius:15px;padding:10px 13px;align-items:center;justify-content:space-between;text-decoration:none;box-shadow:0 12px 40px rgba(0,0,0,.35)}.cta-mobile span{font-size:11px;color:rgba(255,255,255,.72)}.cta-mobile b{font-size:13px;color:#e4bb52}}
+@media(prefers-reduced-motion:reduce){.hero-photo{animation:none}}
+
+/* ═══ premium-layout.css ═══════════════════════════════════════════ */
+h1,h2,h3,h4{letter-spacing:-.025em;color:#111416}h2{font-size:clamp(30px,4vw,50px)}h3{font-size:clamp(21px,2.3vw,29px)}.section{padding:clamp(70px,9vw,110px) 0}.section.gris{background:#f5f6f7}.grille{gap:22px}.lead{line-height:1.55}.footer-haut{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:28px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:30px}.footer-marque{display:flex;align-items:center;gap:15px}.footer-marque img{width:68px;height:68px;border-radius:50%;border:2px solid #c69422}.footer-marque h3{font-size:23px;color:#fff;margin:0}.footer-marque p{margin:3px 0 0;font-size:13px}.footer-devise{font-family:Georgia,serif;font-style:italic;color:#e4bb52!important;font-size:20px!important}.footer-grille{gap:35px}.form-wrapper{max-width:940px}.form-header{margin-bottom:32px}.form-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}.billets-grid sup{font-size:.65em}.marque-texte{display:block;min-width:0}@media(max-width:720px){.section{padding:68px 0}.footer-haut{align-items:flex-start;flex-direction:column}.footer-devise{font-size:17px!important}.footer-grille{grid-template-columns:1fr}.bas{flex-direction:column}.piliers>div{grid-template-columns:40px 90px 1fr;gap:4px}.piliers small{font-size:11.5px}}@media(max-width:430px){.marque b,.marque span span{max-width:210px;overflow:hidden;text-overflow:ellipsis}.hero-premium .actions{display:grid}.hero-premium .btn{width:100%}.piliers>div{grid-template-columns:35px 1fr}.piliers small{grid-column:2}}
+
+
+/* ═══ app-link.css ═══════════════════════════════════════════ */
+.nav-application{background:#c69422;color:#111416!important;margin-left:4px;padding-inline:16px!important;font-weight:850!important;box-shadow:0 8px 22px rgba(198,148,34,.22)}
+.nav-application:hover{background:#e4bb52!important;color:#111416!important;transform:translateY(-1px)}
+.footer-application{display:inline-block;margin-top:7px;color:#e4bb52!important;font-weight:800}
+.btn-application{white-space:nowrap}
+.app-fab{position:fixed;right:18px;bottom:18px;z-index:120;display:flex;align-items:center;gap:11px;min-width:230px;padding:12px 14px;border:1px solid rgba(255,255,255,.22);border-radius:18px;background:linear-gradient(135deg,#111416,#465560);color:#fff;text-decoration:none;box-shadow:0 18px 48px rgba(17,20,22,.28);transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;isolation:isolate;overflow:hidden}
+.app-fab:before{content:"";position:absolute;inset:-70% 52% -70% -18%;z-index:-1;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transform:rotate(18deg);animation:appBrillance 5s ease-in-out infinite}
+.app-fab:hover{color:#fff;transform:translateY(-5px);border-color:#e4bb52;box-shadow:0 24px 62px rgba(17,20,22,.34)}
+.app-fab-etoile{display:grid;place-items:center;flex:0 0 42px;width:42px;height:42px;border-radius:50%;background:#c69422;color:#111416;font-size:20px;box-shadow:0 0 0 6px rgba(198,148,34,.13)}
+.app-fab span:nth-child(2){display:flex;flex-direction:column;line-height:1.15}
+.app-fab small{font-size:10px;text-transform:uppercase;letter-spacing:.13em;color:rgba(255,255,255,.7);font-weight:800;margin-bottom:4px}
+.app-fab b{font-size:13.5px;color:#fff}
+.app-fab-fleche{margin-left:auto;color:#e4bb52;font-size:19px}
+@keyframes appBrillance{0%,65%,100%{transform:translateX(-170%) rotate(18deg)}80%{transform:translateX(360%) rotate(18deg)}}
+@media(max-width:900px){.nav-application{margin:7px 0 0!important;border-radius:10px!important;text-align:center}.app-fab{right:12px;left:12px;bottom:74px;min-width:0;justify-content:center}.app-fab-fleche{margin-left:6px}.cta-mobile~.app-fab{bottom:76px}}
+@media(max-width:560px){.app-fab{padding:10px 12px;border-radius:15px}.app-fab-etoile{width:36px;height:36px;flex-basis:36px;font-size:17px}.app-fab small{font-size:9px}.app-fab b{font-size:12.5px}}
+@media(prefers-reduced-motion:reduce){.app-fab:before{animation:none}.app-fab,.nav-application{transition:none}}
+
+
+/* ═══ equipe.css ═══════════════════════════════════════════ */
+/* Équipe pédagogique et administrative — charte gris, or, blanc, noir */
+.equipe-accueil{position:relative;overflow:hidden;background:linear-gradient(135deg,#111416 0%,#29343c 58%,#465560 100%);color:#fff}
+.equipe-accueil:before{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(198,148,34,.23);border-radius:50%;right:-170px;top:-210px;box-shadow:0 0 0 70px rgba(198,148,34,.025),0 0 0 140px rgba(198,148,34,.018)}
+.equipe-accueil .large{position:relative;z-index:2}
+.equipe-accueil h2{color:#fff;max-width:720px}
+.equipe-accueil .equipe-intro{max-width:720px;color:rgba(255,255,255,.78)}
+.equipe-accueil .eyebrow{color:#e4bb52}
+.equipe-grille{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:34px}
+.equipe-card{position:relative;margin:0;border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 20px 55px rgba(0,0,0,.24);min-height:360px;isolation:isolate;transition:transform .38s cubic-bezier(.2,.75,.25,1),box-shadow .38s ease}
+.equipe-card:hover{transform:translateY(-10px) rotate(.25deg);box-shadow:0 30px 80px rgba(0,0,0,.34)}
+.equipe-card img{width:100%;height:100%;min-height:360px;object-fit:cover;display:block;filter:brightness(1.02) contrast(1.05);transition:transform .75s cubic-bezier(.2,.75,.25,1),filter .4s ease}
+.equipe-card:hover img{transform:scale(1.065);filter:brightness(1.06) contrast(1.06)}
+.equipe-card:after{content:"";position:absolute;inset:35% 0 0;background:linear-gradient(transparent,rgba(17,20,22,.92));z-index:1}
+.equipe-card figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:24px 20px 20px;color:#fff}
+.equipe-card figcaption:before{content:"";display:block;width:42px;height:3px;border-radius:3px;background:#c69422;margin-bottom:12px;transition:width .35s ease}
+.equipe-card:hover figcaption:before{width:76px}
+.equipe-card b{display:block;font-family:Georgia,serif;font-size:20px;line-height:1.18;color:#fff}
+.equipe-card span{display:block;margin-top:5px;font-size:12px;font-weight:750;letter-spacing:.08em;text-transform:uppercase;color:#e4bb52}
+.equipe-suite{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.14)}
+.equipe-suite p{margin:0;color:rgba(255,255,255,.76);max-width:650px}
+/* Modernise aussi la section complète déjà présente sur la page L’école. */
+.personne{padding:10px 10px 16px;border-radius:18px;background:#fff;border:1px solid rgba(60,73,83,.11);box-shadow:0 12px 35px rgba(17,20,22,.08);transition:transform .32s ease,box-shadow .32s ease,border-color .32s ease}
+.personne:hover{transform:translateY(-7px);box-shadow:0 24px 55px rgba(17,20,22,.14);border-color:rgba(198,148,34,.48)}
+.personne .scene{border-radius:14px;overflow:hidden}
+.personne .scene img{transition:transform .65s cubic-bezier(.2,.75,.25,1),filter .35s ease;filter:brightness(1.02) contrast(1.04)}
+.personne:hover .scene img{transform:scale(1.055);filter:brightness(1.06) contrast(1.05)}
+.personne>b{margin-top:12px;color:#111416}
+.personne>span{color:#657786}
+@media(max-width:980px){.equipe-grille{grid-template-columns:repeat(2,minmax(0,1fr))}.equipe-card,.equipe-card img{min-height:390px}}
+@media(max-width:620px){.equipe-grille{grid-template-columns:1fr 1fr;gap:10px}.equipe-card,.equipe-card img{min-height:270px}.equipe-card{border-radius:15px}.equipe-card figcaption{padding:17px 13px 13px}.equipe-card b{font-size:15px}.equipe-card span{font-size:9px}.equipe-suite{align-items:flex-start;flex-direction:column}.equipe-suite .btn{width:100%}}
+@media(prefers-reduced-motion:reduce){.equipe-card,.equipe-card img,.equipe-card figcaption:before,.personne,.personne .scene img{transition:none}}
+
+
+/* ═══ experience-2026.css ═══════════════════════════════════════════ */
+/* Expérience d'accueil 2026 : carrousel photo et choix de langue */
+.hero-premium{isolation:isolate}
+.hero-slides{position:absolute;inset:0;z-index:0;overflow:hidden;background:#111416}
+.hero-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity 1.15s ease,transform 6s ease;will-change:opacity,transform}
+.hero-slide.active{opacity:1;transform:scale(1)}
+.hero-premium>.hero-voile{z-index:1}
+.hero-premium>.hero-forme{z-index:2}
+.hero-premium>.hero-contenu,.hero-premium>.scroll-indice{z-index:3}
+.hero-slider-controls{position:absolute;left:50%;bottom:28px;z-index:5;display:flex;align-items:center;gap:10px;transform:translateX(-50%);padding:7px 10px;border:1px solid rgba(255,255,255,.22);border-radius:999px;background:rgba(17,20,22,.48);backdrop-filter:blur(12px);box-shadow:0 12px 38px rgba(0,0,0,.22)}
+.hero-slider-arrow{display:grid;place-items:center;width:31px;height:31px;border:0;border-radius:50%;background:rgba(255,255,255,.13);color:#fff;font-size:18px;cursor:pointer;transition:.25s ease}
+.hero-slider-arrow:hover,.hero-slider-arrow:focus-visible{background:#c69422;color:#111416;transform:scale(1.08)}
+.hero-slider-dots{display:flex;gap:7px}
+.hero-slider-dot{width:8px;height:8px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.48);cursor:pointer;transition:width .3s ease,background .3s ease}
+.hero-slider-dot.active{width:28px;border-radius:99px;background:#e4bb52}
+.hero-slider-status{position:absolute;right:24px;bottom:31px;z-index:4;color:rgba(255,255,255,.82);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;text-shadow:0 2px 10px rgba(0,0,0,.45)}
+.lang-switch{display:flex;align-items:center;gap:2px;margin-left:auto;padding:3px;border:1px solid rgba(101,119,134,.22);border-radius:999px;background:#f7f8f8;box-shadow:0 6px 18px rgba(17,20,22,.07)}
+.lang-switch button{min-width:38px;padding:7px 9px;border:0;border-radius:999px;background:transparent;color:#465560;font-size:11px;font-weight:900;letter-spacing:.08em;cursor:pointer;transition:.22s ease}
+.lang-switch button.active{background:#111416;color:#e4bb52;box-shadow:0 5px 14px rgba(17,20,22,.18)}
+.lang-switch button:hover:not(.active){background:rgba(198,148,34,.14);color:#111416}
+.gallery-item.nouvelle-photo:before{content:'Nouveau';position:absolute;top:12px;left:12px;z-index:3;padding:6px 9px;border-radius:999px;background:#c69422;color:#111416;font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.gallery-item.nouvelle-photo{position:relative}
+@media(max-width:980px){.lang-switch{order:2;margin-left:8px}.hero-slider-status{display:none}}
+@media(max-width:760px){.hero-slider-controls{bottom:84px}.hero-slide[data-focus='left']{object-position:35% center}.hero-slide[data-focus='right']{object-position:65% center}.lang-switch{position:absolute;right:58px;top:50%;transform:translateY(-50%)}.lang-switch button{min-width:34px;padding:6px 7px}.hero-premium .hero-contenu{padding-bottom:130px}}
+@media(prefers-reduced-motion:reduce){.hero-slide{transition:opacity .25s linear;transform:none!important}.hero-slider-arrow,.hero-slider-dot,.lang-switch button{transition:none}}
+
+
+/* ═══ vivant.css ═══════════════════════════════════════════ */
+/* ═══════════════════════════════════════════════════════════════════════════
+   VIVANT — typographie, lumière et mouvement
+   ═══════════════════════════════════════════════════════════════════════════
+
+   Demande de Loms, 5 août 2026 : des animations, des effets modernes, du
+   mouvement, plusieurs écritures et de la calligraphie, « un site
+   impeccable ».
+
+   Trois règles tenues d'un bout à l'autre de ce fichier :
+
+   1. RIEN QUI REDESSINE LA PAGE. Toute animation porte sur `opacity`,
+      `transform`, `filter` ou `mask` — jamais sur une largeur, une hauteur,
+      une marge ou un `top`. Une école se visite depuis un téléphone d'entrée
+      de gamme à Kinshasa : une animation qui recalcule la mise en page y
+      saccade, et un site qui saccade paraît cassé, pas moderne.
+   2. TOUT SE TAIT si l'appareil demande le calme. Un seul bloc
+      `prefers-reduced-motion` en fin de fichier, pas une exception par-ci
+      par-là qu'on oublie de mettre à jour.
+   3. AUCUNE ANIMATION NE PORTE UNE INFORMATION. Si le mouvement ne part
+      pas — script bloqué, moteur ancien, préférence système — la page reste
+      entière et lisible. Le décor s'ajoute, il ne remplace rien.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── LES ÉCRITURES ────────────────────────────────────────────────────────
+   Hébergées ici, pas chez un tiers. Une école de Kinshasa n'a pas à faire
+   dépendre l'affichage de son nom d'un serveur qui n'est pas le sien — et
+   un aller-retour de moins, c'est une seconde gagnée sur un réseau lent.
+   `font-display:swap` : le texte s'affiche tout de suite dans la police du
+   système, puis se réécrit. On ne cache jamais un nom d'école en attendant
+   une police.                                                              */
+@font-face{
+  font-family:'Playfair Display';font-style:normal;font-weight:500 800;
+  font-display:swap;src:url('polices/playfair-display-normal.woff2') format('woff2');
+}
+@font-face{
+  font-family:'Playfair Display';font-style:italic;font-weight:500 700;
+  font-display:swap;src:url('polices/playfair-display-italic.woff2') format('woff2');
+}
+/* La calligraphie : réservée aux ACCENTS. Une école se lit, elle ne se
+   déchiffre pas — un titre entier dans cette écriture serait joli et
+   illisible. */
+@font-face{
+  font-family:'Cormorant Garamond';font-style:italic;font-weight:600;
+  font-display:swap;src:url('polices/cormorant-garamond-italic.woff2') format('woff2');
+}
+
+:root{
+  --titre:'Playfair Display',Georgia,'Times New Roman',serif;
+  --calligraphie:'Cormorant Garamond',Georgia,serif;
+  --or-clair:#e4bb52;
+  --or:#c69422;
+}
+
+h1,h2,h3,.hero-carte strong,.cycle-card h3,.stat-nombre{
+  font-family:var(--titre);
+  letter-spacing:-.015em;
+}
+h1{font-weight:800}
+h2{font-weight:700}
+
+/* L'accent calligraphié. Une taille un peu plus grande que le texte qui
+   l'entoure : ces lettres sont plus étroites, sinon elles paraissent
+   rapetissées. */
+.calligraphie,.hero-premium h1 em,.devise-calligraphie{
+  font-family:var(--calligraphie);
+  font-style:italic;font-weight:600;
+  font-size:1.14em;letter-spacing:.005em;
+}
+
+/* Le sur-titre : des capitales espacées, et un filet qui se dessine. */
+.eyebrow,.sur-titre{
+  font-family:var(--titre);
+  font-style:italic;font-weight:600;
+  letter-spacing:.06em;text-transform:none;
+}
+
+/* ── LE HÉROS : LA PHOTOGRAPHIE DOIT SE VOIR ──────────────────────────────
+
+   Le voile montait à .92 à gauche. Les photographies étaient bien chargées
+   et bien affichées — elles étaient simplement ENFOUIES : sur la capture,
+   l'accueil paraissait noir.
+
+   C'est la TROISIÈME fois que cette faute se produit dans ce projet :
+   l'écran de connexion de l'application, puis le héros de l'ancien site,
+   puis celui-ci. À chaque fois le même geste — assombrir l'écran ENTIER
+   pour un texte qui n'occupe qu'un bloc.
+
+   Ici : le voile descend à .30, et c'est le BLOC DE TEXTE qui pose son
+   fond, à une seule valeur (.64), adouci par un masque qui ne s'éteint que
+   sur les bords. Calculé sur le point le plus CLAIR du voile (.10, à
+   droite) : 1 − (1 − .10) × (1 − .64) = .676.
+
+   Sur une photographie ENTIÈREMENT BLANCHE — le pire cas :
+       titre 6,31:1 · intro 5,57:1 · sur-titre 5,65:1
+       « exceller. », arrêt le plus sombre du dégradé d'or 3,10:1
+   Mesuré par `outils/contraste-heros.mjs`, qui refuse si on éclaircit trop.
+
+   Un dégradé n'a pas UNE opacité, il en a autant que de points : aucune
+   garantie ne peut reposer dessus. Le fond du texte porte donc une valeur
+   unique — c'est précisément ce qui le rend vérifiable.                    */
+.hero-premium>.hero-voile{
+  background:linear-gradient(96deg,
+    rgba(17,20,22,.30) 0%,
+    rgba(17,20,22,.26) 46%,
+    rgba(17,20,22,.16) 74%,
+    rgba(17,20,22,.10) 100%);
+}
+.hero-texte{position:relative;isolation:isolate}
+.hero-texte::before{
+  content:"";position:absolute;z-index:-1;pointer-events:none;
+  left:-34%;right:-30%;top:-34%;bottom:-34%;
+  /* .64 et non .55 : le voile va de .30 à gauche à .10 à droite, et une
+     garantie qui dépendrait de l'endroit où le bloc se trouve n'est pas une
+     garantie. On la calcule donc sur le point le plus CLAIR du voile (.10) :
+     1 − (1 − .10) × (1 − .64) = .676. Le texte peut être déplacé demain
+     sans que la lisibilité tombe. */
+  background:rgba(17,20,22,.64);
+  -webkit-mask-image:radial-gradient(72% 58% at 40% 50%,#000 0%,#000 44%,transparent 100%);
+          mask-image:radial-gradient(72% 58% at 40% 50%,#000 0%,#000 44%,transparent 100%);
+}
+
+/* Une aurore qui dérive derrière la photographie. Deux voiles de couleur
+   très faibles, en `screen` : ils éclairent sans laver l'image, et ils ne
+   touchent JAMAIS la zone du texte — le calcul de contraste ci-dessus
+   resterait faux s'ils l'éclaircissaient. */
+.hero-premium::after{
+  content:"";position:absolute;inset:-20%;z-index:2;pointer-events:none;
+  background:
+    radial-gradient(38% 46% at 78% 22%, rgba(228,187,82,.20), transparent 70%),
+    radial-gradient(34% 40% at 90% 78%, rgba(96,165,250,.14), transparent 70%);
+  mix-blend-mode:screen;
+  animation:aurore 22s ease-in-out infinite alternate;
+}
+@keyframes aurore{
+  from{transform:translate3d(0,0,0) scale(1)}
+  to  {transform:translate3d(-3%,2%,0) scale(1.08)}
+}
+
+/* Le grain : ce qui empêche un grand aplat sombre de paraître plat, et ce
+   qui masque les bandes de dégradé sur les écrans à 6 bits — très répandus
+   sur les téléphones d'entrée de gamme. Une seule image SVG en ligne, donc
+   aucune requête. */
+.hero-premium>.hero-voile::after{
+  content:"";position:absolute;inset:0;opacity:.16;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23g)' opacity='.5'/%3E%3C/svg%3E");
+}
+
+/* Le titre arrive lettre par ligne, comme un rideau qui se lève. */
+.hero-texte h1{overflow:hidden}
+.hero-texte h1>span,.hero-texte h1{display:block}
+/* L'or de « exceller. » n'est pas une couleur mais un dégradé animé : il
+   faut donc que CHACUN de ses arrêts passe le seuil, pas seulement le plus
+   clair. `#c69422` — l'or de la charte — donnait 2,30:1 sur une
+   photographie blanche : le mot devenait illisible une seconde sur deux, au
+   passage du dégradé. Le plus sombre remonte à `#dcb043` (3,10:1).
+   Ailleurs sur le site, sur fond sombre plein, l'or de la charte reste. */
+.hero-premium h1 em{
+  background:linear-gradient(100deg,#f4d98a,#e4bb52 35%,#dcb043 70%,#f4d98a);
+  background-size:220% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  animation:orQuiCoule 9s ease-in-out infinite;
+}
+@keyframes orQuiCoule{
+  0%,100%{background-position:0% 50%}
+  50%    {background-position:100% 50%}
+}
+/* Repli : si le navigateur ne sait pas découper un fond sur du texte, la
+   couleur d'origine reste. Sans cela le mot disparaîtrait. */
+@supports not ((-webkit-background-clip:text) or (background-clip:text)){
+  .hero-premium h1 em{-webkit-text-fill-color:var(--or-clair);color:var(--or-clair)}
+}
+
+/* La barre du carrousel : cinq secondes qui se voient. Ce n'est pas du
+   décor — c'est la seule chose qui dise « ça va changer, patiente ». */
+.hero-slider-dot{position:relative;overflow:hidden}
+.hero-slider-dot.active::after{
+  content:"";position:absolute;inset:0;border-radius:inherit;
+  background:rgba(255,255,255,.55);
+  transform-origin:left center;
+  animation:barreCinqSecondes 5s linear forwards;
+}
+@keyframes barreCinqSecondes{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* ── LE MOUVEMENT AU DÉFILEMENT ───────────────────────────────────────────
+   Le retard entre voisins est posé par le script, pas par une règle par
+   enfant : c'est lui qui donne l'impression de vie plutôt qu'un bloc qui
+   tombe d'un coup.                                                        */
+.apparait{opacity:0;transform:translate3d(0,18px,0);transition:opacity .62s cubic-bezier(.2,.7,.3,1),transform .62s cubic-bezier(.2,.7,.3,1)}
+.apparait.vu{opacity:1;transform:none}
+.apparait[style*="--retard"]{transition-delay:var(--retard)}
+
+/* Le filet or se dessine de gauche à droite quand la section entre. */
+.filet,.titre-section .filet{transform-origin:left center}
+.apparait .filet{transform:scaleX(0);transition:transform .8s .12s cubic-bezier(.2,.7,.3,1)}
+.apparait.vu .filet{transform:scaleX(1)}
+
+/* ── LES CARTES ───────────────────────────────────────────────────────────
+   Un reflet passe une fois au survol. `transform` seul : rien ne bouge dans
+   la mise en page, donc rien ne saccade.                                   */
+.carte,.cycle-card,.avantages-list>div,.piliers>div{
+  position:relative;overflow:hidden;
+  transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s ease;
+}
+.carte:hover,.cycle-card:hover,.avantages-list>div:hover,.piliers>div:hover{
+  transform:translate3d(0,-6px,0);
+}
+.carte::after,.cycle-card::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.16) 50%,transparent 62%);
+  transform:translate3d(-130%,0,0);
+  transition:transform .85s cubic-bezier(.2,.7,.3,1);
+}
+.carte:hover::after,.cycle-card:hover::after{transform:translate3d(130%,0,0)}
+
+/* ── LES PHOTOGRAPHIES ────────────────────────────────────────────────────
+   Elles s'approchent doucement, et une légende monte du bas.               */
+.zoomable img,.ga img,.gallery-item img,.scene img{
+  transition:transform .7s cubic-bezier(.2,.7,.3,1),filter .5s ease;
+}
+.zoomable:hover img,.ga:hover img,.gallery-item:hover img{
+  transform:scale(1.055);filter:saturate(1.08);
+}
+.ga,.gallery-item{position:relative;overflow:hidden}
+.ga figcaption,.gallery-item figcaption{
+  transform:translate3d(0,110%,0);opacity:0;
+  transition:transform .45s cubic-bezier(.2,.7,.3,1),opacity .45s ease;
+}
+.ga:hover figcaption,.gallery-item:hover figcaption{transform:none;opacity:1}
+
+/* ── LES BOUTONS ──────────────────────────────────────────────────────────
+   Une onde part du point cliqué. Elle est posée par le script en variables
+   `--x` et `--y` ; sans script, le bouton reste un bouton.                 */
+.btn{position:relative;overflow:hidden;isolation:isolate;transition:transform .25s ease,box-shadow .25s ease}
+.btn:hover{transform:translate3d(0,-2px,0)}
+.btn:active{transform:translate3d(0,0,0)}
+.btn::after{
+  content:"";position:absolute;z-index:-1;left:var(--x,50%);top:var(--y,50%);
+  width:0;height:0;border-radius:50%;
+  background:rgba(255,255,255,.28);
+  transform:translate(-50%,-50%);
+  transition:width .55s ease,height .55s ease,opacity .55s ease;
+  opacity:0;
+}
+.btn:hover::after{width:280%;height:280%;opacity:1}
+.btn-or::after{background:rgba(17,20,22,.16)}
+
+/* ── LE FILET DE PROGRESSION DE LA PAGE ───────────────────────────────────
+   Posé en haut, il dit où l'on en est dans la lecture. `scaleX` uniquement.
+   Il est piloté par le script ; sans lui, il reste à zéro et invisible.    */
+.progression-page{
+  position:fixed;top:0;left:0;right:0;height:3px;z-index:300;
+  transform:scaleX(var(--lu,0));transform-origin:left center;
+  background:linear-gradient(90deg,var(--or),var(--or-clair),var(--or));
+  pointer-events:none;
+}
+
+/* ── LA BANDE DÉFILANTE ───────────────────────────────────────────────────
+   Les promesses de l'école passent en continu. Le contenu est DOUBLÉ dans
+   le script pour que la boucle soit invisible ; s'il n'y a qu'une copie,
+   on voit un saut à chaque tour.                                          */
+.bande-defilante{
+  overflow:hidden;border-block:1px solid rgba(198,148,34,.28);
+  background:rgba(17,20,22,.03);padding:15px 0;
+}
+.bande-defilante-piste{
+  display:flex;gap:0;width:max-content;
+  animation:defile 34s linear infinite;
+}
+.bande-defilante-piste:hover{animation-play-state:paused}
+.bande-defilante span{
+  display:inline-flex;align-items:center;gap:16px;padding:0 26px;
+  font-family:var(--titre);font-size:19px;font-style:italic;font-weight:600;
+  color:#3a4248;white-space:nowrap;
+}
+.bande-defilante span::after{content:"◆";color:var(--or);font-size:9px;font-style:normal}
+@keyframes defile{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+
+/* ── LES NOMBRES QUI MONTENT ──────────────────────────────────────────────
+   `font-variant-numeric:tabular-nums` : sans cela, la largeur du chiffre
+   change à chaque incrément et toute la ligne tremble.                     */
+.bande-promesse-grille b,.stat-nombre{
+  font-family:var(--titre);font-variant-numeric:tabular-nums;
+}
+
+/* ── LES LIENS DU MENU ────────────────────────────────────────────────────
+   Un trait or se dessine sous le lien survolé, et reste sous la page en
+   cours.                                                                   */
+nav a{position:relative}
+nav a::after{
+  content:"";position:absolute;left:12px;right:12px;bottom:4px;height:2px;
+  background:var(--or);border-radius:2px;
+  transform:scaleX(0);transform-origin:right center;
+  transition:transform .35s cubic-bezier(.2,.7,.3,1);
+}
+nav a:hover::after,nav a[aria-current="page"]::after{transform:scaleX(1);transform-origin:left center}
+
+/* ── DEUX CORRECTIONS DE MISE EN PAGE ─────────────────────────────────────
+
+   1. La légende « Une école vivante » était CACHÉE derrière la photo
+      secondaire : celle-ci est posée à `left:0;bottom:0` sur 190 px plus
+      18 px de cadre, et la légende commençait à 26 px. On lisait
+      « …vivante » et « …nsemble, bouger et partager ». La légende passe à
+      droite de la photo.
+   2. Sur un téléphone, le bloc de texte occupe presque toute la largeur :
+      son fond doit le serrer de près, sinon il recouvre le héros entier et
+      la photographie disparaît de nouveau.                                */
+.photo-principale figcaption{left:238px;right:22px}
+@media(max-width:720px){
+  .photo-principale figcaption{left:180px;right:16px}
+  .photo-principale figcaption b{font-size:19px}
+  .hero-texte::before{
+    left:-14%;right:-14%;top:-8%;bottom:-10%;
+    -webkit-mask-image:radial-gradient(96% 74% at 50% 52%,#000 0%,#000 56%,transparent 100%);
+            mask-image:radial-gradient(96% 74% at 50% 52%,#000 0%,#000 56%,transparent 100%);
+  }
+  /* La bande défilante va deux fois plus vite sur un petit écran : sinon
+     un seul mot tient à l'image et rien ne semble bouger. */
+  .bande-defilante span{font-size:16px;padding:0 18px}
+  .bande-defilante-piste{animation-duration:22s}
+}
+
+/* ── LE CALME DEMANDÉ ─────────────────────────────────────────────────────
+   Un seul bloc, en fin de fichier, pour qu'on ne puisse pas en oublier un
+   morceau. Tout ce qui bouge s'arrête ; rien ne disparaît.                 */
+
+/* ── LE CALENDRIER ─────────────────────────────────────────────────────────
+   Une frise, pas un tableau : une famille cherche « c'est quand la rentrée »,
+   pas une grille à déchiffrer. La date est à gauche, en gros, et l'œil la
+   trouve sans lire.
+
+   Deux dates sont mises en avant — la rentrée et l'ENAFEP — parce que ce
+   sont les deux qui décident de quelque chose pour un parent.
+
+   Ce qui n'est PAS ici compte autant : les congés et les trimestres. Je n'ai
+   pas pu les vérifier, et une date fausse sur un calendrier scolaire fait
+   manquer un jour de classe à une famille. Un encadré le dit en toutes
+   lettres plutôt que de laisser un blanc qu'on prendrait pour un oubli. */
+.cal{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:12px;counter-reset:none}
+.cal li{display:flex;gap:18px;align-items:flex-start;background:var(--white);
+  border:1px solid var(--line);border-left:4px solid var(--surface-2);
+  border-radius:var(--r);padding:16px 20px}
+.cal li.cal-fort{border-left-color:var(--gold)}
+.cal-date{flex:none;width:96px;text-align:center;line-height:1.15}
+.cal-date b{display:block;font-family:var(--serif,Georgia,serif);font-size:26px;color:var(--ground)}
+.cal-fort .cal-date b{color:var(--gold-deep)}
+.cal-date i{display:block;font-style:normal;font-size:12.5px;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+.cal li h3{margin:0 0 4px;font-size:19px}
+.cal li p{margin:0}
+@media(max-width:520px){.cal li{gap:13px;padding:14px 15px}.cal-date{width:74px}
+  .cal-date b{font-size:21px}.cal li h3{font-size:17px}}
+
+/* ── LES ACTUALITÉS ET LES FOURNITURES ─────────────────────────────────────
+   Un site scolaire où rien ne change depuis six mois donne l'impression
+   d'une école endormie. Une actualité en tête, deux à côté : de quoi montrer
+   que l'école vit, sans transformer l'accueil en journal.
+
+   Les listes de fournitures viennent des billets de vacances. Elles sont
+   longues — quatre classes, jusqu'à quarante articles — d'où les onglets :
+   une famille de 2ᵉ primaire n'a pas à lire la liste de la maternelle pour
+   trouver la sienne.
+
+   AUCUN MONTANT n'y figure, et ce n'est pas une omission : les billets en
+   portent (minerval, tranches, cantine, uniforme, papier hygiénique), et
+   Loms a tranché que les frais restent à la Direction. `outils/aucun-montant.mjs`
+   le vérifie sur tout le site et refuse si un chiffre suivi de $ ou de FC
+   réapparaît. Un site public qui affiche un prix ne le retire jamais des
+   copies d'écran déjà prises. */
+.actus{align-items:start;gap:20px}
+.actu{background:var(--white);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+  display:flex;flex-direction:column;margin:0}
+.actu img{width:100%;height:190px;object-fit:cover;display:block}
+.actu-une img{height:300px}
+.actu-corps{padding:18px 20px 22px}
+.actu-corps h3{margin:9px 0 8px;font-size:20px}
+.actu-une .actu-corps h3{font-size:25px}
+.actu-corps p{font-size:14.5px;color:var(--muted);margin:0 0 14px}
+.actu-etiq{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.06em;
+  text-transform:uppercase;padding:4px 10px;border-radius:999px;
+  background:var(--ground);color:#fff}
+.actu-etiq.etiq-or{background:var(--gold-pale);color:var(--gold-deep)}
+.actus-cote{display:grid;gap:20px}
+.actus-cote .actu img{height:150px}
+
+.fourn-onglets{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-bottom:26px}
+.fc-btn{padding:10px 17px;border-radius:999px;border:1.5px solid var(--line);background:var(--white);
+  color:var(--ink);font-family:inherit;font-size:14.5px;font-weight:600;cursor:pointer;
+  transition:background .18s,border-color .18s,color .18s}
+.fc-btn:hover{border-color:var(--ground)}
+.fc-btn.on{background:var(--ground);border-color:var(--ground);color:#fff}
+.fourn-cycle h2{margin:0 0 20px}
+.fourn-grille{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:22px}
+.fourn-langue{background:var(--surface);border-radius:var(--r);padding:20px 22px}
+.fourn-langue h3{margin:0 0 12px;font-size:19px}
+.fourn-langue h4,.fourn-sep{font-size:14px;text-transform:uppercase;letter-spacing:.06em;
+  color:var(--gold-deep);margin:16px 0 8px}
+.fourn-sep{margin-top:26px}
+.fourn{list-style:none;padding:0;margin:0;display:grid;gap:7px}
+.fourn li{position:relative;padding-left:22px;font-size:14.5px;line-height:1.5}
+.fourn li:before{content:"";position:absolute;left:4px;top:8px;width:7px;height:7px;
+  border-radius:50%;background:var(--gold)}
+@media(max-width:720px){.actu-une img{height:215px}.fourn-grille{grid-template-columns:1fr}
+  .fourn-onglets{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .fourn-onglets::-webkit-scrollbar{display:none}.fc-btn{flex:none}}
+
+/* ── COMMENT VENIR ─────────────────────────────────────────────────────────
+   Pas de carte externe. Une carte chargée chez un tiers, c'est trois choses
+   qu'on ne veut pas : des tuiles à télécharger sur un réseau lent, un
+   traceur posé sur des familles qui n'ont rien demandé, et une dépendance
+   qui tombe le jour où le service change ses conditions.
+
+   Ce qui aide vraiment à Barumbu : l'adresse écrite en grand, un lien qui
+   ouvre l'application de cartes DU TÉLÉPHONE, et un numéro pour se faire
+   guider depuis le carrefour. Le petit plan dessiné situe l'école entre
+   l'avenue et le quartier — il ne prétend pas être une carte, et il ne
+   coûte pas une requête. */
+.venir{display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:center;
+  margin-top:30px;background:var(--white);border:1px solid var(--line);
+  border-radius:var(--r);padding:26px 28px}
+.venir h2{font-size:clamp(24px,3vw,32px)}
+.venir-adresse{font-size:16px;line-height:1.7}
+.venir-actions{display:flex;gap:11px;flex-wrap:wrap;margin-top:18px}
+.venir-plan svg{width:100%;height:auto;border-radius:14px;display:block}
+@media(max-width:720px){.venir{grid-template-columns:1fr;padding:22px 20px}
+  .venir-plan{order:-1}.venir-actions .btn{flex:1;text-align:center}}
+
+/* ── LE BOUTON WHATSAPP ────────────────────────────────────────────────────
+   À Kinshasa, WhatsApp EST le téléphone. Il était sur la seule page Contact :
+   deux clics pour joindre l'école depuis la galerie ou les programmes.
+
+   Trois précautions :
+
+   · Il ne recouvre PAS la barre « Inscriptions » du bas. Sur téléphone,
+     `.cta-mobile` occupe le bas de l'écran ; le bouton monte au-dessus.
+   · Il porte un LIBELLÉ, pas seulement une icône. Une pastille verte se
+     confond avec une publicité — un mot dit ce qu'elle fait.
+   · Le message est PRÉ-ÉCRIT. Quelqu'un qui ouvre WhatsApp sur une fenêtre
+     vide referme souvent sans écrire. */
+.wa-flot{position:fixed;right:14px;bottom:16px;z-index:200;display:inline-flex;
+  align-items:center;gap:8px;padding:12px 17px;border-radius:999px;
+  /* #128C4A — le vert de WhatsApp — donne 4,31:1 avec du blanc : SOUS le
+     seuil. Mesuré, pas estimé. #107B41 monte à 5,34:1 et reste le même
+     vert à l'œil. Un bouton qu'on ne lit pas n'est pas un bouton. */
+  background:#107B41;color:#fff;text-decoration:none;font-family:inherit;
+  font-size:14.5px;font-weight:700;box-shadow:0 10px 26px rgba(16,123,65,.34);
+  transition:transform .18s,box-shadow .18s}
+.wa-flot:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(16,123,65,.44);color:#fff}
+.wa-flot svg{width:21px;height:21px;fill:currentColor;flex:none}
+@media(max-width:720px){.wa-flot{bottom:76px;right:11px;padding:11px 15px;font-size:13.5px}}
+@media print{.wa-flot{display:none}}
+
+/* ── LES FILTRES DE LA GALERIE ─────────────────────────────────────────────
+   Vingt-huit photos d'un coup, c'est un mur : on regarde la première rangée
+   et on s'en va. Sept thèmes, et l'école se raconte au lieu de s'étaler.
+
+   Trois choix qui ne se voient pas mais qui comptent :
+
+   · Le compte est SUR le bouton. « Ateliers 10 » dit avant le clic ce qu'on
+     va trouver ; un filtre qui ouvre sur deux photos déçoit, et on n'en
+     essaie pas un second.
+   · Le bouton choisi est PLEIN, les autres sont nus. Une nuance de gris ne
+     survit pas à un écran de téléphone en plein soleil de Kinshasa.
+   · Rien n'est retiré du DOM. On masque, on ne supprime pas : revenir à
+     « Toutes » ne recharge aucune image, et les photos déjà téléchargées le
+     restent. Sur un forfait mobile, c'est la différence qui se remarque.
+
+   Sans JavaScript, aucun bouton n'est actif et les 28 photos s'affichent —
+   la galerie ne dépend pas du script pour montrer les enfants. */
+.galerie-filtres{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 8px;justify-content:center}
+.gf-btn{display:inline-flex;align-items:center;gap:7px;padding:9px 15px;border-radius:999px;
+  border:1.5px solid var(--line);background:var(--white);color:var(--ink);
+  font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;
+  transition:background .18s,border-color .18s,color .18s}
+.gf-btn:hover{border-color:var(--ground)}
+.gf-btn.on{background:var(--ground);border-color:var(--ground);color:#fff}
+.gf-n{font-size:12px;font-weight:700;padding:1px 7px;border-radius:999px;
+  background:var(--surface-2);color:var(--muted)}
+.gf-btn.on .gf-n{background:rgba(255,255,255,.24);color:#fff}
+.gf-compte{text-align:center;font-size:13px;color:var(--muted);margin:0 0 18px;min-height:19px}
+.gallery-item[hidden]{display:none}
+@media(max-width:520px){.galerie-filtres{justify-content:flex-start;flex-wrap:nowrap;
+  overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+  .galerie-filtres::-webkit-scrollbar{display:none}.gf-btn{flex:none}}
+
+/* ── LE DÉFILÉ DES PHOTOS ──────────────────────────────────────────────────
+   Une bande d'images qui glisse sans fin. Trois choses la rendent supportable :
+
+   1. Elle ne SAUTE jamais. La piste porte deux fois la même série et se
+      translate d'exactement -50 % : à la fin du cycle, l'image sous les yeux
+      est celle du début. Une boucle qui saute se remarque plus qu'une boucle
+      absente.
+   2. Elle s'ARRÊTE — au survol, au clavier, et par un bouton. Un mouvement
+      qu'on ne peut pas arrêter est un mouvement qui gêne, et il gêne d'abord
+      ceux qui lisent lentement.
+   3. Elle DISPARAÎT pour qui a demandé moins d'animation (règle plus bas).
+
+   Les images sont servies en 520/560 px : la bande n'en montre jamais plus de
+   240, charger le 1040 serait payer une définition que personne ne voit. */
+.defile{position:relative;overflow:hidden;margin:26px 0 0;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
+.defile-piste{display:flex;gap:14px;width:max-content;animation:defile 64s linear infinite}
+.defile:hover .defile-piste,.defile:focus-within .defile-piste,
+.defile.pause .defile-piste{animation-play-state:paused}
+.defile img{width:240px;height:160px;object-fit:cover;border-radius:14px;flex:none;
+  box-shadow:0 6px 18px rgba(26,34,40,.16)}
+@keyframes defile{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+.defile-pause{position:absolute;right:10px;bottom:10px;width:38px;height:38px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.55);background:rgba(26,34,40,.78);color:#fff;
+  font-size:14px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.defile-pause:hover{background:rgba(26,34,40,.94)}
+@media(max-width:520px){.defile img{width:170px;height:118px}.defile-piste{animation-duration:48s}}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-premium::after,
+  .hero-premium h1 em,
+  .hero-slider-dot.active::after,
+  .bande-defilante-piste{animation:none}
+  .hero-premium h1 em{
+    -webkit-text-fill-color:var(--or-clair);color:var(--or-clair);
+  }
+  .apparait{opacity:1;transform:none;transition:none}
+  .apparait .filet{transform:none;transition:none}
+  .carte,.cycle-card,.avantages-list>div,.piliers>div,
+  .zoomable img,.ga img,.gallery-item img,.scene img,
+  .btn,.btn::after,nav a::after,
+  .ga figcaption,.gallery-item figcaption{transition:none}
+  .carte:hover,.cycle-card:hover,.btn:hover,
+  .zoomable:hover img,.ga:hover img,.gallery-item:hover img{transform:none}
+  .ga figcaption,.gallery-item figcaption{transform:none;opacity:1}
+  .progression-page{display:none}
+  /* Le défilé s'arrête net. Il ne disparaît pas : les photos restent
+     visibles et se font défiler au doigt — on retire le mouvement,
+     pas le contenu. */
+  .defile-piste{animation:none}
+  .defile{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .defile-pause{display:none}
+}
