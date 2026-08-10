@@ -631,3 +631,38 @@ document.querySelectorAll('.defile-pause').forEach(function (b) {
     b.setAttribute('aria-label', enPause ? 'Reprendre le défilé' : 'Mettre le défilé en pause');
   });
 });
+
+
+/* Les filtres de la galerie. `hidden` plutôt qu'une classe : c'est l'attribut
+   que les lecteurs d'écran comprennent sans qu'on ait à le leur expliquer. */
+(function () {
+  var barre = document.querySelector('.galerie-filtres');
+  if (!barre) return;
+  var grille = document.querySelector('.gallery-grid');
+  var compte = document.querySelector('.gf-compte');
+  if (!grille) return;
+  var photos = [].slice.call(grille.querySelectorAll('.gallery-item'));
+
+  function appliquer(theme) {
+    var n = 0;
+    photos.forEach(function (f) {
+      var vu = theme === 'tout' || f.dataset.theme === theme;
+      f.hidden = !vu;
+      if (vu) n++;
+    });
+    barre.querySelectorAll('.gf-btn').forEach(function (b) {
+      var actif = b.dataset.filtre === theme;
+      b.classList.toggle('on', actif);
+      b.setAttribute('aria-pressed', actif ? 'true' : 'false');
+    });
+    if (compte) compte.textContent = theme === 'tout'
+      ? n + ' photographies'
+      : n + (n > 1 ? ' photographies' : ' photographie') + ' dans ce thème';
+  }
+
+  barre.addEventListener('click', function (e) {
+    var b = e.target.closest('.gf-btn');
+    if (b) appliquer(b.dataset.filtre);
+  });
+  appliquer('tout');
+})();
