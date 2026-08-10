@@ -624,6 +624,64 @@ nav a:hover::after,nav a[aria-current="page"]::after{transform:scaleX(1);transfo
 .defile-pause:hover{background:rgba(26,34,40,.94)}
 @media(max-width:520px){.defile img{width:170px;height:118px}.defile-piste{animation-duration:48s}}
 
+
+/* ═══ LA VIE À L'ÉCOLE ══════════════════════════════════════════════════
+   Les règles des billets de vacances, une par une. Elles étaient serrées
+   dans quatre petites cartes côte à côte : on les survolait sans les lire.
+   « Aucun aliment extérieur n'entre à l'école » y avait la même taille que
+   le reste — or c'est une règle qu'un parent doit connaître AVANT le jour
+   de la rentrée, pas après avoir préparé un goûter.
+
+   Un bloc, une règle, une photo. On ne peut plus en sauter une par
+   inadvertance : il faut passer devant. */
+.vie-bloc{
+  display:grid;grid-template-columns:minmax(0,44%) minmax(0,1fr);
+  gap:clamp(22px,3.4vw,46px);align-items:center;
+  margin:clamp(30px,4.4vw,58px) 0;
+}
+/* Un bloc sur deux se retourne : l'œil retrouve la photo là où il ne
+   l'attend pas, et la page cesse d'être une colonne. */
+.vie-inverse .vie-photo{order:2}
+.vie-photo{margin:0;border-radius:22px;overflow:hidden;background:#e8ecef;
+  box-shadow:0 20px 55px rgba(17,20,22,.14);aspect-ratio:1/1}
+.vie-photo img{width:100%;height:100%;object-fit:cover;display:block;
+  filter:brightness(1.02) contrast(1.05);
+  transition:transform .8s cubic-bezier(.2,.7,.3,1)}
+.vie-bloc:hover .vie-photo img{transform:scale(1.04)}
+.vie-texte h3{margin:6px 0 12px}
+.vie-texte p{color:#5e6c78;line-height:1.62}
+.vie-texte strong,.vie-texte b{color:#111416}
+.vie-num{font-family:Georgia,serif;font-size:15px;font-weight:700;
+  letter-spacing:.22em;color:#7a5a0d;margin:0}
+
+/* La règle qui ne se négocie pas. Elle porte l'or de l'école sur un fond
+   pâle — mesuré, l'encre sur `--gold-pale` tient au-dessus du seuil, ce
+   que l'or sur blanc ne fait pas (2,9:1). */
+.vie-regle{
+  margin-top:18px;padding:15px 17px;border-radius:14px;
+  background:#fdf4dd;border-left:4px solid #c09018;
+  color:#1a2228!important;font-size:15px;line-height:1.55;
+}
+.vie-regle b{color:#1a2228}
+.vie-regle span{margin-right:6px}
+
+.vie-minis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0}
+.vie-minis figure{margin:0;text-align:center}
+.vie-minis img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px;
+  display:block;background:#e8ecef;transition:transform .45s cubic-bezier(.2,.7,.3,1)}
+.vie-minis figure:hover img{transform:scale(1.05)}
+.vie-minis figcaption{margin-top:7px;font-size:12px;font-weight:800;color:#465560}
+
+@media(max-width:860px){
+  /* Sur un téléphone, l'alternance n'existe plus : tout est en colonne.
+     `order` doit être remis à zéro, sinon un bloc sur deux met sa photo
+     SOUS son texte — la moitié des blocs se lirait à l'envers. */
+  .vie-bloc{grid-template-columns:1fr;gap:18px}
+  .vie-inverse .vie-photo{order:0}
+  .vie-photo{aspect-ratio:4/3}
+  .vie-minis{grid-template-columns:repeat(2,1fr)}
+}
+
 @media(prefers-reduced-motion:reduce){
   .hero-premium::after,
   .hero-premium h1 em,
@@ -648,4 +706,6 @@ nav a:hover::after,nav a[aria-current="page"]::after{transform:scaleX(1);transfo
   .defile-piste{animation:none}
   .defile{overflow-x:auto;-webkit-overflow-scrolling:touch}
   .defile-pause{display:none}
+  .vie-photo img,.vie-minis img{transition:none}
+  .vie-bloc:hover .vie-photo img,.vie-minis figure:hover img{transform:none}
 }
