@@ -617,3 +617,17 @@
     Array.prototype.forEach.call(cibles,function(el){obs.observe(el);});
   }
 })();
+
+
+/* Le bouton du défilé. Il ne fait qu'une chose, et il DIT ce qu'il fait :
+   `aria-pressed` change avec l'état, sinon un lecteur d'écran annonce un
+   bouton dont rien ne bouge. */
+document.querySelectorAll('.defile-pause').forEach(function (b) {
+  b.addEventListener('click', function () {
+    var d = b.closest('.defile');
+    var enPause = d.classList.toggle('pause');
+    b.setAttribute('aria-pressed', enPause ? 'true' : 'false');
+    b.textContent = enPause ? '▶' : '⏸';
+    b.setAttribute('aria-label', enPause ? 'Reprendre le défilé' : 'Mettre le défilé en pause');
+  });
+});
