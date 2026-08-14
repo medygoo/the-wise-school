@@ -4,11 +4,12 @@
   "description": "Site du Complexe Scolaire Le Sage — pages statiques. Les dépendances ne servent QU'AUX OUTILS de contrôle : rien n'est construit, rien n'est empaqueté, ce qui est publié est ce qui est dans le dépôt.",
   "type": "module",
   "scripts": {
-    "controle": "node outils/assembler-css.mjs --verifier && node outils/contraste-heros.mjs && node outils/images-vides.mjs && node outils/aucun-montant.mjs",
+    "controle": "node outils/application-schoolsafe.mjs && node outils/assembler-css.mjs --verifier && node outils/contraste-heros.mjs && node outils/images-vides.mjs && node outils/aucun-montant.mjs",
     "contraste": "node outils/contraste-heros.mjs",
     "images": "node outils/images-vides.mjs",
     "montants": "node outils/aucun-montant.mjs",
-    "css": "node outils/assembler-css.mjs"
+    "css": "node outils/assembler-css.mjs",
+    "application": "node outils/application-schoolsafe.mjs"
   },
   "devDependencies": {
     "playwright": "^1.49.0"
