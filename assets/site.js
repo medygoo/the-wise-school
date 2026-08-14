@@ -1,7 +1,17 @@
 (function(){
   'use strict';
 
-  var APP_URL='https://medygoo.github.io/SchoolSafe-/';
+  var configSite=window.SCHOOLSAFE_SITE_CONFIG||{};
+  var APP_URL=typeof configSite.appUrl==='string'?configSite.appUrl.trim():'';
+  var ANCIENNE_APP='https://medygoo.github.io/SchoolSafe-/';
+  var APP_DISPONIBLE=false;
+  try{
+    var adresseApp=new URL(APP_URL);
+    APP_DISPONIBLE=adresseApp.protocol==='https:'&&adresseApp.href!==ANCIENNE_APP;
+    if(APP_DISPONIBLE)APP_URL=adresseApp.href;
+  }catch(e){
+    APP_URL='';
+  }
   var LANG_KEY='cslesage_langue';
 
   /* Les feuilles de style ne sont plus injectées ici.
@@ -13,41 +23,43 @@
      Elles sont maintenant assemblées dans `assets/tout.css`, déclarée dans
      le HTML : un seul aller-retour, découvert immédiatement. */
 
-  /* Accès officiel à SchoolSafe sur toutes les pages. */
+  /* L'acces n'apparait qu'apres raccordement a l'instance reelle de l'ecole. */
   var nav=document.querySelector('nav');
-  if(nav&&!nav.querySelector('.nav-application')){
-    var lienApp=document.createElement('a');
-    lienApp.className='nav-application';
-    lienApp.href=APP_URL;
-    lienApp.target='_blank';
-    lienApp.rel='noopener';
-    lienApp.textContent='Application';
-    lienApp.setAttribute('aria-label','Ouvrir l’application SchoolSafe dans un nouvel onglet');
-    nav.appendChild(lienApp);
-  }
+  if(APP_DISPONIBLE){
+    if(nav&&!nav.querySelector('.nav-application')){
+      var lienApp=document.createElement('a');
+      lienApp.className='nav-application';
+      lienApp.href=APP_URL;
+      lienApp.target='_blank';
+      lienApp.rel='noopener';
+      lienApp.textContent='Application';
+      lienApp.setAttribute('aria-label','Ouvrir l’application SchoolSafe dans un nouvel onglet');
+      nav.appendChild(lienApp);
+    }
 
-  var heroActions=document.querySelector('.hero-premium .actions');
-  if(heroActions&&!heroActions.querySelector('.btn-application')){
-    var boutonHero=document.createElement('a');
-    boutonHero.className='btn btn-verre btn-application';
-    boutonHero.href=APP_URL;
-    boutonHero.target='_blank';
-    boutonHero.rel='noopener';
-    boutonHero.innerHTML='Ouvrir SchoolSafe <span aria-hidden="true">↗</span>';
-    heroActions.appendChild(boutonHero);
-  }
+    var heroActions=document.querySelector('.hero-premium .actions');
+    if(heroActions&&!heroActions.querySelector('.btn-application')){
+      var boutonHero=document.createElement('a');
+      boutonHero.className='btn btn-verre btn-application';
+      boutonHero.href=APP_URL;
+      boutonHero.target='_blank';
+      boutonHero.rel='noopener';
+      boutonHero.innerHTML='Ouvrir SchoolSafe <span aria-hidden="true">↗</span>';
+      heroActions.appendChild(boutonHero);
+    }
 
-  var liensFooter=document.querySelector('.footer-grille>div:last-child .petit');
-  if(liensFooter&&!liensFooter.querySelector('.footer-application')){
-    var saut=document.createElement('br');
-    var appFooter=document.createElement('a');
-    appFooter.className='footer-application';
-    appFooter.href=APP_URL;
-    appFooter.target='_blank';
-    appFooter.rel='noopener';
-    appFooter.textContent='Ouvrir l’application SchoolSafe ↗';
-    liensFooter.appendChild(saut);
-    liensFooter.appendChild(appFooter);
+    var liensFooter=document.querySelector('.footer-grille>div:last-child .petit');
+    if(liensFooter&&!liensFooter.querySelector('.footer-application')){
+      var saut=document.createElement('br');
+      var appFooter=document.createElement('a');
+      appFooter.className='footer-application';
+      appFooter.href=APP_URL;
+      appFooter.target='_blank';
+      appFooter.rel='noopener';
+      appFooter.textContent='Ouvrir l’application SchoolSafe ↗';
+      liensFooter.appendChild(saut);
+      liensFooter.appendChild(appFooter);
+    }
   }
 
 
@@ -244,6 +256,7 @@
       function arreter(){if(minuterie){window.clearInterval(minuterie);minuterie=null;}}
       function demarrer(){
         arreter();
+        if(calme.matches||document.hidden)return;
         minuterie=window.setInterval(function(){afficher(actif+1,false);},5000);
       }
       precedent.addEventListener('click',function(){afficher(actif-1,true);});
@@ -251,8 +264,13 @@
       hero.addEventListener('mouseenter',arreter);
       hero.addEventListener('mouseleave',demarrer);
       hero.addEventListener('focusin',arreter);
-      hero.addEventListener('focusout',demarrer);
+      hero.addEventListener('focusout',function(e){
+        if(!hero.contains(e.relatedTarget))demarrer();
+      });
       document.addEventListener('visibilitychange',function(){document.hidden?arreter():demarrer();});
+      var gererCalme=function(e){e.matches?arreter():demarrer();};
+      if(calme.addEventListener)calme.addEventListener('change',gererCalme);
+      else if(calme.addListener)calme.addListener(gererCalme);
       demarrer();
       hero.dataset.sliderReady='true';
     }
